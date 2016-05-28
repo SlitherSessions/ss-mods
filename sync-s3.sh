@@ -13,4 +13,5 @@ exec aws s3 sync ./ s3://mods.slithersessions.com  --acl "public-read" --delete 
   --exclude "js/main.js" \
   --exclude "js/social.js" \
   --exclude "test.html" \
-  --exclude "src*"
+  --exclude "src*" \
+  --exclude "chrome*"
