@@ -22,6 +22,15 @@ options = {
   'chat': false
 };
 
+opts = {
+  // "Zoom": 'zoom',
+  "Clan tag list": 'clans',
+  "Custom background": 'custombg',
+  "Party mode": 'parties',
+  "Lower graphics": 'lowergph',
+  "Skin rotator": 'skinrotator'
+};
+
 function set (a, b) {
   options[a] = b;
 }
@@ -36,28 +45,10 @@ String.prototype.isJSON = function() {
   return true;
 };
 
-if (! localStorage["slitherplus"] || (localStorage["slitherplus"].isJSON() && !JSON.parse(localStorage["slitherplus"]).hasOwnProperty("drawfood"))) {
-  localStorage["slitherplus"] = JSON.stringify (options);
-} else if (localStorage["slitherplus"].isJSON()) {
-  options = JSON.parse(localStorage["slitherplus"]);
-}
-
-opts = {
-  "Zoom": 'zoom',
-  "Clan tag list": 'clans',
-  "Custom background": 'custombg',
-  "Party mode": 'parties',
-  "Lower graphics": 'lowergph',
-  "Skin rotator": 'skinrotator'
-};
-
-function zoom (e) {
-  if (! window.gsc) {
-    return;
-  }
-  if (!options.zoom) { window.gsc = 0.9; return; }
-  window.gsc *= Math.pow(0.9, e.wheelDelta / -120 || e.detail / 2 || 0);
-  window.gsc > 2 ? window.gsc = 2 : window.gsc < 0.1 ? window.gsc = 0.1 : null;
+if (! localStorage['slitherSessions'] || (localStorage['slitherSessions'].isJSON() && !JSON.parse(localStorage['slitherSessions']).hasOwnProperty("drawfood"))) {
+  localStorage['slitherSessions'] = JSON.stringify (options);
+} else if (localStorage['slitherSessions'].isJSON()) {
+  options = JSON.parse(localStorage['slitherSessions']);
 }
 
 function addParty() {
@@ -74,8 +65,8 @@ function addParty() {
     }
 
     $.get("http://51.254.206.4:8080/create/" + window.bso.ip + ':' + window.bso.po, function(data) {
-      $("#partyCode").val(data);
-      forceServer(window.bso.ip, window.bso.po);
+      $("#partyCode").val (data);
+      forceServer (window.bso.ip, window.bso.po);
       document.location.href = "http://slither.io/#" + data;
     });
     return false;
@@ -95,7 +86,7 @@ function addParty() {
           }, 1000);
         } else {
           srv = data.split(":");
-          forceServer(srv[0], srv[1]);
+          forceServer (srv[0], srv[1]);
         }
       });
     }
@@ -126,15 +117,16 @@ function asciize (b, typing) {
   if (! typing) {
     window.options.nick = $("#nick").val();
     window.options.clantag = $("#tag").val();
-    localStorage["slitherplus"] = JSON.stringify (window.options);
+    localStorage['slitherSessions'] = JSON.stringify (window.options);
   }
 
   return window.options.clans && !typing ? jQuery("#tag").val() + ' ' + b : b;
 }
 
 function addClanTags() {
-  jQuery(".taho").before (
-    '<div id="tag_holder" class="taho" style="width: 110px; height: 40px; margin-top: 10px; box-shadow: rgb(0, 0, 0) 0px 6px 50px; opacity: 1; background: rgb(76, 68, 124);"><select class="sumsginp" id="tag" style="width: 85px; top: 0px; outline: 0; height: 35px; padding: 5px; border-radius:29px"></select></div>'
+  // box-shadow: rgb(0, 0, 0) 0px 6px 50px;
+  jQuery('.taho').before (
+    '<div id="tag_holder" class="taho" style="width: 110px; height: 40px; margin-top: 10px; opacity: 1; background: rgb(76, 68, 124);"><select class="sumsginp" id="tag" style="width: 85px; top: 0px; outline: 0; height: 35px; padding: 5px; border-radius:6px"></select></div>'
   );
 
   nick.oninput = function() {
@@ -144,10 +136,10 @@ function addClanTags() {
     b != h && (this.value = h);
   };
 
-  jQuery("#tag").append("<option value='' style='background: rgb(76, 68, 124)'>-</option>");
+  jQuery("#tag").append("<option value=''>- Clan -</option>");
   for (var i = 0; i < tags.length; ++i) {
     var tag = tags[i];
-    jQuery("#tag").append("<option value='[" + tag + "]' style='background: rgb(76, 68, 124)'>[" + tag + "]</option>");
+    jQuery("#tag").append("<option value='[" + tag + "]'>[" + tag + "]</option>");
   }
 }
 
@@ -170,7 +162,7 @@ function setLowerGraphics (a) {
   }
 }
 
-function isInt(n){
+function isInt (n) {
   return Number(n) === n && n % 1 === 0;
 }
 
@@ -187,7 +179,7 @@ function skinRotator(i) {
 }
 
 function addOptions() {
-  jQuery("#saveh").after('<div id="options" style="width: 260px; color: rgb(128, 88, 208); border-radius: 29px; font-family: \'Lucida Sans Unicode\', \'Lucida Grande\', sans-serif; font-size: 14px; margin: 0px auto 100px; padding: 10px 14px; background-color: rgb(30, 38, 46);"></div>');
+  jQuery("#saveh").after('<div id="options" style="width: 260px; color: rgb(128, 88, 208); border-radius: 6px; font-family: \'Lucida Sans Unicode\', \'Lucida Grande\', sans-serif; font-size: 14px; margin: 0px auto 100px; padding: 10px 14px; background-color: rgb(30, 38, 46);"></div>');
   for (option in opts) {
     if (option == "Clan tag list" || option == "Party mode") {
       continue;
@@ -230,17 +222,17 @@ function addOptions() {
     }
   });
 
-  jQuery(".option").attr('style', 'color: rgb(128, 88, 208); border-radius: 29px; margin: 10px auto; padding: 8px; background-color: rgb(76, 68, 124)');
+  jQuery(".option").attr('style', 'color: rgb(128, 88, 208); border-radius: 6px; margin: 10px auto; padding: 8px; background-color: rgb(76, 68, 124)');
   jQuery(".option > span").attr('style', 'height: 24px; color: rgb(224, 224, 255); margin-left: 5px');
-  jQuery(".option > label").attr('style', 'float: right; width: 67px; text-align: center; border-radius: 12px; color: white; cursor: pointer; padding: 0px 20px;');
+  jQuery(".option > label").attr('style', 'float: right; width: 67px; text-align: center; border-radius: 4px; color: white; cursor: pointer; padding: 0px 20px;');
   jQuery("head").append("<style type='text/css'>label.on{background-color: rgb(86, 172, 129)}label.off{background-color:#861B1B}</style>");
 
   jQuery("#tag").val(options.clantag);
   jQuery("#nick").val(options.nick);
-  $("#options").append('<label id="showshortcuts" class="on" style="text-align: center; border-radius: 12px; color: white; cursor: pointer; padding: 0px 20px; width:100%">Show shortcuts</label>');
-  $("#options").append('<label id="showchat" class="on" style="text-align: center; border-radius: 12px; color: white; cursor: pointer; padding: 0px 20px; width:100%">Show chat</label>');
-  $("body").append('<div id="shortcuts" style="display:none;z-index:999;width: 260px; color: rgb(128, 88, 208); border-radius: 29px; font-family: \'Lucida Sans Unicode\', \'Lucida Grande\', sans-serif; font-size: 14px; margin: 0px auto 100px; padding: 10px 14px; background-color: rgba(30, 38, 46,0.7);position:absolute;top:50px;left:6px;"><ul style="list-style-type:none;padding:0;"><li>[F] - switch drawing mode</li><li>[G] - change color of drawing</li><li>[H] - change size of drawing</li><li>[J] - crazy drawing</li><li>[E] - previous skin</li><li>[R] - next skin</li><li>[Q] - quit</li><li>[ESC] - respawn</li><li>[SHIFT] - accelerate</li><li>[1-6] - switching options</li></ul></div>');
-  $("body").append('<div id="chat" style="display:none;z-index:999; width: 260px; height: 270px; color: rgb(128, 88, 208); border-radius: 29px; font-family: \'Lucida Sans Unicode\', \'Lucida Grande\', sans-serif; font-size: 14px; padding: 10px 14px; background-color: rgba(30, 38, 46,0.7);position:absolute;bottom:110px;left:6px;"><div id="chatMessages" style="height:200px"></div><div id="yourMessage_holder" class="taho" style="width: 100%; height: 35px; margin-top: 10px; box-shadow: rgb(0, 0, 0) 0px 6px 50px; opacity: 1; background: rgb(76, 68, 124);"><input class="sumsginp" id="yourMessage" placeholder="Press [ENTER] to chat" style="width: 100%; top: 0px; outline: 0; height: 35px; padding: 10px; left:0; border-radius:29px;font-size:14px" /></div></div>');
+  $("#options").append('<label id="showshortcuts" class="on" style="text-align: center; border-radius: 4px; color: white; cursor: pointer; padding: 0px 20px; width:100%">Show shortcuts</label>');
+  $("body").append('<div id="shortcuts" style="display:none;z-index:999;width: 260px; color: rgb(128, 88, 208); border-radius: 6px; font-family: \'Lucida Sans Unicode\', \'Lucida Grande\', sans-serif; font-size: 14px; margin: 0px auto 100px; padding: 10px 14px; background-color: rgba(30, 38, 46,0.7);position:absolute;top:50px;left:6px;"><ul style="list-style-type:none;padding:0;"><li>[F] - switch drawing mode</li><li>[G] - change color of drawing</li><li>[H] - change size of drawing</li><li>[J] - crazy drawing</li><li>[E] - previous skin</li><li>[R] - next skin</li><li>[Q] - quit</li><li>[ESC] - respawn</li><li>[SHIFT] - accelerate</li><li>[1-6] - switching options</li></ul></div>');
+  $("body").append('<div id="chat" style="display:none;z-index:999; width: 260px; height: 270px; color: rgb(128, 88, 208); border-radius: 6px; font-family: \'Lucida Sans Unicode\', \'Lucida Grande\', sans-serif; font-size: 14px; padding: 10px 14px; background-color: rgba(30, 38, 46,0.7);position:absolute;bottom:110px;left:6px;"><div id="chatMessages" style="height:200px"></div><div id="yourMessage_holder" class="taho" style="width: 100%; height: 35px; margin-top: 10px; box-shadow: rgb(0, 0, 0) 0px 6px 50px; opacity: 1; background: rgb(76, 68, 124);"><input class="sumsginp" id="yourMessage" placeholder="Press [ENTER] to chat" style="width: 100%; top: 0px; outline: 0; height: 35px; padding: 10px; left:0; border-radius:6px;font-size:14px" /></div></div>');
+
   $("#showshortcuts").click(function() {
       if (jQuery(this).attr('class') == 'on') {
         jQuery(this).attr('class', 'off');
@@ -256,20 +248,6 @@ function addOptions() {
         $("iframe").attr ('src', 'http://mods.slithersessions.com/social.html');
         $("#shortcuts").hide();
         options['showshortcuts'] = false;
-      }
-  });
-
-  $("#showchat").click(function() {
-      if (jQuery(this).attr('class') == 'on') {
-        jQuery(this).attr('class', 'off');
-        jQuery(this).html('Hide chat');
-        $("#chat").show();
-        options['chat'] = true;
-      } else {
-        jQuery(this).attr('class', 'on');
-        jQuery(this).html('Show chat');
-        $("#chat").hide();
-        options['chat'] = false;
       }
   });
 
@@ -440,15 +418,15 @@ function loop() {
 
   if (typeof bso != "undefined" && $("#ipAddress").html() != (bso.ip + ":" + bso.po)) {
     $("#ipAddress").html(bso.ip + ":" + bso.po);
-    chatWebSocket.send(JSON.stringify({ action: 0, token: (bso.ip + ":" + bso.po) }));
+    // chatWebSocket.send(JSON.stringify({ action: 0, token: (bso.ip + ":" + bso.po) }));
   }
 
   setTimeout (loop, 1000);
 }
 
 function checkForMods() {
-  if ($("#ip-hud").length != 0 || $("#worms").length != 0 || $("#login").html().toLowerCase().indexOf("slitherio.org") != -1) {
-    $("body").html("<div style='text-align:center;width:100%;position:absolute;top:50%;margin-top:-98px;color:rgb(128, 88, 208);'><img src='s/favicon.png'/><h1>Please disable other slither.io extensions to use SlitherPlus.</h1></div>");
+  if ($("#ip-hud").length != 0 || $("#worms").length != 0 || $("#login").html().toLowerCase().indexOf("mods.slithersessions.com") != -1) {
+    $("body").html("<div style='text-align:center;width:100%;position:absolute;top:50%;margin-top:-98px;color:rgb(128, 88, 208);'><img src='s/favicon.png'/><h1>Please disable other slither.io extensions to use Slither Sessions.</h1></div>");
     return;
   }
 
@@ -534,13 +512,7 @@ addKeyEvents();
 showFPS();
 loop();
 
-if (/firefox/i.test(navigator.userAgent)) {
-  document.addEventListener("DOMMouseScroll", zoom, false);
-} else {
-  document.body.onmousewheel = zoom;
-}
-
-$("body").append('<div id="ipBox" style="position:fixed;bottom: 120px; right: 20px; color: lightgray; z-index:99999999;">IP: <span id="ipAddress">play first</span> <label style="float: right;text-align: center; border-radius: 12px; color: white; cursor: pointer; padding: 0px 20px;width: 140px; margin-left: 10px;" id="ip-connect" class="on">Connect to IP</label></div>');
+$("body").append('<div id="ipBox" style="position:fixed;bottom: 120px; right: 20px; color: lightgray; z-index:99999999;">IP: <span id="ipAddress">play first</span> <label style="float: right;text-align: center; border-radius: 4px; color: white; cursor: pointer; padding: 0px 20px;width: 140px; margin-left: 10px;" id="ip-connect" class="on">Connect to IP</label></div>');
 
 $("#ip-connect").click(function() {
   eipaddr = prompt('Enter the IP address:', '');
@@ -575,39 +547,10 @@ $(function() {
   if (options['showshortcuts']) $("#showshortcuts").click();
   if (options['chat']) $("#showchat").click();
 
-  setLowerGraphics(options['lowergph']);
-
-  setSkin(snake, 0)
-  setTimeout(addSkins, 1000);
-  setInterval(checkForMods, 1000);
-});
-
-
-chatWebSocket = new WebSocket("ws://51.254.206.49:1337");
-chatWebSocket.onopen = function() {
-  $(".chatMessage").remove();
-  $("#chatMessages").append('<div class="chatMessage"><span style="color:green;">Welcome to the chat!</span></div>');
-};
-chatWebSocket.onmessage = function(msg) {
-  $("#chatMessages").append(msg.data);
-  deleteMessages();
-};
-chatWebSocket.onerror = function(err) {
-  $("#chatMessages").append('<div class="chatMessage"><span style="color:orange;">Got an error.</span></div>');
-  deleteMessages();
-};
-chatWebSocket.onclose = function() {
-  $("#chatMessages").append('<div class="chatMessage"><span style="color:red;">Chat closed.</span></div>');
-  deleteMessages();
-};
-
-$("#playh .btnt.nsi.sadg1").click(function() {
-  setTimeout(function(ip){
-    if ((!ws || ws.readyState != ws.OPEN) && window.bso.ip == ip) {
-      alert("Server is full! Looking for a new server...");
-      document.location.href = "http://slither.io/";
-    }
-  }, 10000, window.bso.ip);
+  setLowerGraphics (options['lowergph']);
+  setSkin (snake, 0)
+  setTimeout (addSkins, 1000);
+  setInterval (checkForMods, 1000);
 });
 
 /*
