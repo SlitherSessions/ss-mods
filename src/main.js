@@ -402,6 +402,8 @@ function loop() {
     lbh.textContent = 'Slither Sessions';
   }
 
+  console.log(lbh);
+  
   if (typeof bso != "undefined" && $("#ipAddress").html() != (bso.ip + ":" + bso.po)) {
     $("#ipAddress").html(bso.ip + ":" + bso.po);
     // chatWebSocket.send(JSON.stringify({ action: 0, token: (bso.ip + ":" + bso.po) }));

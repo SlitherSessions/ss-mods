@@ -1,6 +1,3 @@
-window.onerror = function (message, url, lineNumber) {
-  console.log (message + ', ' + url + ', ' + lineNumber);
-}
 
 var sdan = false; // social done animating
 var sshfr = 0;

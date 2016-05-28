@@ -1,0 +1,13 @@
+{
+  "manifest_version": 2,
+  "name": "Slither Sessions",
+  "version": "0.0.1",
+  "content_scripts": [
+    {
+      "matches": [
+        "http://slither.io/*", "https://slither.io/*"
+      ],
+      "js": ["js/content.js"]
+    }
+  ]
+}
