@@ -1,13 +1,13 @@
 window.onerror = function (message, url, lineNumber) {
-  console.log(message+', '+url+', '+lineNumber);
+  console.log (message + ', ' + url + ', ' + lineNumber);
 }
 
 var sdan = false; // social done animating
 var sshfr = 0;
-var social = document.getElementById('social');
-var ytfhol = document.getElementById('ytfhol');
-var fbfhol = document.getElementById('fbfhol');
-var twfhol = document.getElementById('twfhol');
+var social = document.getElementById ('social');
+var ytfhol = document.getElementById ('ytfhol');
+var fbfhol = document.getElementById ('fbfhol');
+var twfhol = document.getElementById ('twfhol');
 
 var cssoc = false;
 
