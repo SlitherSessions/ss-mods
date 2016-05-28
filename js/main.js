@@ -1,11 +1,7 @@
 
 tags = [
-  "AG",
-  "HERO",
-  "NBK",
-  "MG",
-  "SS",
-  "YT"
+  'AG', 'HERO', 'NBK',
+  'MG', 'SS', 'YT'
 ];
 
 options = {
@@ -38,12 +34,10 @@ String.prototype.isJSON = function() {
   }
 
   return true;
-}
+};
 
-
-
-if (!localStorage["slitherplus"] || (localStorage["slitherplus"].isJSON() && !JSON.parse(localStorage["slitherplus"]).hasOwnProperty("drawfood"))) {
-  localStorage["slitherplus"] = JSON.stringify(options);
+if (! localStorage["slitherplus"] || (localStorage["slitherplus"].isJSON() && !JSON.parse(localStorage["slitherplus"]).hasOwnProperty("drawfood"))) {
+  localStorage["slitherplus"] = JSON.stringify (options);
 } else if (localStorage["slitherplus"].isJSON()) {
   options = JSON.parse(localStorage["slitherplus"]);
 }
@@ -87,7 +81,7 @@ function addParty() {
     return false;
   });
 
-  jQuery("#joinParty").click(function(e) {
+  jQuery("#joinParty").click (function (e) {
     if ($("#partyCode").val() == '') {
       window.forcing = false;
       getData("/i49526.txt", o);
@@ -139,20 +133,22 @@ function asciize (b, typing) {
 }
 
 function addClanTags() {
-  jQuery(".taho").before('<div id="tag_holder" class="taho" style="width: 110px; height: 40px; margin-top: 10px; box-shadow: rgb(0, 0, 0) 0px 6px 50px; opacity: 1; background: rgb(76, 68, 124);"><select class="sumsginp" id="tag" style="width: 85px; top: 0px; outline: 0; height: 35px; padding: 5px; border-radius:29px"></select></div>')
+  jQuery(".taho").before (
+    '<div id="tag_holder" class="taho" style="width: 110px; height: 40px; margin-top: 10px; box-shadow: rgb(0, 0, 0) 0px 6px 50px; opacity: 1; background: rgb(76, 68, 124);"><select class="sumsginp" id="tag" style="width: 85px; top: 0px; outline: 0; height: 35px; padding: 5px; border-radius:29px"></select></div>'
+  );
 
-  nick.oninput = function(){var b=this.value,h=asciize(b,true);24<h.length&&(h=h.substr(0,24));b!=h&&(this.value=h)};
+  nick.oninput = function() {
+    var b = this.value;
+    var h = asciize (b, true);
+    24 < h.length && (h = h.substr (0, 24));
+    b != h && (this.value = h);
+  };
 
   jQuery("#tag").append("<option value='' style='background: rgb(76, 68, 124)'>-</option>");
-  for (tag of tags) {
+  for (var i = 0; i < tags.length; ++i) {
+    var tag = tags[i];
     jQuery("#tag").append("<option value='[" + tag + "]' style='background: rgb(76, 68, 124)'>[" + tag + "]</option>");
   }
-}
-
-if (/firefox/i.test(navigator.userAgent)) {
-  document.addEventListener("DOMMouseScroll", zoom, false);
-} else {
-  document.body.onmousewheel = zoom;
 }
 
 function setBackground (url) {
@@ -160,7 +156,7 @@ function setBackground (url) {
   ii.src = url;
 }
 
-function setLowerGraphics(a) {
+function setLowerGraphics (a) {
   if (a) {
     setBackground('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4AQYBigs0bXWaQAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAADUlEQVQI12P4//8/AwAI/AL+XJ/P2gAAAABJRU5ErkJggg==');
     render_mode = 1;
@@ -175,7 +171,7 @@ function setLowerGraphics(a) {
 }
 
 function isInt(n){
-    return Number(n) === n && n % 1 === 0;
+  return Number(n) === n && n % 1 === 0;
 }
 
 function skinRotator(i) {
@@ -257,11 +253,12 @@ function addOptions() {
         jQuery(this).attr('class', 'on');
         jQuery(this).html('Show shortcuts');
         set(jQuery(this).attr('id'), true);
-        $("iframe").attr ('src', 'http://slither.kushview.net/social.html');
+        $("iframe").attr ('src', 'http://mods.slithersessions.com/social.html');
         $("#shortcuts").hide();
         options['showshortcuts'] = false;
       }
   });
+
   $("#showchat").click(function() {
       if (jQuery(this).attr('class') == 'on') {
         jQuery(this).attr('class', 'off');
@@ -449,33 +446,6 @@ function loop() {
   setTimeout (loop, 1000);
 }
 
-$("body").append('<div id="ipBox" style="position:fixed;bottom: 120px; right: 20px; color: lightgray; z-index:99999999;">IP: <span id="ipAddress">play first</span> <label style="float: right;text-align: center; border-radius: 12px; color: white; cursor: pointer; padding: 0px 20px;width: 140px; margin-left: 10px;" id="ip-connect" class="on">Connect to IP</label></div>');
-
-$("#ip-connect").click(function() {
-  eipaddr = prompt('Enter the IP address:', '');
-  if (eipaddr && eipaddr.indexOf(":") != -1 && eipaddr.indexOf(".") != -1) {
-    forceServer(eipaddr.split(":")[0], eipaddr.split(":")[1]);
-    connect();
-    $("#partyCode").val('');
-  }
-});
-
-if (document.location.href.indexOf("#") != -1) {
-  $.get("http://51.254.206.4:8080/join/" + document.location.href.substr(document.location.href.indexOf("#")+1,6), function(data) {
-    if (data == 'error') {
-      $("#partyCode").val('wrong code');
-
-      setTimeout(function() {
-        $("#partyCode").val('');
-      }, 1000);
-    } else {
-      $("#partyCode").val(document.location.href.substr(document.location.href.indexOf("#")+1,6));
-      srv = data.split(":");
-      forceServer (srv[0], srv[1]);
-    }
-  });
-}
-
 function checkForMods() {
   if ($("#ip-hud").length != 0 || $("#worms").length != 0 || $("#login").html().toLowerCase().indexOf("slitherio.org") != -1) {
     $("body").html("<div style='text-align:center;width:100%;position:absolute;top:50%;margin-top:-98px;color:rgb(128, 88, 208);'><img src='s/favicon.png'/><h1>Please disable other slither.io extensions to use SlitherPlus.</h1></div>");
@@ -544,6 +514,17 @@ function addSkins() {
   })();
 }
 
+function messagesHeight() {
+  msgs = $(".chatMessage").toArray();
+  height = 0;
+  for (key in msgs) { div = msgs[key]; height += div.clientHeight }
+  return height;
+}
+
+function deleteMessages() {
+  if (messagesHeight() > $("#chatMessages").height()) { $(".chatMessage:first").remove(); deleteMessages(); }
+}
+
 addParty();
 addClanTags();
 skinRotator();
@@ -553,11 +534,44 @@ addKeyEvents();
 showFPS();
 loop();
 
+if (/firefox/i.test(navigator.userAgent)) {
+  document.addEventListener("DOMMouseScroll", zoom, false);
+} else {
+  document.body.onmousewheel = zoom;
+}
+
+$("body").append('<div id="ipBox" style="position:fixed;bottom: 120px; right: 20px; color: lightgray; z-index:99999999;">IP: <span id="ipAddress">play first</span> <label style="float: right;text-align: center; border-radius: 12px; color: white; cursor: pointer; padding: 0px 20px;width: 140px; margin-left: 10px;" id="ip-connect" class="on">Connect to IP</label></div>');
+
+$("#ip-connect").click(function() {
+  eipaddr = prompt('Enter the IP address:', '');
+  if (eipaddr && eipaddr.indexOf(":") != -1 && eipaddr.indexOf(".") != -1) {
+    forceServer(eipaddr.split(":")[0], eipaddr.split(":")[1]);
+    connect();
+    $("#partyCode").val('');
+  }
+});
+
+if (document.location.href.indexOf("#") != -1) {
+  $.get("http://51.254.206.4:8080/join/" + document.location.href.substr(document.location.href.indexOf("#")+1,6), function(data) {
+    if (data == 'error') {
+      $("#partyCode").val('wrong code');
+
+      setTimeout(function() {
+        $("#partyCode").val('');
+      }, 1000);
+    } else {
+      $("#partyCode").val(document.location.href.substr(document.location.href.indexOf("#")+1,6));
+      srv = data.split(":");
+      forceServer (srv[0], srv[1]);
+    }
+  });
+}
+
 $(function() {
   if (options.custombg && ii.src != options.background) {
     setBackground (options.background);
   }
-  $("iframe").attr('src', 'http://slither.kushview.net/social.html');
+  $("iframe").attr('src', 'http://mods.slithersessions.com/social.html');
   if (options['showshortcuts']) $("#showshortcuts").click();
   if (options['chat']) $("#showchat").click();
 
@@ -568,16 +582,7 @@ $(function() {
   setInterval(checkForMods, 1000);
 });
 
-function msgsHeight() {
-  msgs = $(".chatMessage").toArray();
-  height = 0;
-  for (key in msgs) { div = msgs[key]; height += div.clientHeight }
-  return height;
-}
 
-function deleteMessages() {
-  if (msgsHeight() > $("#chatMessages").height()) { $(".chatMessage:first").remove(); deleteMessages(); }
-}
 chatWebSocket = new WebSocket("ws://51.254.206.49:1337");
 chatWebSocket.onopen = function() {
   $(".chatMessage").remove();
