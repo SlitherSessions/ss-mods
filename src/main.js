@@ -136,7 +136,7 @@ function addClanTags() {
     b != h && (this.value = h);
   };
 
-  jQuery("#tag").append("<option value=''>- Clan -</option>");
+  jQuery("#tag").append("<option value=''>---</option>");
   for (var i = 0; i < tags.length; ++i) {
     var tag = tags[i];
     jQuery("#tag").append("<option value='[" + tag + "]'>[" + tag + "]</option>");
@@ -276,11 +276,11 @@ function resizeView() {
 
 function addKeyEvents() {
   options['drawfood'] = false;
-  $(document).keydown (function (e) {
+  jQuery(document).keydown (function (e) {
+    console.log('key: ' + e.keyCode);
     switch (e.keyCode) {
       case 27:
-if ($("#yourMessage").is(":focus")) { return; }
-        if (typeof bso != "undefined") {
+        if (typeof window.bso != 'undefined') {
           forcing = true;
           connect();
         }
@@ -291,14 +291,12 @@ if ($("#yourMessage").is(":focus")) { return; }
         $("#fpsBox").toggle();
         break;
       case 71:
-        if ($("#yourMessage").is(":focus")) { return; }
         if (options['drawfoodcolor'] >= 7) {
           options['drawfoodcolor'] = 0;
         }
         options['drawfoodcolor']++;
         break;
       case 70:
-      if ($("#yourMessage").is(":focus")) { return; }
         options['drawfood'] = !options['drawfood'];
         if (options['drawfood']) {
           drawFood = setInterval(function(){
@@ -319,7 +317,6 @@ if ($("#yourMessage").is(":focus")) { return; }
         }
         break;
       case 72:
-      if ($("#yourMessage").is(":focus")) { return; }
         if (options['drawfoodsize'] >= 20) {
           options['drawfoodsize'] = 0;
         }
@@ -327,15 +324,12 @@ if ($("#yourMessage").is(":focus")) { return; }
         options['drawfoodsize'] += 2;
         break;
       case 74:
-        if ($("#yourMessage").is(":focus")) { return; }
         options['drawfoodcrazie'] = !options['drawfoodcrazie'];
         break;
       case 69:
-        if ($("#yourMessage").is(":focus")) { return; }
         $("#psk").click();
         break;
       case 82:
-        if ($("#yourMessage").is(":focus")) { return; }
         $("#nsk").click();
         break;
       case 13:
@@ -350,7 +344,6 @@ if ($("#yourMessage").is(":focus")) { return; }
         }
         break;
       case 81:
-if ($("#yourMessage").is(":focus")) { return; }
         if (playing) {
           want_close_socket = -1;
           dead_mtm = Date.now() - 5E3;
@@ -363,31 +356,24 @@ if ($("#yourMessage").is(":focus")) { return; }
         }
         break;
       case 16:
-if ($("#yourMessage").is(":focus")) { return; }
         setAcceleration(true);
         break;
       case 49:
-if ($("#yourMessage").is(":focus")) { return; }
         $("#zoom").click();
         break;
       case 50:
-if ($("#yourMessage").is(":focus")) { return; }
         $("#custombg").click();
         break;
       case 51:
-if ($("#yourMessage").is(":focus")) { return; }
         $("#lowergph").click();
         break;
       case 52:
-if ($("#yourMessage").is(":focus")) { return; }
         $("#skinrotator").click();
         break;
       case 53:
-if ($("#yourMessage").is(":focus")) { return; }
         $("#showshortcuts").click();
         break;
       case 54:
-if ($("#yourMessage").is(":focus")) { return; }
         $("#showchat").click();
         break;
     }
