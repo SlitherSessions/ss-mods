@@ -1,4 +1,4 @@
 .DS_Store
-js/*.min.js
-css/*.min.css
+mods/js/*.min.js
+mods/css/*.min.css
 *.zip
