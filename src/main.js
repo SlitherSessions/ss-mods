@@ -25,7 +25,7 @@ options = {
 opts = {
   // "Zoom": 'zoom',
   "Clan tag list": 'clans',
-  "Custom background": 'custombg',
+  // "Custom background": 'custombg',
   "Party mode": 'parties',
   "Lower graphics": 'lowergph',
   "Skin rotator": 'skinrotator'
@@ -277,7 +277,7 @@ function resizeView() {
 function addKeyEvents() {
   options['drawfood'] = false;
   jQuery(document).keydown (function (e) {
-    console.log('key: ' + e.keyCode);
+    // console.log('key: ' + e.keyCode);
     switch (e.keyCode) {
       case 27:
         if (typeof window.bso != 'undefined') {
@@ -402,8 +402,6 @@ function loop() {
     lbh.textContent = 'Slither Sessions';
   }
 
-  console.log(lbh);
-  
   if (typeof bso != "undefined" && $("#ipAddress").html() != (bso.ip + ":" + bso.po)) {
     $("#ipAddress").html(bso.ip + ":" + bso.po);
     // chatWebSocket.send(JSON.stringify({ action: 0, token: (bso.ip + ":" + bso.po) }));
@@ -424,7 +422,7 @@ function checkForMods() {
 }
 
 function addSkins() {
-  window.setSkin = (function() {
+  setSkin = (function() {
     var
       // Get amount of original skins.
       originalMaxSkinCv = max_skin_cv,
@@ -463,7 +461,7 @@ function addSkins() {
     max_skin_cv += newSkins.length;
 
     return function (snake, skinId) {
-      originalSetSkin(snake, skinId);
+      originalSetSkin (snake, skinId);
       if (skinId > originalMaxSkinCv) {
         var c,
           checkSkinId = skinId - originalMaxSkinCv - 1;
@@ -527,7 +525,7 @@ if (document.location.href.indexOf("#") != -1) {
   });
 }
 
-$(function() {
+jQuery(function() {
   if (options.custombg && ii.src != options.background) {
     setBackground (options.background);
   }
