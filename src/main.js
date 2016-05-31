@@ -52,6 +52,7 @@ if (! localStorage['slitherSessions'] || (localStorage['slitherSessions'].isJSON
 }
 
 function addParty() {
+  return;
   $("#playh").after('<div id="party" style="margin: auto; width: 200px; display: block !important; margin-bottom: 25px"><div class="btn-group" style="width: 100%"><button class="btn btn-success" id="createParty" style="width: 50%">Create</button><button style="width: 50%" class="btn btn-primary" id="joinParty">Join</button></div><input id="partyCode" placeholder="Party Code" class="form-control" type="text" style="width: 100%;color:black;text-align:center;font-weight:bold;box-shadow:inset 0 0 3px #000;"></div>');
   $(".btnt.nsi.sadg1:first").css('margin-bottom', '35px');
 
