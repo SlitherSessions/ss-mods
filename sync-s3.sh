@@ -30,4 +30,5 @@ aws s3 sync ./www s3://www.slithersessions.com  --acl "public-read" --delete \
   --exclude "test.html" \
   --exclude "src*" \
   --exclude "chrome*" \
-  --exclude "*.zip"
+  --exclude "*.zip" \
+  --exclude "www/save*"
