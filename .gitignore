@@ -2,3 +2,4 @@
 mods/js/*.min.js
 mods/css/*.min.css
 *.zip
+www/js/app*.*
