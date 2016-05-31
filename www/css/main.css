@@ -70,18 +70,31 @@ body {
    =================== */
 
 .header-container {
-    border-bottom: 20px solid #e44d26;
+    border-bottom: 20px solid #199816;
 }
 
 .footer-container,
 .main aside {
-    border-top: 20px solid #e44d26;
+    border-top: 20px solid #199816;
 }
 
 .header-container,
 .footer-container,
 .main aside {
-    background: #f16529;
+    background: #21a51e;
+}
+
+.main aside p {
+  color: #eee;
+}
+.main aside a {
+    color: white;
+    text-decoration: none;
+}
+
+.main aside a:hover {
+    color: #eee;
+    text-decoration: none;
 }
 
 .title {
@@ -115,16 +128,17 @@ nav a {
     font-weight: bold;
 
     color: white;
-    background: #e44d26;
+    background: #199816;
 }
 
 nav a:hover,
 nav a:visited {
     color: white;
+    text-decoration: none;
 }
 
 nav a:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 /* ==============
@@ -317,6 +331,20 @@ nav a:hover {
 
 .clearfix {
     *zoom: 1;
+}
+
+.responsive-video {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  padding-top: 25px;
+  height: 0;
+}
+.responsive-video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 /* ==========================================================================
