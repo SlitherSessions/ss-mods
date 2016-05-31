@@ -274,6 +274,10 @@ nav a:hover {
   height: 100%;
 }
 
+.videos .responsive-video {
+  margin-bottom: 16px;
+}
+
 @media print {
     *,
     *:before,
