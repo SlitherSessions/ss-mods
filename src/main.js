@@ -23,12 +23,12 @@ options = {
 };
 
 opts = {
-  // "Zoom": 'zoom',
-  "Clan tag list": 'clans',
-  // "Custom background": 'custombg',
-  "Party mode": 'parties',
-  "Lower graphics": 'lowergph',
-  "Skin rotator": 'skinrotator'
+  // 'Zoom': 'zoom',
+  'Clan tag list': 'clans',
+  // 'Custom background': 'custombg',
+  'Party mode': 'parties',
+  'Lower graphics': 'lowergph',
+  'Skin rotator': 'skinrotator'
 };
 
 function set (a, b) {
@@ -76,7 +76,6 @@ function asciize (b, typing) {
 }
 
 function addClanTags() {
-  // box-shadow: rgb(0, 0, 0) 0px 6px 50px;
   jQuery('.taho').before (
     '<div id="tag_holder" class="taho" style="width: 110px; height: 40px; margin-top: 10px; opacity: 1; background: rgb(76, 68, 124);"><select class="sumsginp" id="tag" style="width: 85px; top: 0px; outline: 0; height: 35px; padding: 5px; border-radius:6px"></select></div>'
   );
@@ -367,7 +366,7 @@ function checkForMods() {
     return;
   }
 
-  if (!$("#psk").is(":visible") && snake && snake.rcv != localStorage.snakercv && !options['skinrotator']) {
+  if (!$('#psk').is(':visible') && snake && snake.rcv != localStorage.snakercv && !options['skinrotator']) {
     setSkin(snake, localStorage.snakercv);
   }
 }
@@ -459,29 +458,25 @@ $("#ip-connect").click(function() {
   }
 });
 
-if (document.location.href.indexOf("#") != -1) {
-  $.get("http://51.254.206.4:8080/join/" + document.location.href.substr(document.location.href.indexOf("#")+1,6), function(data) {
-    if (data == 'error') {
-      $("#partyCode").val('wrong code');
-
-      setTimeout(function() {
-        $("#partyCode").val('');
-      }, 1000);
-    } else {
-      $("#partyCode").val(document.location.href.substr(document.location.href.indexOf("#")+1,6));
-      srv = data.split(":");
-      forceServer (srv[0], srv[1]);
+$('#playh .btnt.nsi.sadg1').click (function() {
+  setTimeout (function (ip) {
+    if ((!ws || ws.readyState != ws.OPEN) && window.bso.ip == ip) {
+      alert ("Server is full! Looking for a new server...");
+      document.location.href = "http://slither.io/";
     }
-  });
-}
+  }, 8000, bso.ip);
+});
 
 jQuery(function() {
   if (options.custombg && ii.src != options.background) {
     setBackground (options.background);
   }
-  $("iframe").attr('src', 'http://mods.slithersessions.com/social.html');
-  if (options['showshortcuts']) $("#showshortcuts").click();
-  if (options['chat']) $("#showchat").click();
+
+  $('iframe').attr('src', 'http://mods.slithersessions.com/social.html');
+  if (options['showshortcuts'])
+    $('#showshortcuts').click();
+  if (options['chat'])
+    $('#showchat').click();
 
   setLowerGraphics (options['lowergph']);
   setSkin (snake, 0)

@@ -46,3 +46,19 @@ function addParty() {
   $("#partyCode").css('border-top-left-radius', '0');
   $("#partyCode").css('border-top-right-radius', '0');
 }
+
+if (document.location.href.indexOf("#") != -1) {
+  $.get("http://51.254.206.4:8080/join/" + document.location.href.substr(document.location.href.indexOf("#")+1,6), function(data) {
+    if (data == 'error') {
+      $("#partyCode").val('wrong code');
+
+      setTimeout(function() {
+        $("#partyCode").val('');
+      }, 1000);
+    } else {
+      $("#partyCode").val(document.location.href.substr(document.location.href.indexOf("#")+1,6));
+      srv = data.split(":");
+      forceServer (srv[0], srv[1]);
+    }
+  });
+}
