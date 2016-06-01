@@ -464,7 +464,7 @@ $('#playh .btnt.nsi.sadg1').click (function() {
       alert ("Server is full! Looking for a new server...");
       document.location.href = "http://slither.io/";
     }
-  }, 8000, bso.ip);
+  }, 4000, bso.ip);
 });
 
 jQuery(function() {
