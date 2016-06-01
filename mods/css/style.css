@@ -1,0 +1,7 @@
+#ipBox {
+  position:fixed;
+  bottom: 120px;
+  right: 20px;
+  color: lightgray;
+  z-index:99999999;
+}
