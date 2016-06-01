@@ -2,6 +2,13 @@ function deleteMessages() {
   if (messagesHeight() > $("#chatMessages").height()) { $(".chatMessage:first").remove(); deleteMessages(); }
 }
 
+function messagesHeight() {
+  msgs = $(".chatMessage").toArray();
+  height = 0;
+  for (key in msgs) { div = msgs[key]; height += div.clientHeight }
+  return height;
+}
+
 chatWebSocket = new WebSocket("ws://51.254.206.49:1337");
 chatWebSocket.onopen = function() {
   $(".chatMessage").remove();
