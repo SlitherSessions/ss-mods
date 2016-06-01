@@ -435,10 +435,6 @@ function messagesHeight() {
   return height;
 }
 
-function deleteMessages() {
-  if (messagesHeight() > $("#chatMessages").height()) { $(".chatMessage:first").remove(); deleteMessages(); }
-}
-
 addClanTags();
 skinRotator();
 addOptions();
@@ -447,7 +443,7 @@ addKeyEvents();
 showFPS();
 loop();
 
-$("body").append('<div id="ipBox" style="position:fixed;bottom: 120px; right: 20px; color: lightgray; z-index:99999999;">IP: <span id="ipAddress">play first</span> <label style="float: right;text-align: center; border-radius: 4px; color: white; cursor: pointer; padding: 0px 20px;width: 140px; margin-left: 10px;" id="ip-connect" class="on">Connect to IP</label></div>');
+$("body").append('<div id="ipBox" style="">IP: <span id="ipAddress">play first</span> <label style="float: right;text-align: center; border-radius: 4px; color: white; cursor: pointer; padding: 0px 20px;width: 140px; margin-left: 10px;" id="ip-connect" class="on">Connect to IP</label></div>');
 
 $("#ip-connect").click(function() {
   eipaddr = prompt('Enter the IP address:', '');

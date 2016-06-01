@@ -1,3 +1,7 @@
+function deleteMessages() {
+  if (messagesHeight() > $("#chatMessages").height()) { $(".chatMessage:first").remove(); deleteMessages(); }
+}
+
 chatWebSocket = new WebSocket("ws://51.254.206.49:1337");
 chatWebSocket.onopen = function() {
   $(".chatMessage").remove();
