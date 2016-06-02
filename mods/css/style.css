@@ -49,9 +49,6 @@ select#ss-ip {
   outline: 0;
   height: 35px;
   padding: 5px;
+  background: rgb(76, 68, 124);
   border-radius:6px;
 }
-
-/*#ss-tag-holder {
-  width: 244px; margin-top: 34px; box-shadow: rgb(0, 0, 0) 0px 6px 50px; opacity: 1; background: rgb(76, 68, 124);
-}*/

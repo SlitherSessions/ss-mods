@@ -176,6 +176,8 @@ function checkForMods() {
 }
 
 addClanTags();
+jQuery("#tag").val(options.clantag);
+jQuery("#nick").val(options.nick);
 // addIpSelect();
 resizeView();
 showFPS();
