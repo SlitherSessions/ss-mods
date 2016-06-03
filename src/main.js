@@ -139,16 +139,22 @@ function resizeView() {
 }
 
 function showFPS() {
-  $('body').append('<div id="ss-fps-box">FPS: <span id="ss-fps-value">waiting...</span></div>');
+  $('body').append('<div id="ss-fps-box">FPS: <span id="ss-fps-value">0</span></div>');
+}
 
-  setTimeout (function() {
-    if (typeof playing != "undefined" && playing && fps && lrd_mtm) {
-      if (Date.now() - lrd_mtm > 970) {
-        console.log(fps);
-        //$("#fps").html(fps);
-      }
+function updateFPS() {
+  if (typeof playing != 'undefined' && playing && fps && lrd_mtm) {
+    if (Date.now() - lrd_mtm > 970) {
+      $("#ss-fps-value").html (fps);
     }
-  }, 100);
+  }
+
+  setTimeout (updateFPS, 100);
+}
+
+function initFPS() {
+  showFPS();
+  updateFPS();
 }
 
 function loop() {
@@ -187,9 +193,8 @@ function checkForMods() {
 addClanTags();
 jQuery("#tag").val(options.clantag);
 jQuery("#nick").val(options.nick);
-// addIpSelect();
 resizeView();
-showFPS();
+initFPS();
 loop();
 
 $('body').append('<div id="ss-ip-box">IP: <span id="ss-ip-address">play first</span> \
@@ -204,15 +209,13 @@ $("#ss-ip-connect").click (function() {
   }
 });
 
-
-
 $('#playh .btnt.nsi.sadg1').click (function() {
   setTimeout (function() {
     if ((!ws || ws.readyState != ws.OPEN) && window.bso.ip == ss.currentIp()) {
       alert ('Server is full! Looking for a new server...');
       document.location.href = 'http://slither.io/';
     }
-  }, 10000);
+  }, 4000);
 });
 
 jQuery (function() {
