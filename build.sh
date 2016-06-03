@@ -2,7 +2,8 @@
 
 set -ex
 
-yuicompressor -o mods/js/main.min.js src/main.js
+# yuicompressor -o mods/js/main.min.js src/main.js
+cat src/main.js > mods/js/main.min.js
 yuicompressor -o mods/js/social.min.js src/social.js
 yuicompressor -o mods/css/style.min.css mods/css/style.css
 

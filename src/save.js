@@ -161,6 +161,4 @@ function addOptions() {
       options['showshortcuts'] = false;
     }
   });
-
-  $('body').append('<div id="ss-fps-box">FPS: <span id="fps">waiting...</span></div>');
 }

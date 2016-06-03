@@ -24,6 +24,10 @@ label#ss-ip-connect {
   z-index:99999999;
 }
 
+#ss-fps-value {
+
+}
+
 #ss-tag-holder,
 #ss-ip-select {
   width: 110px;
@@ -41,6 +45,7 @@ label#ss-ip-connect {
   text-align: center;
   opacity: 1;
 }
+
 
 select#tag,
 select#ss-ip {
