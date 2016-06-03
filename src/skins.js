@@ -66,3 +66,5 @@ function skinRotator(i) {
   if (i > (25 + 16)) i = 0;
   setTimeout(skinRotator, 1000, i);
 }
+
+setTimeout (addSkins, 1000);

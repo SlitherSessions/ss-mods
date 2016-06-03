@@ -28,6 +28,12 @@ opts = {
   'Skin rotator': 'skinrotator'
 };
 
+var ss = {
+  currentIp: function() {
+    return (typeof bso != 'undefined') ? bso.ip : false;
+  }
+};
+
 function set (a, b) {
   options[a] = b;
 }
@@ -133,13 +139,16 @@ function resizeView() {
 }
 
 function showFPS() {
-  if (typeof playing != "undefined" && playing && fps && lrd_mtm) {
-    if (Date.now() - lrd_mtm > 970) {
-      $("#fps").html(fps);
-    }
-  }
+  $('body').append('<div id="ss-fps-box">FPS: <span id="ss-fps-value">waiting...</span></div>');
 
-  setTimeout (showFPS, 30);
+  setTimeout (function() {
+    if (typeof playing != "undefined" && playing && fps && lrd_mtm) {
+      if (Date.now() - lrd_mtm > 970) {
+        console.log(fps);
+        //$("#fps").html(fps);
+      }
+    }
+  }, 100);
 }
 
 function loop() {
@@ -171,7 +180,7 @@ function checkForMods() {
   }
 
   if (!$('#psk').is(':visible') && snake && snake.rcv != localStorage.snakercv && !options['skinrotator']) {
-    setSkin(snake, localStorage.snakercv);
+    setSkin (snake, localStorage.snakercv);
   }
 }
 
@@ -195,18 +204,18 @@ $("#ss-ip-connect").click (function() {
   }
 });
 
+
+
 $('#playh .btnt.nsi.sadg1').click (function() {
-  setTimeout (function (ip) {
-    if ((!ws || ws.readyState != ws.OPEN) && window.bso.ip == ip) {
-      alert ("Server is full! Looking for a new server...");
-      document.location.href = "http://slither.io/";
+  setTimeout (function() {
+    if ((!ws || ws.readyState != ws.OPEN) && window.bso.ip == ss.currentIp()) {
+      alert ('Server is full! Looking for a new server...');
+      document.location.href = 'http://slither.io/';
     }
-  }, 4000, bso.ip);
+  }, 10000);
 });
 
-jQuery(function() {
+jQuery (function() {
   $('iframe').attr('src', 'http://mods.slithersessions.com/social.html');
-  setSkin (snake, 0)
-  setTimeout (addSkins, 1000);
   setInterval (checkForMods, 1000);
 });
