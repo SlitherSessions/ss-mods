@@ -4,3 +4,4 @@ mods/css/*.min.css
 *.zip
 www/js/app*.*
 www/css/main.min*
+build/

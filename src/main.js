@@ -7,7 +7,7 @@ options = {
   'custombg': false,
   'parties': true,
   'lowergph': false,
-  'skinrotator': false,
+  'skinrotator': true,
   'background': '',
   'nick': '',
   'clantag': '',
@@ -26,12 +26,6 @@ opts = {
   'Party mode': 'parties',
   'Lower graphics': 'lowergph',
   'Skin rotator': 'skinrotator'
-};
-
-var ss = {
-  currentIp: function() {
-    return (typeof bso != 'undefined') ? bso.ip : false;
-  }
 };
 
 function set (a, b) {
@@ -114,10 +108,6 @@ function setLowerGraphics (a) {
   }
 }
 
-function isInt (n) {
-  return Number(n) === n && n % 1 === 0;
-}
-
 function resizeView() {
   $("#login").css('margin-top', '0px');
   if (window.resize) {
@@ -157,28 +147,6 @@ function initFPS() {
   updateFPS();
 }
 
-function loop() {
-  if (typeof lbh != 'undefined') {
-    lbh.textContent = 'Slither Sessions';
-  }
-
-  // if (typeof bso != "undefined") {
-  //   if ($('#ss-ip').children().length <= 1) {
-  //     for(var i = 0; i < bso.cluo.sos.length; ++i) {
-  //       var ipa = bso.cluo.sos[i].ip;
-  //       var addy = ipa + ':' + bso.cluo.sos[i].po;
-  //       $('#ss-ip').append('<option value="' + addy + '">' + ipa + '</option>');
-  //     }
-  //   }
-  // }
-
-  if (typeof bso != "undefined" && $("#ss-ip-address").html() != (bso.ip + ":" + bso.po)) {
-    $("#ss-ip-address").html(bso.ip + ":" + bso.po);
-  }
-
-  setTimeout (loop, 1000);
-}
-
 function checkForMods() {
   if ($("#ip-hud").length != 0 || $("#worms").length != 0 || $("#login").html().toLowerCase().indexOf("mods.slithersessions.com") != -1) {
     $("body").html("<div style='text-align:center;width:100%;position:absolute;top:50%;margin-top:-98px;color:rgb(128, 88, 208);'><img src='s/favicon.png'/><h1>Please disable other slither.io extensions to use Slither Sessions.</h1></div>");
@@ -195,7 +163,7 @@ jQuery("#tag").val(options.clantag);
 jQuery("#nick").val(options.nick);
 resizeView();
 initFPS();
-loop();
+ss.loop();
 
 $('body').append('<div id="ss-ip-box">IP: <span id="ss-ip-address">play first</span> \
                     <label id="ss-ip-connect" class="on">Connect to IP</label> \
@@ -218,7 +186,7 @@ $('#playh .btnt.nsi.sadg1').click (function() {
   }, 4000);
 });
 
-jQuery (function() {
+$(function() {
   $('iframe').attr('src', 'http://mods.slithersessions.com/social.html');
   setInterval (checkForMods, 1000);
 });

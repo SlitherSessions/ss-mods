@@ -62,3 +62,13 @@ if (document.location.href.indexOf("#") != -1) {
     }
   });
 }
+
+// if (typeof bso != "undefined") {
+//   if ($('#ss-ip').children().length <= 1) {
+//     for(var i = 0; i < bso.cluo.sos.length; ++i) {
+//       var ipa = bso.cluo.sos[i].ip;
+//       var addy = ipa + ':' + bso.cluo.sos[i].po;
+//       $('#ss-ip').append('<option value="' + addy + '">' + ipa + '</option>');
+//     }
+//   }
+// }

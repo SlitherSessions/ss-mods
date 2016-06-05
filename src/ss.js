@@ -1,0 +1,38 @@
+
+var ss = {
+  mods: [],
+
+  register: function (mod) {
+    ss.mods.push (mod);
+    return ss;
+  },
+
+  currentIp: function() {
+    return (typeof bso != 'undefined') ? bso.ip : false;
+  },
+
+  isInt: function (n) {
+    return Number(n) === n && n % 1 === 0;
+  },
+
+  numSkins: function() {
+    return 25;
+  },
+
+  loop: function() {
+    if (typeof lbh != 'undefined') {
+      lbh.textContent = 'Slither Sessions';
+    }
+
+    if (typeof bso != "undefined" && $("#ss-ip-address").html() != (bso.ip + ":" + bso.po)) {
+      $("#ss-ip-address").html (bso.ip + ":" + bso.po);
+    }
+
+    ss.mods.forEach (function (mod, i, a) {
+      if (typeof mod.loop != 'undefined')
+        mod.loop();
+    });
+
+    setTimeout (ss.loop, 1000);
+  }
+};
