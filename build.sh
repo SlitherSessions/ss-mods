@@ -3,8 +3,12 @@
 set -ex
 
 rm -rf ./build && mkdir -p build
-cat src/ss.js src/skin_rotator.js src/main.js > build/main.js
+cat src/ss.js \
+    src/skins.js \
+    src/main.js > build/main.js
+
 yuicompressor -o mods/js/main.min.js build/main.js
+cp build/main.js mods/js/main.js
 # cat src/main.js > mods/js/main.min.js
 
 yuicompressor -o mods/js/social.min.js src/social.js
