@@ -1,4 +1,24 @@
 
+tags = ['SS', 'YT'];
+
+options = {
+  'zoom': false,
+  'clans': true,
+  'custombg': false,
+  'parties': true,
+  'lowergph': false,
+  'skinrotator': true,
+  'background': '',
+  'nick': '',
+  'clantag': '',
+  'drawfood': false,
+  'drawfoodsize': 1,
+  'drawfoodcolor': 1,
+  'drawfoodcrazie': false,
+  'showshortcuts': false,
+  'chat': false
+};
+
 var ss = {
   mods: [],
 

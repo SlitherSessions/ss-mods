@@ -1,33 +1,4 @@
 
-tags = ['AG', 'HERO', 'MG', 'SS', 'YT'];
-
-options = {
-  'zoom': false,
-  'clans': true,
-  'custombg': false,
-  'parties': true,
-  'lowergph': false,
-  'skinrotator': true,
-  'background': '',
-  'nick': '',
-  'clantag': '',
-  'drawfood': false,
-  'drawfoodsize': 1,
-  'drawfoodcolor': 1,
-  'drawfoodcrazie': false,
-  'showshortcuts': false,
-  'chat': false
-};
-
-opts = {
-  // 'Zoom': 'zoom',
-  'Clan tag list': 'clans',
-  // 'Custom background': 'custombg',
-  'Party mode': 'parties',
-  'Lower graphics': 'lowergph',
-  'Skin rotator': 'skinrotator'
-};
-
 function set (a, b) {
   options[a] = b;
 }
@@ -163,7 +134,8 @@ jQuery("#tag").val(options.clantag);
 jQuery("#nick").val(options.nick);
 resizeView();
 initFPS();
-ss.loop();
+
+
 
 $('body').append('<div id="ss-ip-box">IP: <span id="ss-ip-address">play first</span> \
                     <label id="ss-ip-connect" class="on">Connect to IP</label> \
@@ -190,3 +162,10 @@ $(function() {
   $('iframe').attr('src', 'http://mods.slithersessions.com/social.html');
   setInterval (checkForMods, 1000);
 });
+
+ss.mods.forEach (function (mod, i, a) {
+  if (typeof mod.init != 'undefined')
+    mod.init();
+});
+
+ss.loop();
