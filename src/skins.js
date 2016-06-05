@@ -55,16 +55,4 @@ function addSkins() {
   })();
 }
 
-function skinRotator(i) {
-  if (! isInt (i))
-    i = 0;
-
-  if (typeof ws != "undefined" && options.skinrotator && !$('#psk').is(':visible') && typeof snake != "undefined" && snake != null) {
-    setSkin (snake, i++);
-  }
-
-  if (i > (25 + 16)) i = 0;
-  setTimeout (skinRotator, 1000, i);
-}
-
 setTimeout (addSkins, 1000);
