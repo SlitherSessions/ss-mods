@@ -42,9 +42,9 @@ var ssSkins = {
     if (! ss.isInt (_mod.skin))
       _mod.skin = 0;
 
-    if (typeof window.ws != "undefined" &&
+    if (typeof window.ws != 'undefined' &&
           !$('#psk').is(':visible') &&
-          typeof window.snake != "undefined" &&
+          typeof window.snake != 'undefined' &&
           window.snake != null)
     {
       setSkin (window.snake, _mod.skin++);
