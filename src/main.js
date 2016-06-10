@@ -130,21 +130,22 @@ function checkForMods() {
 }
 
 addClanTags();
-jQuery("#tag").val(options.clantag);
-jQuery("#nick").val(options.nick);
 resizeView();
 initFPS();
 
-
+$('#tag').val (options.clantag);
+$('#nick').val (options.nick);
 
 $('body').append('<div id="ss-ip-box">IP: <span id="ss-ip-address">play first</span> \
                     <label id="ss-ip-connect" class="on">Connect to IP</label> \
                   </div>');
 
-$("#ss-ip-connect").click (function() {
+$('#ss-ip-connect').click (function() {
   eipaddr = prompt ('Enter the IP address:', '');
   if (eipaddr && eipaddr.indexOf(":") != -1 && eipaddr.indexOf(".") != -1) {
-    forceServer (eipaddr.split(":")[0], eipaddr.split(":")[1]);
+    var addy = eipaddr.split(":")[0].trim(),
+        port = eipaddr.split(":")[1].trim();
+    forceServer (addy, port);
     connect();
   }
 });
@@ -155,7 +156,7 @@ $('#playh .btnt.nsi.sadg1').click (function() {
       alert ('Server is full! Looking for a new server...');
       document.location.href = 'http://slither.io/';
     }
-  }, 4000);
+  }, 6000);
 });
 
 $(function() {
