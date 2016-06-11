@@ -5,6 +5,7 @@ set -ex
 rm -rf ./build && mkdir -p build
 cat src/ss.js \
     src/skins.js \
+    src/keyboard.js \
     src/main.js > build/main.js
 
 yuicompressor -o mods/js/main.min.js build/main.js

@@ -43,6 +43,7 @@ function asciize (b, typing) {
   return window.options.clans && !typing ? jQuery("#tag").val() + ' ' + b : b;
 }
 
+
 function addIpSelect() {
   $('#playh').before (
     '<div id="ss-ip-select" class="taho"><select class="sumsginp" id="ss-ip"></select></div>'
@@ -143,8 +144,8 @@ $('body').append('<div id="ss-ip-box">IP: <span id="ss-ip-address">play first</s
 $('#ss-ip-connect').click (function() {
   eipaddr = prompt ('Enter the IP address:', '');
   if (eipaddr && eipaddr.indexOf(":") != -1 && eipaddr.indexOf(".") != -1) {
-    var addy = eipaddr.split(":")[0].trim(),
-        port = eipaddr.split(":")[1].trim();
+    var addy = eipaddr.split(':')[0].trim(),
+        port = eipaddr.split(':')[1].trim();
     forceServer (addy, port);
     connect();
   }
