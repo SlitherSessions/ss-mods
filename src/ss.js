@@ -20,6 +20,10 @@ options = {
 };
 
 var ss = {
+  options: {
+    leaderBoardTitle: 'Slither Sessions'
+  },
+
   mods: [],
 
   register: function (mod) {
@@ -41,7 +45,7 @@ var ss = {
 
   loop: function() {
     if (typeof lbh != 'undefined') {
-      lbh.textContent = 'Slither Sessions';
+      lbh.textContent = ss.options.leaderBoardTitle;
     }
 
     if (typeof bso != "undefined" && $("#ss-ip-address").html() != (bso.ip + ":" + bso.po)) {
