@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-#206.191.154.84:446
+
 ./build.sh
 
 find . -name '.DS_Store' -delete
