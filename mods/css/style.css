@@ -9,12 +9,21 @@
 label#ss-ip-connect {
   float: right;
   text-align: center;
-  border-radius: 4px;
+  border-radius: 20px;
   color: white;
   cursor: pointer;
-  padding: 0px 20px;
-  width: 140px;
+  padding: 6px 12px;
+  width: 100px;
   margin-left: 10px;
+  background-color: #4c447c;
+}
+
+label#ss-ip-connect:hover {
+  background-color: #6f669f;
+}
+
+label#ss-ip-connect:active {
+  background-color: #2a225a;
 }
 
 #ss-fps-box {

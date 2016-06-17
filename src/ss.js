@@ -50,6 +50,8 @@ var ss = {
 
     if (typeof bso != "undefined" && $("#ss-ip-address").html() != (bso.ip + ":" + bso.po)) {
       $("#ss-ip-address").html (bso.ip + ":" + bso.po);
+      localStorage['lastIp'] = bso.ip;
+      localStorage['lastPort'] = bso.po;
     }
 
     ss.mods.forEach (function (mod, i, a) {
