@@ -142,7 +142,11 @@ $('body').append('<div id="ss-ip-box">IP: <span id="ss-ip-address">play first</s
                   </div>');
 
 $('#ss-ip-connect').click (function() {
-  eipaddr = prompt ('Enter the IP address:', '');
+  defaultIp = '';
+  if (localStorage['lastIp'] && localStorage['lastPort'])
+    defaultIp = localStorage['lastIp'] + ':' + localStorage['lastPort'];
+
+  eipaddr = prompt ('Enter the IP address:', defaultIp);
   if (eipaddr && eipaddr.indexOf(":") != -1 && eipaddr.indexOf(".") != -1) {
     var addy = eipaddr.split(':')[0].trim(),
         port = eipaddr.split(':')[1].trim();
