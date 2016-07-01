@@ -164,6 +164,12 @@ $('#playh .btnt.nsi.sadg1').click (function() {
   }, 6000);
 });
 
+// Main
+(function() {
+  ss.removeLogo();
+  window.localStorage.setItem('edttsg', '1');
+})();
+
 $(function() {
   $('iframe').attr('src', 'http://mods.slithersessions.com/social.html');
   setInterval (checkForMods, 1000);

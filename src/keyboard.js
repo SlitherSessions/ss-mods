@@ -25,6 +25,7 @@ var ssKeyboard = {
           }
           options['drawfoodcolor']++;
           break;
+
         case 70:
           options['drawfood'] = !options['drawfood'];
           if (options['drawfood']) {
@@ -54,6 +55,11 @@ var ssKeyboard = {
           break;
         case 74:
           options['drawfoodcrazie'] = !options['drawfoodcrazie'];
+          break;
+
+        // Letter 'O' to change rendermode (visual)
+        case 79:
+          ss.setMobileRendering (! window.mobileRender);
           break;
 
         case 81: // q: exit game
