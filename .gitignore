@@ -1,4 +1,6 @@
 .DS_Store
+chrome/js/*.min.js
+chrome/css/*.min.css
 mods/js/main.js
 mods/js/*.min.js
 mods/css/*.min.css

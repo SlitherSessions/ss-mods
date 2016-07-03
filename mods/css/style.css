@@ -1,18 +1,19 @@
 #ss-ip-box {
   position: fixed;
-  bottom: 120px;
-  right: 20px;
+  top: 16px;
+  left: 8px;
   color: lightgray;
   z-index:99999999;
+  font-family: 'Consolas, Verdana';
 }
 
 label#ss-ip-connect {
   float: right;
   text-align: center;
-  border-radius: 20px;
+  border-radius: 16px;
   color: white;
   cursor: pointer;
-  padding: 6px 12px;
+  padding: 3px 12px;
   width: 100px;
   margin-left: 10px;
   background-color: #4c447c;

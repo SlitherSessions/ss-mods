@@ -1,0 +1,4 @@
+[submodule "vendor/bot"]
+	path = vendor/bot
+	url = git@github.com:kushview/Slither.io-bot
+	brandh = develop
