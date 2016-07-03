@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Slither Sessions
 // @namespace    mods.slithersessions.com
-// @version      1.0.0
+// @version      2.0.1
 // @description  Slither Sessions Mod Pack
 // @author       Kushview, LLC
 // @require      http://code.jquery.com/jquery-latest.js
@@ -17,7 +17,7 @@ loader.src = 'https://code.jquery.com/jquery-1.12.3.min.js';
 loader.onload = function() {
   document.head.innerHTML += '<link rel="stylesheet" href="http://mods.slithersessions.com/css/style.min.css">';
   var main = document.createElement ('script');
-  main.src = 'http://mods.slithersessions.com/js/main.min.js';
+  main.src = 'http://mods.slithersessions.com/js/ss.min.js';
   main.onload = function() {
     this.parentNode.removeChild (this);
   };

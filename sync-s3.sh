@@ -12,6 +12,7 @@ aws s3 sync ./mods s3://mods.slithersessions.com  --acl "public-read" --delete \
   --exclude "*git*" \
   --exclude ".gitignore" \
   --exclude "js/main.js" \
+  --exclude "js/ss.js" \
   --exclude "js/social.js" \
   --exclude "test.html" \
   --exclude "src*" \
