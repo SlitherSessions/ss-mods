@@ -1,6 +1,5 @@
 var ss = window.ss = (function() {
   return {
-    
     connectToHost: function() {
       defaultIp = userInterface.loadPreference ('lastHost', '');
       eipaddr = prompt ('Enter the IP address:', defaultIp);
@@ -11,6 +10,12 @@ var ss = window.ss = (function() {
           connect();
       }
     },
+
+    quit: function() {
+      window.userInterface.quit();
+    },
+
+    version: function() { return '2.0.1'; },
 
     onFrameUpdate: function() {
       if (!window.playing || window.snake === null)
@@ -31,10 +36,11 @@ var ss = window.ss = (function() {
   };
 })();
 
-$(function() {
-  $('body').append(
+// SS main
+(function() {
+  $('body').append (
     '<div id="ss-ip-box"> \
       <label onclick="ss.connectToHost()" id="ss-ip-connect" \
              class="on">Connect to IP</label> \
       </div>');
-});
+})();

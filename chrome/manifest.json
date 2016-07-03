@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Slither Sessions",
   "description": "Slither.io Mods. Play with friends and other goodies.",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "icons": {
     "16": "images/icon.png",
     "48": "images/icon.png",
@@ -19,10 +19,10 @@
   "content_scripts": [
     {
       "matches": [
-        "http://slither.io/*", "https://slither.io/*"
+        "*://slither.io/*"
       ],
-      "js": ["js/content.js"]
-
+      "js": ["js/content.js"],
+      "all_frames": true
     }
   ],
 
