@@ -11,12 +11,12 @@ yuicompressor -o mods/js/main.min.js build/main.js
 cp build/main.js mods/js/main.js
 # cat src/main.js > mods/js/main.min.js
 
-cat src/ss.js vendor/bot/bot.user.js src/main.js > build/ss.js
+cat src/ss.js vendor/bot/bot.user.js src/skins.js src/clans.js \
+  src/main.js > build/ss.js
 yuicompressor -o build/ss.min.js build/ss.js
 cat build/ss.min.js > mods/js/ss.min.js
 cat build/ss.min.js > chrome/js/ss.min.js
 
-yuicompressor -o mods/js/social.min.js src/social.js
 yuicompressor -o mods/css/style.min.css mods/css/style.css
 cat mods/css/style.min.css > chrome/css/style.min.css
 

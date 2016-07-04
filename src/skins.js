@@ -1,6 +1,5 @@
 var ssSkins = {
   slug: 'skins',
-  enabled: false,
   skin: 0,
 
   init: function() {
@@ -9,6 +8,7 @@ var ssSkins = {
   },
 
   addSkins: function() {
+    _mod = ssSkins;
     setSkin = (function() {
       var
         superMaxSkinCv = max_skin_cv,
@@ -32,11 +32,13 @@ var ssSkins = {
         }
       };
     })();
+
+    _mod.loop();
   },
 
   rotate: function() {
     _mod = ssSkins;
-    if (! _mod.enabled)
+    if (! ss.options.rotateSkins)
       return;
 
     if (! ss.isInt (_mod.skin))
@@ -50,13 +52,39 @@ var ssSkins = {
       setSkin (window.snake, _mod.skin++);
     }
 
-    if (_mod.skin >= ss.numSkins())
+    if (_mod.skin >= max_skin_cv)
       _mod.skin = 0;
   },
 
-  loop: function () {
+  next: function() {
+    if (typeof window.snake == 'undefined')
+      return;
+
+    _mod = ssSkins;
+    _mod.skin += 1;
+
+    if (_mod.skin >= max_skin_cv)
+      _mod.skin = 0;
+
+    setSkin (window.snake, _mod.skin);
+  },
+
+  previous: function() {
+    if (typeof window.snake == 'undefined')
+      return;
+
+    _mod = ssSkins;
+    if (_mod.skin <= 0)
+      _mod.skin = max_skin_cv;
+
+    _mod.skin -= 1;
+    setSkin (window.snake, _mod.skin);
+  },
+
+  loop: function() {
     _mod = ssSkins;
     _mod.rotate();
+    setTimeout (_mod.loop, 1500);
   }
 };
 
