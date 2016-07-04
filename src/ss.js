@@ -1,5 +1,7 @@
 var ss = window.ss = (function() {
   return {
+    clanTags: [ 'SS', 'YT' ],
+
     connectToHost: function() {
       defaultIp = userInterface.loadPreference ('lastHost', '');
       eipaddr = prompt ('Enter the IP address:', defaultIp);
@@ -12,7 +14,11 @@ var ss = window.ss = (function() {
     },
 
     quit: function() {
-      window.userInterface.quit();
+      return window.userInterface.quit();
+    },
+
+    saveOption: function (key, val) {
+      return window.userInterface.savePreference (key, val);
     },
 
     version: function() { return '2.0.1'; },
@@ -25,7 +31,7 @@ var ss = window.ss = (function() {
       if (window.bso !== undefined && userInterface.overlays.serverOverlay.innerHTML !==
           window.bso.ip + ':' + window.bso.po) {
           var slitherHost = window.bso.ip + ':' + window.bso.po;
-          userInterface.savePreference ('lastHost', slitherHost)
+          ss.saveOption ('lastHost', slitherHost)
       }
 
       // customize leaderboard title
@@ -34,13 +40,4 @@ var ss = window.ss = (function() {
       }
     }
   };
-})();
-
-// SS main
-(function() {
-  $('body').append (
-    '<div id="ss-ip-box"> \
-      <label onclick="ss.connectToHost()" id="ss-ip-connect" \
-             class="on">Connect to IP</label> \
-      </div>');
 })();

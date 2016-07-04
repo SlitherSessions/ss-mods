@@ -6,13 +6,12 @@ rm -rf ./build && mkdir -p build
 cat src/ss-1.0.js \
     src/skins.js \
     src/keyboard.js \
-    src/main.js > build/main.js
+    src/main-1.0.js > build/main.js
 yuicompressor -o mods/js/main.min.js build/main.js
 cp build/main.js mods/js/main.js
 # cat src/main.js > mods/js/main.min.js
 
-cat src/ss.js vendor/bot/bot.user.js \
-  > build/ss.js
+cat src/ss.js vendor/bot/bot.user.js src/main.js > build/ss.js
 yuicompressor -o build/ss.min.js build/ss.js
 cat build/ss.min.js > mods/js/ss.min.js
 cat build/ss.min.js > chrome/js/ss.min.js
