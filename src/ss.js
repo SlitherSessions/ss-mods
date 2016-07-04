@@ -1,6 +1,16 @@
 var ss = window.ss = (function() {
   return {
     clanTags: [ 'SS', 'YT' ],
+    mods: [],
+    options: {
+      rotateSkins: false
+    },
+
+    version: function() { return '2.0.1'; },
+
+    isInt: function (n) {
+      return Number(n) === n && n % 1 === 0;
+    },
 
     connectToHost: function() {
       defaultIp = userInterface.loadPreference ('lastHost', '');
@@ -13,6 +23,16 @@ var ss = window.ss = (function() {
       }
     },
 
+    currentIp: function() {
+      return (typeof bso != 'undefined') ? bso.ip : false;
+    },
+    
+    register: function (mod) {
+      ss.mods.push (mod);
+      ss[mod.slug] = mod;
+      return ss;
+    },
+
     quit: function() {
       return window.userInterface.quit();
     },
@@ -20,8 +40,6 @@ var ss = window.ss = (function() {
     saveOption: function (key, val) {
       return window.userInterface.savePreference (key, val);
     },
-
-    version: function() { return '2.0.1'; },
 
     onFrameUpdate: function() {
       if (!window.playing || window.snake === null)
