@@ -3,10 +3,11 @@ var ss = window.ss = (function() {
     clanTags: [ 'SS', 'YT' ],
     mods: [],
     options: {
+      leaderBoardTitle: 'Slither Sessions',
       rotateSkins: false
     },
 
-    version: function() { return '2.1.2'; },
+    version: function() { return '2.1.3'; },
 
     isInt: function (n) {
       return Number(n) === n && n % 1 === 0;
@@ -16,10 +17,11 @@ var ss = window.ss = (function() {
       defaultIp = userInterface.loadPreference ('lastHost', '');
       eipaddr = prompt ('Enter the IP address:', defaultIp);
       if (eipaddr && eipaddr.indexOf(":") != -1 && eipaddr.indexOf(".") != -1) {
-          var addy = eipaddr.split(':')[0].trim(),
-              port = eipaddr.split(':')[1].trim();
-          forceServer (addy, port);
-          connect();
+        ss.saveOption ('lastHost', eipaddr);
+        var addy = eipaddr.split(':')[0].trim(),
+            port = eipaddr.split(':')[1].trim();
+        forceServer (addy, port);
+        connect();
       }
     },
 
@@ -46,19 +48,27 @@ var ss = window.ss = (function() {
     },
 
     onFrameUpdate: function() {
-      if (!window.playing || window.snake === null)
+      if (! window.playing || window.snake === null)
         return;
 
-      // save the last known IP address
-      if (window.bso !== undefined && userInterface.overlays.serverOverlay.innerHTML !==
-          window.bso.ip + ':' + window.bso.po) {
-          var slitherHost = window.bso.ip + ':' + window.bso.po;
-          ss.saveOption ('lastHost', slitherHost)
-      }
-
       // customize leaderboard title
-      if (typeof window.lbh != 'undefined') {
-          window.lbh.textContent = "Slither Sessions";
+      if (typeof window.lbh != 'undefined' &&
+            window.lbh.textContent != ss.options.leaderBoardTitle)
+      {
+        window.lbh.textContent != ss.options.leaderBoardTitle;
+      }
+    },
+
+    test: function() {
+      if (window.sos) {
+        console.log(sos[0]);
+        var lobbyIds = []
+        for (var i = 0; i < window.sos.length; ++i) {
+          obj = window.sos[i];
+          if (lobbyIds.indexOf (obj.ac) >= 0)
+            console.log("alredy included");
+          lobbyIds.push(obj.ac);
+        }
       }
     }
   };
