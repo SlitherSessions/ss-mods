@@ -6,7 +6,7 @@ var ss = window.ss = (function() {
       rotateSkins: false
     },
 
-    version: function() { return '2.0.1'; },
+    version: function() { return '2.1.0'; },
 
     isInt: function (n) {
       return Number(n) === n && n % 1 === 0;
@@ -26,7 +26,7 @@ var ss = window.ss = (function() {
     currentIp: function() {
       return (typeof bso != 'undefined') ? bso.ip : false;
     },
-    
+
     register: function (mod) {
       ss.mods.push (mod);
       ss[mod.slug] = mod;
