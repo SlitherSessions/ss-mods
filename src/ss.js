@@ -6,7 +6,7 @@ var ss = window.ss = (function() {
       rotateSkins: false
     },
 
-    version: function() { return '2.1.1'; },
+    version: function() { return '2.1.2'; },
 
     isInt: function (n) {
       return Number(n) === n && n % 1 === 0;
