@@ -8,9 +8,8 @@ $(function() {
              class="on">Connect to IP</label> \
       </div>');
 
-  $('#playh .btnt.nsi.sadg1').click (function() {
+  $('#playh .btnt.nsi.sadg1').click (function (e) {
     function delayedPlay() {
-
       if (window.snake && ss.skins.skin != window.snake.rcv) {
         setSkin (window.snake, ss.skins.skin);
       }
