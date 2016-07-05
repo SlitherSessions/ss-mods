@@ -41,6 +41,10 @@ var ss = window.ss = (function() {
       return window.userInterface.savePreference (key, val);
     },
 
+    loadOption: function (key, d) {
+      return window.userInterface.loadPreference (key, d);
+    },
+
     onFrameUpdate: function() {
       if (!window.playing || window.snake === null)
         return;

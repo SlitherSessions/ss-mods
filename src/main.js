@@ -9,10 +9,16 @@ $(function() {
       </div>');
 
   $('#playh .btnt.nsi.sadg1').click (function() {
-    // noop
+    function delayedPlay() {
+
+      if (window.snake && ss.skins.skin != window.snake.rcv) {
+        setSkin (window.snake, ss.skins.skin);
+      }
+    };
+    setTimeout (delayedPlay, 300);
   });
 
-  $('#tag').val (userInterface.loadPreference ('savedClan', null));
+  $('#tag').val (ss.loadOption ('savedClan', '[SS]'));
 });
 
 ss.mods.forEach (function (mod, i, a) {
