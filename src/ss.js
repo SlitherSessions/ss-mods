@@ -1,3 +1,4 @@
+
 var ss = window.ss = (function() {
   return {
     clanTags: [ 'SS', 'YT' ],
@@ -7,14 +8,14 @@ var ss = window.ss = (function() {
       rotateSkins: false
     },
 
-    version: function() { return '2.1.3'; },
+    version: function() { return '2.1.4'; },
 
     isInt: function (n) {
       return Number(n) === n && n % 1 === 0;
     },
 
     connectToHost: function() {
-      defaultIp = userInterface.loadPreference ('lastHost', '');
+      defaultIp = ss.loadOption ('lastHost', '');
       eipaddr = prompt ('Enter the IP address:', defaultIp);
       if (eipaddr && eipaddr.indexOf(":") != -1 && eipaddr.indexOf(".") != -1) {
         ss.saveOption ('lastHost', eipaddr);
@@ -22,6 +23,9 @@ var ss = window.ss = (function() {
             port = eipaddr.split(':')[1].trim();
         forceServer (addy, port);
         connect();
+        ss.waitForSnake (function (s) {
+          setSkin (s, ss.skins.skin);
+        });
       }
     },
 
@@ -70,6 +74,29 @@ var ss = window.ss = (function() {
           lobbyIds.push(obj.ac);
         }
       }
+    },
+
+    waitForSnake: function (callback, retries) {
+      if (! ss.isInt (retries))
+        r = 4;
+
+      var r = 0;
+
+      function _waitForSnake() {
+        if (r > retries)
+          return;
+
+        if (! window.snake) {
+          window.log('[SS] waiting for snake r=' + r + '...');
+          ++r;
+          setTimeout (_waitForSnake, 300);
+          return;
+        }
+
+        callback (window.snake);
+      }
+
+      return _waitForSnake();
     }
   };
 })();

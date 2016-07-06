@@ -22,10 +22,10 @@ var ssSkins = {
         ];
       max_skin_cv += newSkins.length;
 
-      return function (snake, skinId) {
+      return function (snk, skinId) {
         var skinIdCopy = skinId;
         var isOnSkinChooser = $('#psk').is(':visible');
-        superSetSkin (snake, skinId);
+        superSetSkin (snk, skinId);
         if (skinId > superMaxSkinCv) {
           var c;
           var checkSkinId = skinId - superMaxSkinCv - 1;
@@ -37,8 +37,8 @@ var ssSkins = {
           }
 
           c && (skinId = c[0]);
-          snake.rbcs = c;
-          snake.cv = skinId;
+          snk.rbcs = c;
+          snk.cv = skinId;
         }
 
         if (isOnSkinChooser) {

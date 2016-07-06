@@ -9,12 +9,9 @@ $(function() {
       </div>');
 
   $('#playh .btnt.nsi.sadg1').click (function (e) {
-    function delayedPlay() {
-      if (window.snake && ss.skins.skin != window.snake.rcv) {
-        setSkin (window.snake, ss.skins.skin);
-      }
-    };
-    setTimeout (delayedPlay, 300);
+    ss.waitForSnake (function (s) {
+      setSkin (s, ss.skins.skin);
+    });
   });
 
   $('#tag').val (ss.loadOption ('savedClan', '[SS]'));
