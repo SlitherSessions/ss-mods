@@ -8,7 +8,7 @@ var ss = window.ss = (function() {
       rotateSkins: false
     },
 
-    version: function() { return '2.1.4'; },
+    version: function() { return '2.1.5'; },
 
     isInt: function (n) {
       return Number(n) === n && n % 1 === 0;
@@ -59,7 +59,7 @@ var ss = window.ss = (function() {
       if (typeof window.lbh != 'undefined' &&
             window.lbh.textContent != ss.options.leaderBoardTitle)
       {
-        window.log ("[SS] Update Leaderboard Title");
+        window.log ("[SS] Updated leaderboard title: " + ss.options.leaderBoardTitle);
         window.lbh.textContent = ss.options.leaderBoardTitle;
       }
     },
