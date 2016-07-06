@@ -59,7 +59,8 @@ var ss = window.ss = (function() {
       if (typeof window.lbh != 'undefined' &&
             window.lbh.textContent != ss.options.leaderBoardTitle)
       {
-        window.lbh.textContent != ss.options.leaderBoardTitle;
+        window.log ("[SS] Update Leaderboard Title");
+        window.lbh.textContent = ss.options.leaderBoardTitle;
       }
     },
 
