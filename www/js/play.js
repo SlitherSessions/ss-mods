@@ -4,6 +4,7 @@ var channel = {
   apiUrl: 'https://www.googleapis.com/youtube/v3',
 
   subCount: 0,
+  subGoal: 175,
   refreshMillis: 5 * 1000
 };
 
@@ -26,6 +27,10 @@ function ssUpdateSubCount() {
 function ssUpdateStats() {
   ssUpdateSubCount();
   setTimeout (ssUpdateStats, channel.refreshMillis);
+}
+
+function ssUpdateSubGoal() {
+  $('#sub-goal').html (channel.subGoal);
 }
 
 $(document).ready (function() {
