@@ -34,6 +34,7 @@ function ssUpdateSubGoal() {
 }
 
 $(document).ready (function() {
+  ssUpdateSubGoal();
   ssUpdateStats();
 });
 
