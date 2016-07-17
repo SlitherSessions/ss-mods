@@ -79,7 +79,7 @@ var ss = window.ss = (function() {
 
     waitForSnake: function (callback, retries) {
       if (! ss.isInt (retries))
-        r = 4;
+        retries = 4;
 
       var r = 0;
 

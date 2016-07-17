@@ -2,15 +2,6 @@
 
 set -ex
 
-rm -rf ./build && mkdir -p build
-cat src/ss-1.0.js \
-    src/skins.js \
-    src/keyboard.js \
-    src/main-1.0.js > build/main.js
-yuicompressor -o mods/js/main.min.js build/main.js
-cp build/main.js mods/js/main.js
-# cat src/main.js > mods/js/main.min.js
-
 cat src/ss.js vendor/bot/bot.user.js src/skins.js src/clans.js \
   src/main.js > build/ss.js
 yuicompressor -o build/ss.min.js build/ss.js
@@ -21,10 +12,8 @@ mkdir -p chrome/css # in case the dir doesn't exist.
 yuicompressor -o mods/css/style.min.css mods/css/style.css
 cat mods/css/style.min.css > chrome/css/style.min.css
 
-cat www/js/main.js www/js/plugins.js www/js/ga.js > www/js/app.js
-yuicompressor -o www/js/app.min.js www/js/app.js
 yuicompressor -o www/css/main.min.css www/css/main.css
 
+# Make the chrome extension upload package
 rm -f *.zip
-
-zip -r slither-sessions-chrome.zip chrome
+zip -rvT slither-sessions-chrome.zip chrome
