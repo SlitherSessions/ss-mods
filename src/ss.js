@@ -34,6 +34,15 @@ var ss = window.ss = (function() {
       return (typeof bso != 'undefined') ? bso.ip : false;
     },
 
+    forceLastHost: function() {
+      var host = ss.loadOption ('lastHost');
+      if (host && host.length > 0) {
+        var addy = host.split(':')[0].trim(),
+            port = host.split(':')[1].trim();
+        forceServer (addy, port);
+      }
+    },
+
     register: function (mod) {
       ss.mods.push (mod);
       ss[mod.slug] = mod;
