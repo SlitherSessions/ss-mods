@@ -1,14 +1,15 @@
 
 var ss = window.ss = (function() {
   return {
-    clanTags: [ 'SS', 'YT' ],
+    clanTags: [ 'SS', 'JG', 'YT' ],
     mods: [],
     options: {
       leaderBoardTitle: 'Slither Sessions',
-      rotateSkins: false
+      rotateSkins: false,
+      useLastHost: false
     },
 
-    version: function() { return '2.1.7'; },
+    version: function() { return '2.1.8'; },
 
     isInt: function (n) {
       return Number(n) === n && n % 1 === 0;

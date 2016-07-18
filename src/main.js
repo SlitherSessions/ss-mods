@@ -1,6 +1,8 @@
 
 // SS main
 $(function() {
+  ss.options.useLastHost = ss.loadOption ('useLastHost', false);
+
   // IP Connect Button
   $('body').append (
     '<div id="ss-ip-box"> \
@@ -10,7 +12,7 @@ $(function() {
 
   $('#playh .btnt.nsi.sadg1').click (function (e) {
     var host = ss.loadOption ('lastHost');
-    if (host && host.length > 0) {
+    if (ss.options.useLastHost && host && host.length > 0) {
       var addy = host.split(':')[0].trim(),
           port = host.split(':')[1].trim();
       forceServer (addy, port);
