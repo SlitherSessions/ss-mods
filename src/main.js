@@ -9,6 +9,12 @@ $(function() {
       </div>');
 
   $('#playh .btnt.nsi.sadg1').click (function (e) {
+    var host = ss.loadOption ('lastHost');
+    if (host && host.length > 0) {
+      var addy = host.split(':')[0].trim(),
+          port = host.split(':')[1].trim();
+      forceServer (addy, port);
+    }
     ss.waitForSnake (function (s) {
       setSkin (s, ss.skins.skin);
     });
