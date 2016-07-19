@@ -13,6 +13,7 @@ $(function() {
   $('#playh .btnt.nsi.sadg1').click (function (e) {
     if (ss.options.useLastHost)
       ss.forceLastHost();
+
     ss.waitForSnake (function (s) {
       setSkin (s, ss.skins.skin);
     });
