@@ -1,7 +1,7 @@
 
 // SS main
 $(function() {
-  ss.options.useLastHost = ss.loadOption ('useLastHost', false);
+  // ss.options.useLastHost = ss.loadOption ('useLastHost', false);
 
   // IP Connect Button
   $('body').append (
