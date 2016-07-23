@@ -9,7 +9,7 @@ var ss = window.ss = (function() {
       useLastHost: false
     },
 
-    version: function() { return '2.1.12'; },
+    version: function() { return '2.1.13'; },
 
     isInt: function (n) {
       return Number(n) === n && n % 1 === 0;
