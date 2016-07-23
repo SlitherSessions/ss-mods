@@ -4,6 +4,6 @@ var channel = {
   apiUrl: 'https://www.googleapis.com/youtube/v3',
 
   subCount: 0,
-  subGoal: 200,
+  subGoal: 300,
   refreshMillis: 5 * 1000
 };
