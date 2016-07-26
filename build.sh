@@ -12,8 +12,6 @@ mkdir -p chrome/css # in case the dir doesn't exist.
 yuicompressor -o mods/css/style.min.css mods/css/style.css
 cat mods/css/style.min.css > chrome/css/style.min.css
 
-yuicompressor -o www/css/main.min.css www/css/main.css
-
 # Make the chrome extension upload package
 rm -f *.zip
 zip -rvT slither-sessions-chrome.zip chrome

@@ -18,6 +18,3 @@ aws s3 sync ./mods s3://mods.slithersessions.com  --acl "public-read" --delete \
   --exclude "src*" \
   --exclude "chrome*" \
   --exclude "*.zip"
-
-echo
-./sync-web.sh
