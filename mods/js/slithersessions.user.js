@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Slither Sessions
 // @namespace    mods.slithersessions.com
-// @version      2.1.14
+// @version      2.1.15
 // @description  Slither Sessions Mod Pack
 // @author       Kushview, LLC
 // @require      http://code.jquery.com/jquery-latest.js
