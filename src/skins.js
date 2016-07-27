@@ -53,15 +53,15 @@ var ssSkins = {
 
   rotate: function() {
     _mod = ssSkins;
-    if (! ss.options.rotateSkins)
+    haveSnake = (typeof window.ws != 'undefined' && !$('#psk').is(':visible') &&
+          typeof window.snake != 'undefined' && window.snake != null);
+    if (! haveSnake)
       return;
 
-    if (typeof window.ws != 'undefined' &&
-          !$('#psk').is(':visible') &&
-          typeof window.snake != 'undefined' &&
-          window.snake != null)
-    {
+    if (ss.options.rotateSkins) {
       _mod.next();
+    } else if (window.snake.cv != _mod.skin) {
+      setSkin (snake, _mod.skin);
     }
   },
 
