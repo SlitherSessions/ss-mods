@@ -2,3 +2,6 @@
 	path = vendor/bot
 	url = git@github.com:kushview/Slither.io-bot
 	brandh = develop
+[submodule "vendor/bot-ce"]
+	path = vendor/bot-ce
+	url = git@github.com:kushview/Slither.io-bot-ce.git
