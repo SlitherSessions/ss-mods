@@ -2,7 +2,10 @@
 
 set -ex
 
-cat src/ss.js vendor/bot/bot.user.js src/skins.js src/clans.js \
+# Splice out the bot code we care about
+awk 'NR >= 0 && NR < 2115' vendor/bot-ce/bot.user.js > src/bot.js
+
+cat src/bot.js src/ss.js src/skins.js src/clans.js \
   src/main.js > build/ss.js
 yuicompressor -o build/ss.min.js build/ss.js
 cat build/ss.min.js > mods/js/ss.min.js
