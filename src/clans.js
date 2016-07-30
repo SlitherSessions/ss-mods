@@ -17,7 +17,7 @@ function asciize (b, typing) {
   return ss.clanTags.length > 0 && !typing ? jQuery("#tag").val() + ' ' + b : b;
 }
 
-function addClanTags() {
+function ssAddClanTags() {
   window.nick.oninput = function() {
     var b = this.value;
     var h = asciize (b, true);
@@ -40,4 +40,4 @@ function addClanTags() {
   }
 }
 
-addClanTags();
+ssAddClanTags();
