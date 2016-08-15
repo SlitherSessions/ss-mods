@@ -14,16 +14,6 @@ function asciize (b, typing) {
     return w
   }
 
-  // if (! typing) {
-  //   if (e = $("#nick"))
-  //     window.options.nick = $("#nick").val();
-  //   else
-  //     window.options.nick = "Robot";
-  //
-  //   window.options.clantag = $("#tag").val();
-  //   localStorage['slitherSessions'] = JSON.stringify (window.options);
-  // }
-
   return ss.clanTags.length > 0 && !typing ? jQuery("#tag").val() + ' ' + b : b;
 }
 
