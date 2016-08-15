@@ -8,10 +8,9 @@ var ssSkins = {
 
   init: function() {
     _mod = ssSkins;
-    _mod.skin = ss.loadOption ('skinId', 0);
+    _mod.skin = parseInt (ss.loadOption ('skinId', 0));
     if (! ss.isInt (_mod.skin) || typeof _mod.skin == 'undefined' || isNaN (_mod.skin))
       _mod.skin = 0;
-
     setTimeout (_mod.addSkins, 1000);
   },
 
