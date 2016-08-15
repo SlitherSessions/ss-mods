@@ -1,4 +1,5 @@
 var ssSkins = {
+  useAntennas: false,
   slug: 'skins',
   skin: 0,
   images: {
@@ -81,9 +82,8 @@ var ssSkins = {
         var skinIdCopy = skinId;
         var isOnSkinChooser = $('#psk').is(':visible');
 
+        superSetSkin (snk, skinId);
         if (skinId > superMaxSkinCv) {
-          superSetSkin (snk, skinIdCopy);
-
           var c;
           var checkSkinId = skinId - superMaxSkinCv - 1;
 
@@ -97,11 +97,9 @@ var ssSkins = {
           snk.rbcs = c;
           snk.cv = skinId;
 
-          if (skinIdCopy == 48) /* Spyke's skin */
+          if (_mod.useAntennas && skinIdCopy == 48) /* Spyke's skin */
             addAntenna(snk);
 
-        } else {
-          superSetSkin (snk, skinId);
         }
 
         if (isOnSkinChooser) {
