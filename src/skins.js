@@ -88,10 +88,9 @@ ss.register ((function() {
           var skinIdCopy = skinId;
           var isOnSkinChooser = $('#psk').is(':visible');
 
-          if (skinId > superMaxSkinCv)
-            resetAntenna (snk);
-
+          resetAntenna (snk);
           superSetSkin (snk, skinId);
+
           if (skinId > superMaxSkinCv) {
             var c;
             var checkSkinId = skinId - superMaxSkinCv - 1;
@@ -155,8 +154,8 @@ ss.register ((function() {
       _mod = this;
       if (_mod.skin <= 0)
         _mod.skin = max_skin_cv;
-
-      _mod.skin -= 1;
+      else
+        _mod.skin -= 1;
       setSkin (window.snake, _mod.skin);
     },
 
