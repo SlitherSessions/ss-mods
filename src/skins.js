@@ -11,11 +11,10 @@ ss.register ((function() {
     bulb: null,
 
     init: function() {
-      _mod = this;
-      _mod.skin = parseInt (ss.loadOption ('skinId', 0));
-      if (! ss.isInt (_mod.skin) || typeof _mod.skin == 'undefined' || isNaN (_mod.skin))
-        _mod.skin = 0;
-      setTimeout (_mod.addSkins, 1000);
+      skins.skin = parseInt (ss.loadOption ('skinId', 0));
+      if (! ss.isInt (skins.skin) || typeof skins.skin == 'undefined' || isNaN (skins.skin))
+        skins.skin = 0;
+      setTimeout (skins.addSkins, 1000);
     },
 
     addSkins: function() {
@@ -37,21 +36,21 @@ ss.register ((function() {
         };
 
         var addAntenna = function (snk) {
-          if (_mod.bulb == null) {
-            _mod.bulb = document.createElement('canvas');
+          if (skins.bulb == null) {
+            skins.bulb = document.createElement('canvas');
           }
 
-          _mod.bulb.style.display = false;
+          skins.bulb.style.display = false;
 
           if (snk.bulb == null || typeof snk.bulb == 'undefined')
-            snk.bulb = _mod.bulb;
+            snk.bulb = skins.bulb;
 
           snk.bulb.width = 69;
           snk.bulb.height = 139;
 
           {
             var img = new Image();
-            img.src = _mod.images.spyke;
+            img.src = skins.images.spyke;
             var ctx = snk.bulb.getContext('2d');
             ctx.drawImage(img, 0, 0, 69, 139,
                                0, 0, 69, 139);
@@ -105,32 +104,32 @@ ss.register ((function() {
             snk.rbcs = c;
             snk.cv = skinId;
 
-            if (_mod.useAntennas && skinIdCopy == 48) /* Spyke's skin */
-              addAntenna(snk);
-
+            if (skins.useAntennas && skinIdCopy == 48) /* Spyke's skin */
+              addAntenna (snk);
           }
 
           if (isOnSkinChooser) {
-            _mod.skin = skinIdCopy;
-            ss.saveOption ('skinId', _mod.skin);
+            skins.skin = skinIdCopy;
+            ss.saveOption ('skinId', skins.skin);
           }
         };
       })();
 
+      /** kick off the loop */
       skins.loop();
     },
 
     rotate: function() {
-      _mod = this;
+
       haveSnake = (typeof window.ws != 'undefined' && !$('#psk').is(':visible') &&
             typeof window.snake != 'undefined' && window.snake != null);
       if (! haveSnake)
         return;
 
       if (ss.options.rotateSkins) {
-        _mod.next();
-      } else if (window.snake.cv != _mod.skin) {
-        setSkin (snake, _mod.skin);
+        skins.next();
+      } else if (window.snake.cv != skins.skin) {
+        setSkin (snake, skins.skin);
       }
     },
 
@@ -138,25 +137,24 @@ ss.register ((function() {
       if (typeof window.snake == 'undefined')
         return;
 
-      _mod = this;
-      _mod.skin += 1;
 
-      if (_mod.skin > max_skin_cv)
-        _mod.skin = 0;
+      skins.skin += 1;
 
-      setSkin (window.snake, _mod.skin);
+      if (skins.skin > max_skin_cv)
+        skins.skin = 0;
+
+      setSkin (window.snake, skins.skin);
     },
 
     previous: function() {
       if (typeof window.snake == 'undefined')
         return;
 
-      _mod = this;
-      if (_mod.skin <= 0)
-        _mod.skin = max_skin_cv;
+      if (skins.skin <= 0)
+        skins.skin = max_skin_cv;
       else
-        _mod.skin -= 1;
-      setSkin (window.snake, _mod.skin);
+        skins.skin -= 1;
+      setSkin (window.snake, skins.skin);
     },
 
     loop: function() {
