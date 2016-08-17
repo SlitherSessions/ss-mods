@@ -94,6 +94,14 @@ var ss = window.ss = (function() {
         window.log ("[SS] Updated leaderboard title: " + ss.options.leaderBoardTitle);
         window.lbh.textContent = ss.options.leaderBoardTitle;
       }
+
+      // save last host when it changes
+      if (window.bso !== undefined && userInterface.overlays.serverOverlay.innerHTML !==
+          window.bso.ip + ':' + window.bso.po) {
+          userInterface.overlays.serverOverlay.innerHTML =
+              window.bso.ip + ':' + window.bso.po;
+          ss.saveOption('lastHost', window.bso.ip + ':' + window.bso.po);
+      }
     },
 
     waitForSnake: function (callback, retries) {
