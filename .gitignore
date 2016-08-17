@@ -8,4 +8,4 @@ mods/css/*.min.css
 www/js/app*.*
 www/css/main.min*
 build/
-src/bot.js
+# src/bot.js

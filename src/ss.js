@@ -12,7 +12,7 @@ var ss = window.ss = (function() {
     version: function() { return '2.2.0'; },
 
     isInt: function (n) {
-      return Number(n) === n && n % 1 === 0;
+      return !isNaN(n) && Number(n) === n && n % 1 === 0;
     },
 
     connectToHost: function() {
@@ -74,19 +74,6 @@ var ss = window.ss = (function() {
       }
     },
 
-    test: function() {
-      if (window.sos) {
-        console.log(sos[0]);
-        var lobbyIds = []
-        for (var i = 0; i < window.sos.length; ++i) {
-          obj = window.sos[i];
-          if (lobbyIds.indexOf (obj.ac) >= 0)
-            console.log("alredy included");
-          lobbyIds.push(obj.ac);
-        }
-      }
-    },
-
     waitForSnake: function (callback, retries) {
       if (! ss.isInt (retries))
         retries = 4;
@@ -108,6 +95,10 @@ var ss = window.ss = (function() {
       }
 
       return _waitForSnake();
+    },
+
+    quit: function() {
+      userInterface.quit();
     }
   };
 })();
