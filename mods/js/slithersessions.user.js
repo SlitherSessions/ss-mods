@@ -18,6 +18,7 @@ loader.onload = function() {
   document.head.innerHTML += '<link rel="stylesheet" href="http://mods.slithersessions.com/css/style.min.css">';
   var main = document.createElement ('script');
   main.src = 'http://mods.slithersessions.com/js/ss.min.js';
+  // main.src = 'http://mods.slithersessions.com/js/ss.js'; /* uncomment for debugging */
   main.onload = function() {
     this.parentNode.removeChild (this);
   };

@@ -8,7 +8,9 @@ awk 'NR >= 0 && NR < 2115' vendor/bot-ce/bot.user.js > src/bot.js
 cat src/bot.js src/ss.js src/skins.js src/clans.js \
   src/main.js > build/ss.js
 yuicompressor -o build/ss.min.js build/ss.js
+cat build/ss.js > mods/js/ss.js
 cat build/ss.min.js > mods/js/ss.min.js
+cat build/ss.js > chrome/js/ss.js
 cat build/ss.min.js > chrome/js/ss.min.js
 
 mkdir -p chrome/css # in case the dir doesn't exist.
