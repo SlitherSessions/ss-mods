@@ -25,7 +25,7 @@
 // @namespace    mods.slithersessions.com
 // @version      2.2.0
 // @description  Slither Sessions Mod Pack
-// @author       Kushview, LLC
+// @author       Slither Sessions
 // @require      http://code.jquery.com/jquery-latest.js
 // @updateURL    http://mods.slithersessions.com/js/slithersessions.user.js
 // @downloadURL  http://mods.slithersessions.com/js/slithersessions.user.js
