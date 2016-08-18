@@ -37,22 +37,21 @@ userInterface.oefTimer = function() {
 }
 
 userInterface.removeLogo = function() {
-    if (typeof window.showlogo_iv !== 'undefined') {
-        window.ncka = window.lgss = window.lga = 1;
-        clearInterval(window.showlogo_iv);
-        showLogo(true);
-    }
+  if (typeof window.showlogo_iv !== 'undefined') {
+    window.ncka = window.lgss = window.lga = 1;
+    clearInterval(window.showlogo_iv);
+    showLogo(true);
+  }
 };
 
 userInterface.toggleOverlays = function() {
   Object.keys(userInterface.overlays).forEach (function (okey) {
-      var isIpBox = userInterface.overlays[okey].id == 'ss-server-overlay';
-      if (! isIpBox) {
-        var oVis = userInterface.overlays[okey].style.visibility !== 'hidden' ?
-            'hidden' : 'visible';
-        userInterface.overlays[okey].style.visibility = oVis;
-        // window.visualDebugging = oVis === 'visible';
-      }
+    var isIpBox = userInterface.overlays[okey].id == 'ss-server-overlay';
+    if (! isIpBox) {
+      var oVis = userInterface.overlays[okey].style.visibility !== 'hidden'
+        ? 'hidden' : 'visible';
+      userInterface.overlays[okey].style.visibility = oVis;
+    }
   });
 };
 
