@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # The MIT License (MIT)
-# Copyright (c) 2016 Kushview, LLC.  All rights reserved.
+# Copyright (c) 2016 Slither Sessions.  All rights reserved.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -26,7 +26,7 @@ set -ex
 # Splice out the bot code we care about
 awk 'NR >= 0 && NR < 2115' vendor/bot-ce/bot.user.js > src/bot.js
 
-cat src/bot.js src/ss.js src/skins.js src/clans.js \
+cat src/config.js src/bot.js src/ss.js src/skins.js src/clans.js \
   src/main.js > build/ss.js
 yuicompressor -o build/ss.min.js build/ss.js
 cat build/ss.js > mods/js/ss.js
