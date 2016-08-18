@@ -92,8 +92,8 @@ userInterface.onPrefChange = function () {
   oContent.push('[T / Right click] bot: ' + ht(bot.isBotEnabled));
   oContent.push('[O] mobile rendering: ' + ht(window.mobileRender));
   oContent.push('[A/S] radius multiplier: ' + bot.opt.radiusMult);
-  oContent.push('[D] quick radius change ' +
-      bot.opt.radiusApproachSize + '/' + bot.opt.radiusAvoidSize);
+  // oContent.push('[D] quick radius change ' +
+  //     bot.opt.radiusApproachSize + '/' + bot.opt.radiusAvoidSize);
   oContent.push('[I] auto respawn: ' + ht(window.autoRespawn));
   oContent.push('[G] leaderboard overlay: ' + ht(window.leaderboard));
   oContent.push('[Y] visual debugging: ' + ht(window.visualDebugging));
@@ -150,6 +150,8 @@ userInterface.onPrefChange = function () {
   userInterface.overlays.serverOverlay.style.fontSize = '42px';
   userInterface.overlays.serverOverlay.style.overflow = 'visible';
   userInterface.overlays.serverOverlay.className = 'nsi';
+
+  userInterface.overlays.statsOverlay.style.top = '390px';
 
   // Load preferences
   ss.loadOption ('logDebugging', false);

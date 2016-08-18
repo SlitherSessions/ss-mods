@@ -1,25 +1,4 @@
-/*
-  The MIT License (MIT)
-  Copyright (c) 2016 Slither Sessions.  All rights reserved.
-
-  Permission is hereby granted, free of charge, to any person obtaining a copy
-  of this software and associated documentation files (the "Software"), to deal
-  in the Software without restriction, including without limitation the rights to
-  use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
-  of the Software, and to permit persons to whom the Software is furnished to do
-  so, subject to the following conditions:
-
-  The above copyright notice and this permission notice shall be included in all
-  copies or substantial portions of the Software.
-
-  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-  SOFTWARE.
-*/
+/* Slither Sessions Mods */
 /*
 The MIT License (MIT)
  Copyright (c) 2016 Jesse Miller <jmiller@jmiller.com>
@@ -2611,8 +2590,8 @@ userInterface.onPrefChange = function () {
   oContent.push('[T / Right click] bot: ' + ht(bot.isBotEnabled));
   oContent.push('[O] mobile rendering: ' + ht(window.mobileRender));
   oContent.push('[A/S] radius multiplier: ' + bot.opt.radiusMult);
-  oContent.push('[D] quick radius change ' +
-      bot.opt.radiusApproachSize + '/' + bot.opt.radiusAvoidSize);
+  // oContent.push('[D] quick radius change ' +
+  //     bot.opt.radiusApproachSize + '/' + bot.opt.radiusAvoidSize);
   oContent.push('[I] auto respawn: ' + ht(window.autoRespawn));
   oContent.push('[G] leaderboard overlay: ' + ht(window.leaderboard));
   oContent.push('[Y] visual debugging: ' + ht(window.visualDebugging));
@@ -2669,6 +2648,8 @@ userInterface.onPrefChange = function () {
   userInterface.overlays.serverOverlay.style.fontSize = '42px';
   userInterface.overlays.serverOverlay.style.overflow = 'visible';
   userInterface.overlays.serverOverlay.className = 'nsi';
+
+  userInterface.overlays.statsOverlay.style.top = '390px';
 
   // Load preferences
   ss.loadOption ('logDebugging', false);
