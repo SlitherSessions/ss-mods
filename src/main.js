@@ -29,6 +29,13 @@ userInterface.onFrameUpdate = function() {
     window.ss.onFrameUpdate();
 };
 
+userInterface.superOefTimer = userInterface.oefTimer;
+userInterface.oefTimer = function() {
+  userInterface.superOefTimer();
+  if (! window.playing)
+    canvas.resetZoom();
+}
+
 userInterface.removeLogo = function() {
     if (typeof window.showlogo_iv !== 'undefined') {
         window.ncka = window.lgss = window.lga = 1;
