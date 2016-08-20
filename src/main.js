@@ -116,7 +116,18 @@ userInterface.onPrefChange = function () {
   oContent.push('[Q] quit to menu');
 
   userInterface.overlays.prefOverlay.innerHTML = oContent.join('<br/>');
-},
+};
+
+userInterface.playButtonClickListener = function () {
+  userInterface.saveNick();
+  userInterface.loadPreference('autoRespawn', false);
+  userInterface.onPrefChange();
+
+  ss.connect();
+  ss.waitForSnake (function (s) {
+    setSkin (s, ss.skins.skin);
+  });
+};
 
 // Main
 (function (window, document) {
@@ -134,13 +145,13 @@ userInterface.onPrefChange = function () {
   userInterface.hideTop();
 
   // force server
-  userInterface.initServerIp();
-  userInterface.server.addEventListener('keyup', function (e) {
-    if (e.keyCode === 13) {
-      e.preventDefault();
-      window.play_btn.btnf.click();
-    }
-  });
+  // userInterface.initServerIp();
+  // userInterface.server.addEventListener('keyup', function (e) {
+  //   if (e.keyCode === 13) {
+  //     e.preventDefault();
+  //     window.play_btn.btnf.click();
+  //   }
+  // });
 
   // Overlays
   userInterface.initOverlays();
@@ -191,15 +202,15 @@ userInterface.onPrefChange = function () {
 
 // SS jQuery main
 $(function() {
-  $('#playh .btnt.nsi.sadg1').click (function (e) {
-    if (ss.options.useLastHost) {
-      ss.forceLastHost();
-    }
-
-    ss.waitForSnake (function (s) {
-      setSkin (s, ss.skins.skin);
-    });
-  });
+  // $('#playh .btnt.nsi.sadg1').click (function (e) {
+  //   if (ss.options.useLastHost) {
+  //     ss.forceLastHost();
+  //   }
+  //
+  //   ss.waitForSnake (function (s) {
+  //     setSkin (s, ss.skins.skin);
+  //   });
+  // });
 
   $('#tag').val (ss.loadOption ('savedClan', '[SS]'));
 });
