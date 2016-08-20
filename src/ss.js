@@ -69,9 +69,7 @@ var ss = window.ss = (function() {
       return (typeof bso != 'undefined') ? bso.ip : false;
     },
 
-    forceLastHost: function() {
-
-    },
+    forceLastHost: function() { },
 
     register: function (mod) {
       ss.mods.push (mod);
@@ -92,8 +90,12 @@ var ss = window.ss = (function() {
     },
 
     onFrameUpdate: function() {
-      if (! window.playing || window.snake === null)
+      if (! window.playing || window.snake === null) {
+        $(userInterface.connect).fadeIn();
         return;
+      }
+
+      $(userInterface.connect).fadeOut();
 
       // customize leaderboard title
       if (typeof window.lbh != 'undefined' &&

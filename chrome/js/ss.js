@@ -2184,9 +2184,7 @@ var ss = window.ss = (function() {
       return (typeof bso != 'undefined') ? bso.ip : false;
     },
 
-    forceLastHost: function() {
-
-    },
+    forceLastHost: function() { },
 
     register: function (mod) {
       ss.mods.push (mod);
@@ -2207,8 +2205,12 @@ var ss = window.ss = (function() {
     },
 
     onFrameUpdate: function() {
-      if (! window.playing || window.snake === null)
+      if (! window.playing || window.snake === null) {
+        $(userInterface.connect).fadeIn();
         return;
+      }
+
+      $(userInterface.connect).fadeOut();
 
       // customize leaderboard title
       if (typeof window.lbh != 'undefined' &&
@@ -2650,14 +2652,18 @@ userInterface.playButtonClickListener = function () {
   // Hide top score
   userInterface.hideTop();
 
-  // force server
-  // userInterface.initServerIp();
-  // userInterface.server.addEventListener('keyup', function (e) {
-  //   if (e.keyCode === 13) {
-  //     e.preventDefault();
-  //     window.play_btn.btnf.click();
-  //   }
-  // });
+  // IP Connect button
+  var connectButton = document.createElement('div');
+  connectButton.id = "ss-ip-box";
+  connectButton.className = "nsi";
+  var connectLabel = document.createElement('label');
+  connectLabel.innerHTML = "Connect to IP";
+  connectLabel.className = "on";
+  connectLabel.id = "ss-ip-connect";
+  connectLabel.addEventListener ('click', ss.connectToHost);
+  connectButton.appendChild (connectLabel);
+  document.body.appendChild (connectButton);
+  userInterface.connect = connectButton;
 
   // Overlays
   userInterface.initOverlays();
