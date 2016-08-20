@@ -37,6 +37,19 @@ var ss = window.ss = (function() {
       return !isNaN(n) && Number(n) === n && n % 1 === 0;
     },
 
+    connect: function() {
+      if (ss.options.useLastHost) {
+        var host = ss.loadOption ('lastHost');
+        if (host && host.length > 0) {
+          var addy = host.split(':')[0].trim(),
+              port = host.split(':')[1].trim();
+          forceServer (addy, port);
+        }
+      }
+
+      window.connect();
+    },
+
     connectToHost: function() {
       defaultIp = ss.loadOption ('lastHost', '');
       eipaddr = prompt ('Enter the IP address:', defaultIp);
@@ -57,12 +70,7 @@ var ss = window.ss = (function() {
     },
 
     forceLastHost: function() {
-      var host = ss.loadOption ('lastHost');
-      if (host && host.length > 0) {
-        var addy = host.split(':')[0].trim(),
-            port = host.split(':')[1].trim();
-        forceServer (addy, port);
-      }
+
     },
 
     register: function (mod) {
