@@ -2298,6 +2298,10 @@ ss.register ((function() {
       skins.addSkins();
     },
 
+    add: function() {
+
+    },
+    
     addSkins: function() {
       var
         superMaxSkinCv = window.max_skin_cv,
