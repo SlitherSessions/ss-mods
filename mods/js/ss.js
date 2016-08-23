@@ -2146,7 +2146,7 @@ var ss = window.ss = (function() {
       useLastHost: false
     },
 
-    version: function() { return '2.2.0'; },
+    version: function() { return '2.2.1'; },
 
     isInt: function (n) {
       return !isNaN(n) && Number(n) === n && n % 1 === 0;
@@ -2308,9 +2308,9 @@ ss.register ((function() {
           [ 0, 0, 0, 8, 8, 8 ],    // Striped purple I
           [ 11 ],                  // black
           [ 11, 9, 11, 7, 7, 7 ],  // Spyke Gaming
-          // [ 27, 27, 9, 9 ],        // Hazard Gaming
-          [ 7, 7, 9, 9 ],
-          // [ 22, 22, 9, 9 ]
+          // [ 27, 27, 9, 9 ],        // [Hazard] Gaming (velvet)
+          // [ 7, 7, 9, 9 ],       // [Hazard] Gaming (red)
+          // // [ 22, 22, 9, 9 ]   // [Hazard] Gaming (orange/red)
         ];
       max_skin_cv += newSkins.length;
 
@@ -2318,7 +2318,7 @@ ss.register ((function() {
         snk.bulb = null;
       };
 
-      var bulbSrcForSkin = function (skinId) {
+      function bulbSrcForSkin (skinId) {
         if (skinId == 48)
           return skins.images.spyke;
         else if (skinId == 49)
@@ -2327,7 +2327,7 @@ ss.register ((function() {
         return false;
       }
 
-      var configureAntenna = function (snk, skinId) {
+      function configureAntenna (snk, skinId) {
         if (skinId == 48) {
           // spyke
           snk.bsc  = .30;  // bulb scale
@@ -2342,7 +2342,7 @@ ss.register ((function() {
         }
       }
 
-      var addAntenna = function (snk, skinId) {
+      function addAntenna (snk, skinId) {
         if (skins.bulb == null) {
           skins.bulb = document.createElement('canvas');
         }
@@ -2469,6 +2469,10 @@ ss.register ((function() {
       setTimeout (skins.loop, 1500);
     }
   };
+
+  skins.add({
+
+  });
 
   return skins;
 })());
