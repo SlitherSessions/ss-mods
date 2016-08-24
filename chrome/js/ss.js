@@ -2301,7 +2301,7 @@ ss.register ((function() {
     add: function() {
 
     },
-    
+
     addSkins: function() {
       var
         superMaxSkinCv = window.max_skin_cv,
@@ -2312,6 +2312,8 @@ ss.register ((function() {
           [ 0, 0, 0, 8, 8, 8 ],    // Striped purple I
           [ 11 ],                  // black
           [ 11, 9, 11, 7, 7, 7 ],  // Spyke Gaming
+          [ 5, 5, 5, 11, 11, 11 ], // orange and black
+          [ 12, 12, 12, 11, 11, 11 ] // gold and black
           // [ 27, 27, 9, 9 ],        // [Hazard] Gaming (velvet)
           // [ 7, 7, 9, 9 ],       // [Hazard] Gaming (red)
           // // [ 22, 22, 9, 9 ]   // [Hazard] Gaming (orange/red)
@@ -2416,7 +2418,7 @@ ss.register ((function() {
           snk.rbcs = c;
           snk.cv = skinId;
 
-          if (skins.useAntennas && (skinIdCopy == 48 || skinIdCopy == 49))
+          if (skins.useAntennas && (skinIdCopy == 48)) // || skinIdCopy == 49))
           {
             addAntenna (snk, parseInt (skinIdCopy));
           }
