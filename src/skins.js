@@ -40,7 +40,7 @@ ss.register ((function() {
     },
 
     add: function() {
-
+      // noop, this will be a skin registration method
     },
 
     addSkins: function() {
@@ -100,13 +100,14 @@ ss.register ((function() {
           snk.bulb = skins.bulb;
 
         {
+          // Add the buldb image. scoped to avoid memory leak.
           var img = new Image();
           img.src = bulbSrcForSkin (skinId);
           snk.bulb.width  = parseInt (img.width);
           snk.bulb.height = parseInt (img.height);
-          var ctx = snk.bulb.getContext('2d');
-          ctx.drawImage(img, 0, 0, img.width, img.height,
-                             0, 0, img.width, img.height);
+          var ctx = snk.bulb.getContext ('2d');
+          ctx.drawImage (img, 0, 0, img.width, img.height,
+                              0, 0, img.width, img.height);
           img = null;
         }
 
