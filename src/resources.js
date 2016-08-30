@@ -22,13 +22,11 @@
 */
 
 ss.register ((function() {
-  var youtube = {
-    slug: 'youtube',
+  return {
+    slug: 'resources',
 
     init: function() {
 
     }
   };
-
-  return youtube;
 })());

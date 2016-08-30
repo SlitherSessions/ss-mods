@@ -30,6 +30,8 @@ echo "=== Uploading MODS ==="
 aws s3 sync ./mods s3://mods.slithersessions.com  --acl "public-read" --delete \
   --exclude ".DS_Store" \
   --exclude "sync-s3.sh" \
+  --exclude "sync.sh" \
+  --exclude "authors.sh" \
   --exclude "build.sh" \
   --exclude "*git*" \
   --exclude ".gitignore" \
