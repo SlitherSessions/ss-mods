@@ -9,3 +9,4 @@ www/js/app*.*
 www/css/main.min*
 build/
 # src/bot.js
+authors.sh
