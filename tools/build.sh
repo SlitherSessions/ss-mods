@@ -23,6 +23,16 @@
 
 set -ex
 
+is_release="$1"
+
+function minify_source() {
+  if ! compressor_loc="$(type -p "yuicompressor")" || [ -z "$compressor_loc" ] || [ -z "$is_release" ]; then
+    cat "$1" > "$2"
+  else
+    yuicompressor -o "$2" "$1"
+  fi
+}
+
 mkdir -p build
 
 # Splice out the bot code we care about
@@ -36,16 +46,18 @@ cat src/config.js \
   src/clans.js \
   src/main.js > build/ss.js
 
-yuicompressor -o build/ss.min.js build/ss.js
+minify_source build/ss.js build/ss.min.js
 cat build/ss.js > mods/js/ss.js
 cat build/ss.min.js > mods/js/ss.min.js
 cat build/ss.js > chrome/js/ss.js
 cat build/ss.min.js > chrome/js/ss.min.js
 
 mkdir -p chrome/css # in case the dir doesn't exist.
-yuicompressor -o mods/css/style.min.css mods/css/style.css
+minify_source mods/css/style.css mods/css/style.min.css
 cat mods/css/style.min.css > chrome/css/style.min.css
 
 # Make the chrome/opera extension upload package
 rm -f *.zip
 zip -rvT slither-sessions-chrome.zip chrome
+
+exit 0

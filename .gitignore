@@ -1,12 +1,16 @@
 .DS_Store
+
 chrome/js/*.min.js
 chrome/css/*.min.css
+chrome/js/ss.js
+
+mods/js/ss.js
 mods/js/main.js
 mods/js/*.min.js
 mods/css/*.min.css
+
 *.zip
 www/js/app*.*
 www/css/main.min*
 build/
-# src/bot.js
 authors.sh
