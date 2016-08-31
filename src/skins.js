@@ -123,7 +123,7 @@ ss.register ((function() {
       };
 
       window.setSkin = function (snk, skinId) {
-        var skinIdCopy = skinId,
+        var skinIdCopy = parseInt (skinId),
             isOnSkinChooser = $('#psk').is(':visible');
 
         impl.resetAntenna (snk);
@@ -131,10 +131,9 @@ ss.register ((function() {
 
         if (skinId > impl.superMaxSkinCv) {
           var c;
-          var checkSkinId = skinId - impl.superMaxSkinCv - 1;
-
-          if (skins.extras[checkSkinId] !== undefined) {
-            c = skins.extras[checkSkinId].rbcs;
+          var obj = skins.get (parseInt (skinId));
+          if (obj !== null) {
+            c = obj.rbcs;
           } else {
             skinId %= 9;
           }
@@ -179,6 +178,7 @@ ss.register ((function() {
       impl.loop();
     },
 
+    /** adds an additional skin after stock skins */
     add: function (skin) {
       if (typeof skin.rbcs == 'undefined' || skin.rbcs == null || skin.rbcs.length <= 0)
         return skins;
@@ -186,6 +186,14 @@ ss.register ((function() {
       skins.extras.push (skin);
       window.max_skin_cv += 1
       return skins;
+    },
+
+    /** gets an extra skin */
+    get: function (skinId) {
+      if (skinId <= impl.superMaxSkinCv || skinId > max_skin_cv)
+        return null;
+
+      return skins.extras [skinId - impl.superMaxSkinCv - 1];
     },
 
     /** go to next skin if rotation is enabled */

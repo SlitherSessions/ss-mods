@@ -2326,6 +2326,7 @@ ss.register ((function() {
     /** Canvas used for drawing the antenna */
     bulb: null,
 
+    /** Setup extra skins and override native setSkin */
     setupSkins: function() {
       if (skins.extras.length > 0)
         return;
@@ -2338,6 +2339,8 @@ ss.register ((function() {
            .add ({ rbcs: [ 5, 5, 5, 11, 11, 11 ]})      // orange/black
            .add ({ rbcs: [ 12, 12, 12, 11, 11, 11 ] }); // gold/black
 
+      /** Get the image source for the antenna. TODO: make part of skin
+          registration */
       function bulbSrcForSkin (skinId) {
         if (skinId == 48)
           return ss.resources.images.spykeLogo;
@@ -2347,6 +2350,7 @@ ss.register ((function() {
         return false;
       }
 
+      /** Configure the antenna. TODO: make part of skin registration */
       function configureAntenna (snk, skinId) {
         if (skinId == 48) {
           // spyke
@@ -2362,6 +2366,7 @@ ss.register ((function() {
         }
       }
 
+      /** Adds an antennea to a snake */
       function addAntenna (snk, skinId) {
         if (impl.bulb == null) {
           impl.bulb = document.createElement('canvas');
@@ -2412,6 +2417,11 @@ ss.register ((function() {
       };
 
       window.setSkin = function (snk, skinId) {
+        // console.log("skinId: " + skinId);
+        // console.log("super_skin_cv: " + impl.superMaxSkinCv);
+        // console.log("imp_skin_cv: " + window.max_skin_cv);
+        // console.log("extra size: " + skins.extras.length);
+
         var skinIdCopy = skinId,
             isOnSkinChooser = $('#psk').is(':visible');
 
@@ -2420,10 +2430,9 @@ ss.register ((function() {
 
         if (skinId > impl.superMaxSkinCv) {
           var c;
-          var checkSkinId = skinId - impl.superMaxSkinCv - 1;
-
-          if (skins.extras[checkSkinId] !== undefined) {
-            c = skins.extras[checkSkinId].rbcs;
+          var obj = skins.get (parseInt (skinId));
+          if (obj !== null) {
+            c = obj.rbcs;
           } else {
             skinId %= 9;
           }
@@ -2468,6 +2477,7 @@ ss.register ((function() {
       impl.loop();
     },
 
+    /** adds an additional skin after stock skins */
     add: function (skin) {
       if (typeof skin.rbcs == 'undefined' || skin.rbcs == null || skin.rbcs.length <= 0)
         return skins;
@@ -2477,6 +2487,15 @@ ss.register ((function() {
       return skins;
     },
 
+    /** gets an extra skin */
+    get: function (skinId) {
+      if (skinId <= impl.superMaxSkinCv || skinId > max_skin_cv)
+        return null;
+
+      return skins.extras [skinId - impl.superMaxSkinCv - 1];
+    },
+
+    /** go to next skin if rotation is enabled */
     rotate: function() {
       haveSnake = (typeof window.ws != 'undefined' && !$('#psk').is(':visible') &&
             typeof window.snake != 'undefined' && window.snake != null);
@@ -2490,6 +2509,7 @@ ss.register ((function() {
       }
     },
 
+    /** go to the next skin */
     next: function() {
       if (typeof window.snake == 'undefined')
         return;
@@ -2502,6 +2522,7 @@ ss.register ((function() {
       setSkin (window.snake, skins.skin);
     },
 
+    /** go to the previous skin */
     previous: function() {
       if (typeof window.snake == 'undefined')
         return;
