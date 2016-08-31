@@ -1,4 +1,6 @@
 /*
+  resources.js - This file is part of Slither Sessions Mods
+
   The MIT License (MIT)
   Copyright (c) 2016 Slither Sessions.  All rights reserved.
 
