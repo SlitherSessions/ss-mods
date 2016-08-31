@@ -57,7 +57,7 @@ minify_source mods/css/style.css mods/css/style.min.css
 cat mods/css/style.min.css > chrome/css/style.min.css
 
 # Make the chrome/opera extension upload package
-rm -f *.zip
-zip -rvT slither-sessions-chrome.zip chrome
+rm -f build/*.zip
+zip -rvT build/slither-sessions-chrome.zip chrome
 
 exit 0
