@@ -22,6 +22,9 @@
 */
 
 ss.register ((function() {
+  /** returns a default value if none provided */
+  var d = function (a, d) { return (a) ? a : d; }
+
   var impl = {
     /** Reference slither's max skin number */
     superMaxSkinCv: window.max_skin_cv,
@@ -32,6 +35,55 @@ ss.register ((function() {
     /** Canvas used for drawing the antenna */
     bulb: null,
 
+    /** Adds an antennea to a snake */
+    addAntenna: function (snk, skin) {
+      if (impl.bulb == null) {
+        impl.bulb = document.createElement('canvas');
+        impl.bulb.style.display = false;
+      }
+
+      if (snk.bulb == null || typeof snk.bulb == 'undefined')
+        snk.bulb = impl.bulb;
+
+      if (skin.bulb && skin.bulb.image) {
+        var img = new Image();
+        img.src = skin.bulb.image
+        snk.bulb.width  = parseInt (img.width);
+        snk.bulb.height = parseInt (img.height);
+        var ctx = snk.bulb.getContext ('2d');
+        ctx.drawImage (img, 0, 0, img.width, img.height,
+                            0, 0, img.width, img.height);
+        img = null;
+      }
+
+      // these were copied from the JS console, not currently modifiable via code
+      snk.atax = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+      snk.atay = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+      snk.atvx = [0, -2.174018144607544, -1.9938501119613647, -2.2244787216186523, -2.1016628742218018, -2.0143206119537354, -2.095236301422119, -2.2232143878936768, -1.9363921880722046];
+      snk.atvy = [0, -0.7573261260986328, -0.7961844801902771, -0.3080170750617981, 0.2950030565261841, 0.8237428069114685, 0.568598210811615, 0.027775723487138748, -0.6246974468231201];
+      snk.atx  = [10792, 10788.1982421875, 10784.205078125, 10780.369140625, 10776.814453125, 10773.0830078125, 10769.091796875, 10765.2275390625, 10761.48046875];
+      snk.aty  = [10800, 10799.658203125, 10798.2373046875, 10796.662109375, 10795.90625, 10796.720703125, 10798.310546875, 10799.6298828125, 10799.82421875];
+
+      snk.atba = 0.0; // not sure what this is
+      snk.atia = d (skin.antenna.alpha, 1.0);
+      snk.atc1 = d (skin.antenna.color1, "#800");
+      snk.atc2 = d (skin.antenna.color2, "#b00");
+
+      if (skin.bulb) {
+        snk.bsc  = d (skin.bulb.scale, 0.25);
+        snk.blba = d (skin.bulb.alpha, 1.0);
+        snk.blbw = d (skin.bulb.width, snk.bulb.width);
+        snk.blbh = d (skin.bulb.height, snk.bulb.height);
+        snk.blbx = d (skin.bulb.x, -1 * (snk.bulb.width / 2));
+        snk.blby = d (skin.bulb.y, -1 * (snk.bulb.width / 2));
+      }
+
+      snk.atwg = true;
+      snk.abrot = true;
+      snk.antenna_shown = true;
+      snk.antenna = true;
+    },
+
     /** Setup extra skins and override native setSkin */
     setupSkins: function() {
       if (skins.extras.length > 0)
@@ -41,86 +93,22 @@ ss.register ((function() {
            .add ({ rbcs: [ 9, 9, 9, 11, 11, 11 ] })     // black/white
            .add ({ rbcs: [ 0, 0, 0, 8, 8, 8 ] })        // striped purple
            .add ({ rbcs: [ 11 ] })                      // black
-           .add ({ rbcs: [ 11, 9, 11, 7, 7, 7 ] })      // spyke gaming
+           .add ({ rbcs: [ 11, 9, 11, 7, 7, 7 ],        // spyke gaming
+                   antenna: {
+                     alpha: 1.0,
+                     color1: "#800",
+                     color2: "#B00"
+                   },
+                   bulb: {
+                     image: ss.resources.images.spykeLogo,
+                     scale: 0.30,
+                     alpha: 1.0,
+                     x: -16,
+                     y: -70
+                   }
+                 })
            .add ({ rbcs: [ 5, 5, 5, 11, 11, 11 ]})      // orange/black
            .add ({ rbcs: [ 12, 12, 12, 11, 11, 11 ] }); // gold/black
-
-      /** Get the image source for the antenna. TODO: make part of skin
-          registration */
-      function bulbSrcForSkin (skinId) {
-        if (skinId == 48)
-          return ss.resources.images.spykeLogo;
-        else if (skinId == 49)
-          return ss.resources.images.hazardLogo;
-
-        return false;
-      }
-
-      /** Configure the antenna. TODO: make part of skin registration */
-      function configureAntenna (snk, skinId) {
-        if (skinId == 48) {
-          // spyke
-          snk.bsc  = .30;  // bulb scale
-          snk.blba = 1.0;  // bulb alpha
-          snk.blbx = -16;  // bulb x
-          snk.blby = -70;  // bulb y
-        }
-
-        if (skinId == 49) {
-          snk.atc1 = "#800";
-          snk.atc2 = "#600";
-        }
-      }
-
-      /** Adds an antennea to a snake */
-      function addAntenna (snk, skinId) {
-        if (impl.bulb == null) {
-          impl.bulb = document.createElement('canvas');
-          impl.bulb.style.display = false;
-        }
-
-        if (snk.bulb == null || typeof snk.bulb == 'undefined')
-          snk.bulb = impl.bulb;
-
-        {
-          // Add the bulb image. scoped to avoid memory leak.
-          var img = new Image();
-          img.src = bulbSrcForSkin (skinId);
-          snk.bulb.width  = parseInt (img.width);
-          snk.bulb.height = parseInt (img.height);
-          var ctx = snk.bulb.getContext ('2d');
-          ctx.drawImage (img, 0, 0, img.width, img.height,
-                              0, 0, img.width, img.height);
-          img = null;
-        }
-
-        snk.atax = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-        snk.atay = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-        snk.atvx = [0, -2.174018144607544, -1.9938501119613647, -2.2244787216186523, -2.1016628742218018, -2.0143206119537354, -2.095236301422119, -2.2232143878936768, -1.9363921880722046];
-        snk.atvy = [0, -0.7573261260986328, -0.7961844801902771, -0.3080170750617981, 0.2950030565261841, 0.8237428069114685, 0.568598210811615, 0.027775723487138748, -0.6246974468231201];
-        snk.atx  = [10792, 10788.1982421875, 10784.205078125, 10780.369140625, 10776.814453125, 10773.0830078125, 10769.091796875, 10765.2275390625, 10761.48046875];
-        snk.aty  = [10800, 10799.658203125, 10798.2373046875, 10796.662109375, 10795.90625, 10796.720703125, 10798.310546875, 10799.6298828125, 10799.82421875];
-
-        snk.atba = 0.0; // not sure what this is
-        snk.atia = 1.0; // antenna alhpa
-        snk.atc1 = "#800";
-        snk.atc2 = "#b00";
-
-        snk.atwg = true;
-
-        snk.bsc  = .25;  // bulb scale
-        snk.blba = 1.0;  // bulb alpha
-        snk.blbw = snk.bulb.width;   // bulb width
-        snk.blbh = snk.bulb.height;  // bulb height
-        snk.blbx = -1 * (snk.bulb.width / 2);  // bulb x
-        snk.blby = -1 * (snk.bulb.height / 2);  // bulb y
-
-        configureAntenna (snk, skinId);
-
-        snk.abrot = true;
-        snk.antenna_shown = true;
-        snk.antenna = true;
-      };
 
       window.setSkin = function (snk, skinId) {
         var skinIdCopy = parseInt (skinId),
@@ -131,9 +119,9 @@ ss.register ((function() {
 
         if (skinId > impl.superMaxSkinCv) {
           var c;
-          var obj = skins.get (parseInt (skinId));
-          if (obj !== null) {
-            c = obj.rbcs;
+          var skin = skins.get (parseInt (skinId));
+          if (skin !== null) {
+            c = skin.rbcs;
           } else {
             skinId %= 9;
           }
@@ -142,9 +130,8 @@ ss.register ((function() {
           snk.rbcs = c;
           snk.cv = skinId;
 
-          if (skinIdCopy == 48) {
-            addAntenna (snk, parseInt (skinIdCopy));
-          }
+          if (skin && (skin.antenna || skin.bulb))
+            impl.addAntenna (snk, skin);
         }
 
         if (isOnSkinChooser) {
