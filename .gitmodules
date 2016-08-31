@@ -1,7 +1,8 @@
 [submodule "vendor/bot"]
 	path = vendor/bot
-	url = git@github.com:kushview/Slither.io-bot
-	brandh = develop
+	url = https://github.com/ErmiyaEskandary/Slither.io-bot.git
+	branch = master
 [submodule "vendor/bot-ce"]
 	path = vendor/bot-ce
-	url = git@github.com:kushview/Slither.io-bot-ce.git
+	url = https://github.com/j-c-m/Slither.io-bot.git
+	branch = master
