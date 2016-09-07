@@ -23,7 +23,7 @@
 
 set -e
 
-./build.sh
+./build.sh release
 
 find . -name '.DS_Store' -delete
 echo "=== Uploading MODS ==="
