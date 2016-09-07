@@ -24,9 +24,7 @@
 */
 
 // bot ui extensions and overrides
-userInterface.superOnFrameUpdate = userInterface.onFrameUpdate;
 userInterface.onFrameUpdate = function() {
-  userInterface.superOnFrameUpdate();
   if (typeof window.ss != 'undefined')
     window.ss.onFrameUpdate();
 };
@@ -34,8 +32,6 @@ userInterface.onFrameUpdate = function() {
 userInterface.superOefTimer = userInterface.oefTimer;
 userInterface.oefTimer = function() {
   userInterface.superOefTimer();
-  if (! window.playing)
-    canvas.resetZoom();
 }
 
 userInterface.removeLogo = function() {
@@ -124,6 +120,7 @@ userInterface.playButtonClickListener = function () {
   userInterface.saveNick();
   userInterface.loadPreference('autoRespawn', false);
   userInterface.onPrefChange();
+  canvas.resetZoom();
 
   ss.connect();
   ss.waitForSnake (function (s) {

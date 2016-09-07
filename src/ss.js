@@ -93,16 +93,61 @@ var ss = window.ss = (function() {
 
     onFrameUpdate: function() {
       if (! window.playing || window.snake === null) {
-        $(userInterface.connect).fadeIn();
+        if (! $(userInterface.connect).is(':visible'))
+          $(userInterface.connect).fadeIn();
         return;
       }
 
-      $(userInterface.connect).fadeOut();
+      // Botstatus overlay
+      if (window.playing && window.snake !== null) {
+          let oContent = [];
+
+          oContent.push('fps: ' + userInterface.framesPerSecond.fps);
+
+          // Display the X and Y of the snake
+          oContent.push('x: ' +
+              (Math.round(window.snake.xx) || 0) + ' y: ' +
+              (Math.round(window.snake.yy) || 0));
+
+          if (window.goalCoordinates) {
+              oContent.push('target');
+              oContent.push('x: ' + window.goalCoordinates.x + ' y: ' +
+                  window.goalCoordinates.y);
+              if (window.goalCoordinates.sz) {
+                  oContent.push('sz: ' + window.goalCoordinates.sz);
+              }
+          }
+
+          userInterface.overlays.botOverlay.innerHTML = oContent.join('<br/>');
+
+          if (userInterface.gfxOverlay) {
+              let gContent = [];
+
+              gContent.push('<b>' + window.snake.nk + '</b>');
+              gContent.push(bot.snakeLength);
+              gContent.push('[' + window.rank + '/' + window.snake_count + ']');
+
+              userInterface.gfxOverlay.innerHTML = gContent.join('<br/>');
+          }
+      }
+
+      if (window.playing && window.visualDebugging) {
+          // Only draw the goal when a bot has a goal.
+          if (window.goalCoordinates && bot.isBotEnabled) {
+              var headCoord = { x: window.snake.xx, y: window.snake.yy };
+              canvas.drawLine(
+                  headCoord,
+                  window.goalCoordinates,
+                  'green');
+              canvas.drawCircle(window.goalCoordinates, 'red', true);
+          }
+      }
+
+      if ($(userInterface.connect).is(':visible'))
+        $(userInterface.connect).fadeOut();
 
       // customize leaderboard title
-      if (typeof window.lbh != 'undefined' &&
-            window.lbh.textContent != ss.options.leaderBoardTitle)
-      {
+      if (typeof window.lbh != 'undefined' && window.lbh.textContent != ss.options.leaderBoardTitle) {
         window.log ("[SS] Updated leaderboard title: " + ss.options.leaderBoardTitle);
         window.lbh.textContent = ss.options.leaderBoardTitle;
       }
@@ -110,8 +155,7 @@ var ss = window.ss = (function() {
       // save last host when it changes
       if (window.bso !== undefined && userInterface.overlays.serverOverlay.innerHTML !==
           window.bso.ip + ':' + window.bso.po) {
-          userInterface.overlays.serverOverlay.innerHTML =
-              window.bso.ip + ':' + window.bso.po;
+          userInterface.overlays.serverOverlay.innerHTML = window.bso.ip + ':' + window.bso.po;
           ss.saveOption('lastHost', window.bso.ip + ':' + window.bso.po);
       }
     },
