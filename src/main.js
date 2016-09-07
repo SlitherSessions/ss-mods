@@ -122,7 +122,9 @@ userInterface.playButtonClickListener = function () {
   userInterface.onPrefChange();
   canvas.resetZoom();
 
-  ss.connect();
+  if (ss.options.useLastHost)
+    ss.forceLastHost();
+
   ss.waitForSnake (function (s) {
     setSkin (s, ss.skins.skin);
   });
