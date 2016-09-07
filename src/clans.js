@@ -38,7 +38,8 @@ function asciize (b, typing) {
     return w
   }
 
-  return ss.clanTags.length > 0 && !typing ? jQuery("#tag").val() + ' ' + b : b;
+  var clanPrefix = ($('#tag').val().length > 0) ? $("#tag").val() + ' ' : '' ;
+  return ss.clanTags.length > 0 && !typing ? clanPrefix + b : b;
 }
 
 function ssAddClanTags() {
