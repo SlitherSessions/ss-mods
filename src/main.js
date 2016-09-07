@@ -180,6 +180,8 @@ userInterface.playButtonClickListener = function () {
   ss.loadOption ('mobileRender', false);
   ss.options.rotateSkins = ss.loadOption ('rotateSkins', false);
   window.nick.value = ss.loadOption ('savedNick', 'Robot');
+  if (e = document.getElementById ('tag'))
+    e.value = ss.loadOption ('savedClan', '[SS]');
 
   // Listener for mouse wheel scroll - used for setZoom function
   document.body.addEventListener ('mousewheel', canvas.setZoom);
@@ -202,21 +204,6 @@ userInterface.playButtonClickListener = function () {
   // Start!
   userInterface.oefTimer();
 })(window, document);
-
-// SS jQuery main
-$(function() {
-  // $('#playh .btnt.nsi.sadg1').click (function (e) {
-  //   if (ss.options.useLastHost) {
-  //     ss.forceLastHost();
-  //   }
-  //
-  //   ss.waitForSnake (function (s) {
-  //     setSkin (s, ss.skins.skin);
-  //   });
-  // });
-
-  $('#tag').val (ss.loadOption ('savedClan', '[SS]'));
-});
 
 ss.mods.forEach (function (mod, i, a) {
   if (typeof mod.init != 'undefined')
