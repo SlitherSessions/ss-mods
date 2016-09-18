@@ -59,29 +59,35 @@ userInterface.ssOnKeyDown = function (e) {
   if (! window.playing)
     return;
 
+  // Letter 'B' to prompt for a custom background url
+  if (e.keyCode === 66) {
+    var url = prompt ('Please enter a background url:');
+    if (url !== null)
+      ss.setBackground (url);
+  }
   // Letter 'L' to rotate skins
   if (e.keyCode === 76) {
-      ss.options.rotateSkins = !ss.options.rotateSkins;
-      userInterface.savePreference ('rotateSkins', ss.options.rotateSkins);
+    ss.options.rotateSkins = !ss.options.rotateSkins;
+    userInterface.savePreference ('rotateSkins', ss.options.rotateSkins);
   }
   // Letter 'K' next skin
   if (e.keyCode === 75) {
-      ss.skins.next();
+    ss.skins.next();
   }
   // Letter 'J' previous skin
   if (e.keyCode === 74) {
-      ss.skins.previous();
+    ss.skins.previous();
   }
   // Letter 'P' toggle static host
   if (e.keyCode === 80) {
-      ss.options.useLastHost = !ss.options.useLastHost;
-      // ss.saveOption ('useLastHost', ss.options.useLastHost);
+    ss.options.useLastHost = !ss.options.useLastHost;
+    // ss.saveOption ('useLastHost', ss.options.useLastHost);
   }
   // Key ']' toggle IP visibility
   if (e.keyCode === 221) {
-      var serverOverlay = document.getElementById('ss-server-overlay');
-      var oVis = serverOverlay.style.visibility !== 'hidden' ? 'hidden' : 'visible';
-      serverOverlay.style.visibility = oVis;
+    var serverOverlay = document.getElementById('ss-server-overlay');
+    var oVis = serverOverlay.style.visibility !== 'hidden' ? 'hidden' : 'visible';
+    serverOverlay.style.visibility = oVis;
   }
 
   userInterface.onPrefChange();
