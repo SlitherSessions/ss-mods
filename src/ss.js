@@ -33,7 +33,7 @@ var ss = window.ss = (function() {
       useLastHost: false
     },
 
-    version: function() { return '2.2.2'; },
+    version: function() { return '2.2.3'; },
 
     isInt: function (n) {
       return !isNaN(n) && Number(n) === n && n % 1 === 0;
@@ -92,6 +92,13 @@ var ss = window.ss = (function() {
 
     saveOption: function (key, val) {
       return window.userInterface.savePreference (key, val);
+    },
+
+    /** Sets background to the given image URL.
+        Defaults to slither.io's internal background. */
+    setBackground: function (url) {
+        url = typeof url !== 'undefined' ? url : '/s/bg45.jpg';
+        window.ii.src = url;
     },
 
     loadOption: function (key, d) {
