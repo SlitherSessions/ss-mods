@@ -124,7 +124,8 @@ ss.register ((function() {
                x: -16,
                y: -50
              }
-           });
+           })
+          .add ({rbcs: [9,9,9,9,9,9,9,12,12,12,12,12,12,12]}); //white/golden orange
 
       window.setSkin = function (snk, skinId) {
         var skinIdCopy = parseInt (skinId),
