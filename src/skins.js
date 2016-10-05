@@ -110,7 +110,20 @@ ss.register ((function() {
                    }
                  })
            .add ({ rbcs: [ 5, 5, 5, 11, 11, 11 ]})      // orange/black
-           .add ({ rbcs: [ 12, 12, 12, 11, 11, 11 ] }) // gold/black
+           .add ({ rbcs: [ 12, 12, 12, 11, 11, 11 ],  // SS
+             antenna: {
+               alpha: 1.0,
+               color1: "#000000",
+               color2: "#EDA407"
+             },
+             bulb: {
+               image: ss.resources.images.ssLogo,
+               scale: 0.3,
+               alpha: 1.0,
+               x: -12,
+               y: -86
+             }
+           })
            .add ({ rbcs: [6,6,6,6,12,12,12,12],  // thomas37847
              antenna: {
                alpha: 0.5,
@@ -125,7 +138,8 @@ ss.register ((function() {
                y: -50
              }
            })
-          .add ({rbcs: [9,9,9,9,9,9,9,12,12,12,12,12,12,12]}); //white/golden orange
+           .add ({rbcs: [9,9,9,9,9,9,9,12,12,12,12,12,12,12]}) //white/golden orange
+           .add ({rbcs: [3,3,3,3,3,3,3,9,9,9,9,9,9,9]}); //green/white
 
       window.setSkin = function (snk, skinId) {
         var skinIdCopy = parseInt (skinId),
