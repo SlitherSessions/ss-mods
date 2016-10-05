@@ -110,7 +110,21 @@ ss.register ((function() {
                    }
                  })
            .add ({ rbcs: [ 5, 5, 5, 11, 11, 11 ]})      // orange/black
-           .add ({ rbcs: [ 12, 12, 12, 11, 11, 11 ] }); // gold/black
+           .add ({ rbcs: [ 12, 12, 12, 11, 11, 11 ] }) // gold/black
+           .add ({ rbcs: [6,6,6,6,12,12,12,12],  // thomas37847
+             antenna: {
+               alpha: 0.5,
+               color1: "#9E706F",
+               color2: "#F2A8A6"
+             },
+             bulb: {
+               image: ss.resources.images.thomasLogo,
+               scale: 0.5,
+               alpha: 1.0,
+               x: -16,
+               y: -50
+             }
+           });
 
       window.setSkin = function (snk, skinId) {
         var skinIdCopy = parseInt (skinId),
