@@ -147,6 +147,7 @@ ss.register ((function() {
 
         impl.resetAntenna (snk);
         impl.superSetSkin (snk, parseInt (skinId));
+        if (!isOnSkinChooser && window.snake !== snk) return; // Randon snake on the board, no need to proceed.
 
         if (skinId > impl.superMaxSkinCv) {
           var c;
