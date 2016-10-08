@@ -150,6 +150,7 @@ ss.register ((function() {
            .add ({rbcs: [7,7,7,7,18,18,18,18], stockSkinId: 18}) //red/gold
            .add ({rbcs: [26,26,26,26,26,26,26,27,27,27,27,27,27,27], stockSkinId: 12}) //jelly green/red
            .add ({rbcs: [27,27,27,27,27,27,27,26,26,26,26,26,26,26], stockSkinId: 12}) //jelly red/green
+           //.add ({rbcs: [18,18,12,5,22,5,12,18,18], stockSkinId: 4}) //golden striped
            .add ({rbcs: [0,17], stockSkinId: 0}); //purple striped
 
       window.setSkin = function (snk, skinId) {
@@ -202,7 +203,6 @@ ss.register ((function() {
     slug: 'skins',
     skin: 0,
     savedSkin: 0,
-    setSkin: 0,
 
     extras: [],
 
@@ -212,17 +212,17 @@ ss.register ((function() {
         skins.skin = 0;
 
       skins.savedSkin = skins.skin;
-      skins.setSkin = 0;
       impl.setupSkins();
       impl.loop();
+      skins.setStockSkin(skins.savedSkin);
 
       // Add event listener to Save button in the skin chooser.
       var b = document.getElementsByClassName('sadg1')[1];
       if(typeof b !== undefined){
         b.addEventListener('click', function(){
           ss.skins.savedSkin = ss.skins.skin;
-          ss.skins.setStockSkin(window.snake);
           ss.saveOption ('skinId', ss.skins.savedSkin);
+          window.snake.rcv = ss.skins.setStockSkin(ss.skins.savedSkin);
         }, false);
       }
     },
@@ -285,15 +285,13 @@ ss.register ((function() {
     },
 
     /** Set the stock skin. This controls how the skin is visible to other players, and the dot color. **/
-    setStockSkin: function(snk) {
-      if(snk == null){console.log('setStockSkin: You don\'t seem to have a snake.'); return;}
-      var skinId = snk.rcv,
-          stockSkinId = 0;
-      if(!snk.SSkin){/**console.log('setStockSkin: Snake is not an SS modded skin. Stock skin remains '+skinId+'.');**/ return;}
-      if(!(stockSkinId = window.ss.skins.get(skinId).stockSkinId)){console.log('setStockSkin: Failed to get skin\'s stockSkinId, or none has been defined. Stock skin remains '+skinId+'.'); return;}
-      snk.rcv = stockSkinId;
+    setStockSkin: function(skinId) {
+      if(skinId < impl.superMaxSkinCv){/**console.log('setStockSkin: Snake is not an SS modded skin. Stock skin remains '+skinId+'.');**/ return skinId;}
+      var stockSkinId = 0;
+      if(!(stockSkinId = window.ss.skins.get(skinId).stockSkinId)){console.log('setStockSkin: Failed to get skin\'s stockSkinId, or none has been defined. Stock skin remains '+skinId+'.'); return skinId;}
       localStorage.snakercv = stockSkinId;
       //console.log('setStockSkin: Stock skin set to: '+window.snake.rcv);
+      return stockSkinId;
     }
 
   };
