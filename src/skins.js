@@ -92,7 +92,7 @@ ss.register ((function() {
         return;
 
       skins.add ({ rbcs: [ 9, 9, 9, 13, 13, 13 ], stockSkinId: 28})     // green/white
-           .add ({ rbcs: [ 9, 9, 9, 11, 11, 11 ], 33})     // black/white
+           .add ({ rbcs: [ 9, 9, 9, 11, 11, 11 ], stockSkinId: 33})     // black/white
            .add ({ rbcs: [ 0, 0, 0, 8, 8, 8 ], stockSkinId: 8})        // striped purple
            .add ({ rbcs: [ 11 ], stockSkinId: 25})                      // black
            .add ({ rbcs: [ 11, 9, 11, 7, 7, 7 ], stockSkinId: 7,        // spyke gaming
