@@ -91,11 +91,11 @@ ss.register ((function() {
       if (skins.extras.length > 0)
         return;
 
-      skins.add ({ rbcs: [ 9, 9, 9, 13, 13, 13 ] })     // green/white
-           .add ({ rbcs: [ 9, 9, 9, 11, 11, 11 ] })     // black/white
-           .add ({ rbcs: [ 0, 0, 0, 8, 8, 8 ] })        // striped purple
-           .add ({ rbcs: [ 11 ] })                      // black
-           .add ({ rbcs: [ 11, 9, 11, 7, 7, 7 ],        // spyke gaming
+      skins.add ({ rbcs: [ 9, 9, 9, 13, 13, 13 ], stockSkinId: 3})     // green/white
+           .add ({ rbcs: [ 9, 9, 9, 11, 11, 11 ], stockSkinId: 33})     // black/white
+           .add ({ rbcs: [ 0, 0, 0, 8, 8, 8 ], stockSkinId: 8})        // striped purple
+           .add ({ rbcs: [ 11 ], stockSkinId: 25})                      // black
+           .add ({ rbcs: [ 11, 9, 11, 7, 7, 7 ], stockSkinId: 7,        // spyke gaming
                    antenna: {
                      alpha: 1.0,
                      color1: "#800",
@@ -109,8 +109,8 @@ ss.register ((function() {
                      y: -70
                    }
                  })
-           .add ({ rbcs: [ 5, 5, 5, 11, 11, 11 ]})      // orange/black
-           .add ({ rbcs: [ 12, 12, 12, 11, 11, 11 ],  // SS
+           .add ({ rbcs: [ 5, 5, 5, 11, 11, 11 ], stockSkinId: 20})      // orange/black
+           .add ({ rbcs: [ 12, 12, 12, 11, 11, 11 ], stockSkinId: 33,  // SS
              antenna: {
                alpha: 1.0,
                color1: "#000000",
@@ -124,7 +124,7 @@ ss.register ((function() {
                y: -86
              }
            })
-           .add ({ rbcs: [6,6,6,6,12,12,12,12],  // thomas37847
+           .add ({ rbcs: [6,6,6,6,12,12,12,12], stockSkinId: 6,  // thomas37847
              antenna: {
                alpha: 0.5,
                color1: "#9E706F",
@@ -138,21 +138,42 @@ ss.register ((function() {
                y: -50
              }
            })
-           .add ({rbcs: [9,9,9,9,9,9,9,12,12,12,12,12,12,12]}) //white/golden orange
-           .add ({rbcs: [3,3,3,3,3,3,3,9,9,9,9,9,9,9]}); //green/white
+           .add ({rbcs: [9,9,9,9,9,9,9,12,12,12,12,12,12,12], stockSkinId: 5}) //white/golden orange
+           .add ({rbcs: [3,3,3,3,3,3,3,9,9,9,9,9,9,9], stockSkinId: 3}) //green/white
+           .add ({rbcs: [9,9,9,9,9,9,9,3,3,3,3,3,3,3], stockSkinId: 3}) //white/green
+           .add ({rbcs: [17,17,17,17,17,17,17,9,9,9,9,9,9,9], stockSkinId: 0}) //purple/white
+           .add ({rbcs: [9,9,9,9,9,9,9,17,17,17,17,17,17,17], stockSkinId: 0}) //white/purple
+           .add ({rbcs: [23,23,23,23,23,23,23,9,9,9,9,9,9,9], stockSkinId: 2}) //light blue/white
+           .add ({rbcs: [9,9,9,9,9,9,9,23,23,23,23,23,23,23], stockSkinId: 2}) //white/light blue
+           .add ({rbcs: [18,18,18,18,18,18,18,9,9,9,9,9,9,9], stockSkinId: 4}) //golden/white
+           .add ({rbcs: [22,22,22,22,22,22,22,9,9,9,9,9,9,9], stockSkinId: 5}) //orange/white
+           .add ({rbcs: [7,7,7,7,18,18,18,18], stockSkinId: 18}) //red/gold
+           .add ({rbcs: [26,26,26,26,26,26,26,27,27,27,27,27,27,27], stockSkinId: 12}) //jelly green/red
+           .add ({rbcs: [27,27,27,27,27,27,27,26,26,26,26,26,26,26], stockSkinId: 12}) //jelly red/green
+           .add ({rbcs: [0,17], stockSkinId: 0}); //purple striped
 
       window.setSkin = function (snk, skinId) {
-        var skinIdCopy = parseInt (skinId),
-            isOnSkinChooser = $('#psk').is(':visible');
+        skinId = parseInt (skinId);
+        var isOnSkinChooser = $('#psk').is(':visible');
+
+        if (isOnSkinChooser && typeof snk.rcv == 'undefined'){ //Should be entering the skin chooser for the first time.
+          //console.log('setSkin: In skin chooser, snake rcv is '+snk.rcv+', SS saved skinId is '+skins.savedSkin);
+          skinId = skins.savedSkin;
+        } else if (isOnSkinChooser){ //Probably scrolling though the skin chooser.
+          skins.skin = skinId;
+        }
 
         impl.resetAntenna (snk);
-        impl.superSetSkin (snk, parseInt (skinId));
+        impl.superSetSkin (snk, skinId);
+        if (!isOnSkinChooser && window.snake !== snk) return; // Random snake on the board, let's leave it be.
 
+        snk.SSkin = false;
         if (skinId > impl.superMaxSkinCv) {
           var c;
-          var skin = skins.get (parseInt (skinId));
+          var skin = skins.get (skinId);
           if (skin !== null) {
             c = skin.rbcs;
+            snk.SSkin = true;
           } else {
             skinId %= 9;
           }
@@ -163,11 +184,6 @@ ss.register ((function() {
 
           if (skin && (skin.antenna || skin.bulb))
             impl.addAntenna (snk, skin);
-        }
-
-        if (isOnSkinChooser) {
-          skins.skin = skinIdCopy;
-          ss.saveOption ('skinId', skins.skin);
         }
       };
     },
@@ -185,6 +201,8 @@ ss.register ((function() {
   var skins = {
     slug: 'skins',
     skin: 0,
+    savedSkin: 0,
+    setSkin: 0,
 
     extras: [],
 
@@ -192,8 +210,21 @@ ss.register ((function() {
       skins.skin = parseInt (ss.loadOption ('skinId', 0));
       if (! ss.isInt (skins.skin) || typeof skins.skin == 'undefined' || isNaN (skins.skin))
         skins.skin = 0;
+
+      skins.savedSkin = skins.skin;
+      skins.setSkin = 0;
       impl.setupSkins();
       impl.loop();
+
+      // Add event listener to Save button in the skin chooser.
+      var b = document.getElementsByClassName('sadg1')[1];
+      if(typeof b !== undefined){
+        b.addEventListener('click', function(){
+          ss.skins.savedSkin = ss.skins.skin;
+          ss.skins.setStockSkin(window.snake);
+          ss.saveOption ('skinId', ss.skins.savedSkin);
+        }, false);
+      }
     },
 
     /** adds an additional skin after stock skins */
@@ -223,7 +254,7 @@ ss.register ((function() {
 
       if (ss.options.rotateSkins) {
         skins.next();
-      } else if (window.snake.rcv != skins.skin) {
+      } else if ((skins.skin > impl.superMaxSkinCv && !snake.SSkin) || (skins.skin !== snake.rcv && !snake.SSkin)) {
         setSkin (snake, skins.skin);
       }
     },
@@ -251,8 +282,20 @@ ss.register ((function() {
       else
         skins.skin -= 1;
       setSkin (window.snake, skins.skin);
-    }
-  };
+    },
 
+    /** Set the stock skin. This controls how the skin is visible to other players, and the dot color. **/
+    setStockSkin: function(snk) {
+      if(snk == null){console.log('setStockSkin: You don\'t seem to have a snake.'); return;}
+      var skinId = snk.rcv,
+          stockSkinId = 0;
+      if(!snk.SSkin){/**console.log('setStockSkin: Snake is not an SS modded skin. Stock skin remains '+skinId+'.');**/ return;}
+      if(!(stockSkinId = window.ss.skins.get(skinId).stockSkinId)){console.log('setStockSkin: Failed to get skin\'s stockSkinId, or none has been defined. Stock skin remains '+skinId+'.'); return;}
+      snk.rcv = stockSkinId;
+      localStorage.snakercv = stockSkinId;
+      //console.log('setStockSkin: Stock skin set to: '+window.snake.rcv);
+    }
+
+  };
   return skins;
 })());
