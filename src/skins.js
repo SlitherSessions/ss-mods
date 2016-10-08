@@ -145,6 +145,7 @@ ss.register ((function() {
            .add ({rbcs: [9,9,9,9,9,9,9,17,17,17,17,17,17,17], stockSkinId: 0}) //white/purple
            .add ({rbcs: [23,23,23,23,23,23,23,9,9,9,9,9,9,9], stockSkinId: 2}) //light blue/white
            .add ({rbcs: [9,9,9,9,9,9,9,23,23,23,23,23,23,23], stockSkinId: 2}) //white/light blue
+           .add ({rbcs: [18,18,18,18,18,18,18,9,9,9,9,9,9,9], stockSkinId: 4}) //golden/white
            .add ({rbcs: [22,22,22,22,22,22,22,9,9,9,9,9,9,9], stockSkinId: 5}) //orange/white
            .add ({rbcs: [7,7,7,7,18,18,18,18], stockSkinId: 18}) //red/gold
            .add ({rbcs: [26,26,26,26,26,26,26,27,27,27,27,27,27,27], stockSkinId: 12}) //jelly green/red
