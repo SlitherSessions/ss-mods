@@ -91,7 +91,7 @@ ss.register ((function() {
       if (skins.extras.length > 0)
         return;
 
-      skins.add ({ rbcs: [ 9, 9, 9, 13, 13, 13 ], stockSkinId: 28})     // green/white
+      skins.add ({ rbcs: [ 9, 9, 9, 13, 13, 13 ], stockSkinId: 3})     // green/white
            .add ({ rbcs: [ 9, 9, 9, 11, 11, 11 ], stockSkinId: 33})     // black/white
            .add ({ rbcs: [ 0, 0, 0, 8, 8, 8 ], stockSkinId: 8})        // striped purple
            .add ({ rbcs: [ 11 ], stockSkinId: 25})                      // black
