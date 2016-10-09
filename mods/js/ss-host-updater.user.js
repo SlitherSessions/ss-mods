@@ -42,24 +42,24 @@
 var ssHostUpdateUrl = "http://example.com/update_slither_host.php";
 
 function ssHostUpdaterInit () {
-    if (typeof window.ss != 'undefined')
-    {
-        var ss = window.ss;
-        ss.onHostChanged = function() {
-            $.get (ssHostUpdateUrl, { host: ss.currentIp() },
-              function (data) {
-               ss.log ("[SS] remote host updated: " + data);
-              })
-            ;
-        };
+  if (typeof window.ss != 'undefined')
+  {
+    var ss = window.ss;
+    ss.onHostChanged = function() {
+      $.get (ssHostUpdateUrl, { host: ss.currentIp() },
+        function (data) {
+         ss.log ("[SS] remote host updated: " + data);
+        })
+      ;
+    };
 
-        return;
-    }
+    return;
+  }
 
-    setTimeout (ssHostUpdaterInit, 300);
+  setTimeout (ssHostUpdaterInit, 300);
 }
 
 (function () {
-    'use strict';
-    ssHostUpdaterInit ();
+  'use strict';
+  ssHostUpdaterInit();
 })();

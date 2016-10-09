@@ -183,7 +183,7 @@ var ss = window.ss = (function() {
       }
     },
 
-    /** Override this to react when the server changes */
+    /** Override this to react when the server address changes */
     onHostChanged: function() { },
 
     /** Wait for the player's snake to become available */
