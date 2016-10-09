@@ -21,8 +21,8 @@
   SOFTWARE.
 */
 
-/** This is an example of how to notify a remote server with IP information. This
-    requires server side scripting to fully implement.
+/** This is an example of how to notify a remote server with IP information using
+    jQuery. This requires server side scripting to fully implement.
   */
 
 // ==UserScript==
