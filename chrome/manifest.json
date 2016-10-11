@@ -9,13 +9,6 @@
     "128": "images/icon.png"
   },
 
-  "background": {
-    "scripts": [
-      "js/background.js"
-    ],
-    "persistent": true
-  },
-
   "content_scripts": [
     {
       "matches": [
@@ -27,10 +20,8 @@
   ],
 
   "web_accessible_resources": [
-    "css/style.css",
     "css/style.min.css",
     "js/ss.min.js",
-    "js/ss.js",
     "js/jquery.js"
   ]
 }
