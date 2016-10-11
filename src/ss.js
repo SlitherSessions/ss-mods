@@ -24,6 +24,20 @@
 */
 
 var ss = window.ss = (function() {
+  var superConnect = window.connect;
+
+  window.connect = function() {
+    var nextHost = ss.currentIp();
+    if (nextHost != ss.loadOption ('lastHost')) {
+      userInterface.overlays.serverOverlay.innerHTML = nextHost;
+      ss.saveOption ('lastHost', nextHost);
+      if (typeof ss.onHostChanged != 'undefined')
+        ss.onHostChanged();
+    }
+
+    return superConnect();
+  };
+
   return {
     clanTags: [ 'SS', 'JG', 'YT' ],
     mods: [],
@@ -172,15 +186,15 @@ var ss = window.ss = (function() {
         window.lbh.textContent = ss.options.leaderBoardTitle;
       }
 
-      // save last host when it changes
-      if (window.bso !== undefined && userInterface.overlays.serverOverlay.innerHTML !==
-          window.bso.ip + ':' + window.bso.po) {
-          userInterface.overlays.serverOverlay.innerHTML = window.bso.ip + ':' + window.bso.po;
-          ss.saveOption ('lastHost', window.bso.ip + ':' + window.bso.po);
-
-          if (typeof ss.onHostChanged != 'undefined')
-            ss.onHostChanged();
-      }
+      // // save last host when it changes
+      // if (window.bso !== undefined && userInterface.overlays.serverOverlay.innerHTML !==
+      //     window.bso.ip + ':' + window.bso.po) {
+      //     userInterface.overlays.serverOverlay.innerHTML = window.bso.ip + ':' + window.bso.po;
+      //     ss.saveOption ('lastHost', window.bso.ip + ':' + window.bso.po);
+      //
+      //     if (typeof ss.onHostChanged != 'undefined')
+      //       ss.onHostChanged();
+      // }
     },
 
     /** Override this to react when the server address changes */
