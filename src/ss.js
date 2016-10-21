@@ -24,22 +24,6 @@
 */
 
 var ss = window.ss = (function() {
-  // var superConnect = window.connect;
-  //
-  // window.connect = function() {
-  //   var result = superConnect();
-  //
-  //   var nextHost = ss.currentIp();
-  //   if (nextHost && nextHost != ss.loadOption ('lastHost')) {
-  //     userInterface.overlays.serverOverlay.innerHTML = nextHost;
-  //     ss.saveOption ('lastHost', nextHost);
-  //     if (typeof ss.onHostChanged != 'undefined')
-  //       ss.onHostChanged();
-  //   }
-  //
-  //   return result;
-  // };
-
   return {
     clanTags: [ 'SS', 'JG', 'YT' ],
     mods: [],
