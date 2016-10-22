@@ -22,6 +22,7 @@
   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 */
+var ssClanTags = [ 'SS', 'JG', 'YT' ];
 
 function asciize (b, typing) {
   var h, c, f;
@@ -40,7 +41,7 @@ function asciize (b, typing) {
 
   var s = (c < 20) ? ' ' : '';
   var clanPrefix = ($('#tag').val().length > 0) ? $("#tag").val() + s : '' ;
-  return ss.clanTags.length > 0 && !typing ? clanPrefix + b : b;
+  return ssClanTags.length > 0 && !typing ? clanPrefix + b : b;
 }
 
 function ssAddClanTags() {
@@ -60,8 +61,8 @@ function ssAddClanTags() {
   });
 
   $('#tag').append("<option value=''>---</option>");
-  for (var i = 0; i < ss.clanTags.length; ++i) {
-    var tag = ss.clanTags [i];
+  for (var i = 0; i < ssClanTags.length; ++i) {
+    var tag = ssClanTags [i];
     $("#tag").append("<option value='[" + tag + "]'>[" + tag + "]</option>");
   }
 }

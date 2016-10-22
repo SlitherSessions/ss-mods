@@ -25,7 +25,6 @@
 
 var ss = window.ss = (function() {
   return {
-    clanTags: [ 'SS', 'JG', 'YT' ],
     mods: [],
     options: {
       leaderBoardTitle: 'Slither Sessions',
