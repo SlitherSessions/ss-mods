@@ -13,11 +13,14 @@ Why another slither.io mod set? Simply put, we are programmers and wanted someth
 * Force static IP/Server
 
 ### Installation
-**Chrome Extension**
+**Chrome Official Extension**
 
 Installation is cake. Just go to the [Slither Sessions Official Extension](https://chrome.google.com/webstore/detail/slither-sessions/bbakonnkdadhgdlcnkfefpepeiabaacp) page and click add to chrome.
 
-**Safari/Firefox/Opera**
+**Opera Official Extension**
+Head over to the [Slither Sessions Offical Extension](https://addons.opera.com/en/extensions/details/slither-sessions/) and click add to Opera
+
+**Safari/Firefox**
 
 Installation on these browers uses Tampermonkey.
 
