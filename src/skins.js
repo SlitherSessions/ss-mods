@@ -284,16 +284,22 @@ ss.register ((function() {
       setSkin (window.snake, skins.skin);
     },
 
-    /** Set the stock skin. This controls how the skin is visible to other players, and the dot color. **/
-    setStockSkin: function(skinId) {
-      if(skinId < impl.superMaxSkinCv){/**console.log('setStockSkin: Snake is not an SS modded skin. Stock skin remains '+skinId+'.');**/ return skinId;}
+    /** Set the stock skin. This controls how the skin is visible to other players,
+        and the dot color. */
+    setStockSkin: function (skinId) {
+      if (skinId < impl.superMaxSkinCv) {
+        // not an extra skin, noop
+        return skinId;
+      }
       var stockSkinId = 0;
-      if(!(stockSkinId = window.ss.skins.get(skinId).stockSkinId)){console.log('setStockSkin: Failed to get skin\'s stockSkinId, or none has been defined. Stock skin remains '+skinId+'.'); return skinId;}
+      if (!(stockSkinId = window.ss.skins.get(skinId).stockSkinId)) {
+        ss.log ('setStockSkin: Failed to get skin\'s stockSkinId, or none has been \
+                 defined. Stock skin remains ' + skinId + '.');
+        return skinId;
+      }
       localStorage.snakercv = stockSkinId;
-      //console.log('setStockSkin: Stock skin set to: '+window.snake.rcv);
       return stockSkinId;
     }
-
   };
   return skins;
 })());
