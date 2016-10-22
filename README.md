@@ -18,6 +18,7 @@ Why another slither.io mod set? Simply put, we are programmers and wanted someth
 Installation is cake. Just go to the [Slither Sessions Official Extension](https://chrome.google.com/webstore/detail/slither-sessions/bbakonnkdadhgdlcnkfefpepeiabaacp) page and click add to chrome.
 
 **Opera Official Extension**
+
 Head over to the [Slither Sessions Offical Extension](https://addons.opera.com/en/extensions/details/slither-sessions/) and click add to Opera
 
 **Safari/Firefox**
