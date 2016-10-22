@@ -26,16 +26,16 @@
 // bot ui extensions and overrides
 canvas.setZoom = function (e) {
   if (window.gsc && window.ss && window.ss.options.useZoom) {
-      window.gsc *= Math.pow(0.9, e.wheelDelta / -120 || e.detail / 2 || 0);
-      window.desired_gsc = window.gsc;
+    window.gsc *= Math.pow(0.9, e.wheelDelta / -120 || e.detail / 2 || 0);
+    window.desired_gsc = window.gsc;
   }
 };
 
 // Maintains Zoom
 canvas.maintainZoom = function () {
-    if (window.desired_gsc !== undefined && window.ss && window.ss.options.useZoom) {
-        window.gsc = window.desired_gsc;
-    }
+  if (window.desired_gsc !== undefined && window.ss && window.ss.options.useZoom) {
+    window.gsc = window.desired_gsc;
+  }
 };
 
 userInterface.onFrameUpdate = function() {
@@ -204,14 +204,14 @@ userInterface.playButtonClickListener = function () {
   userInterface.overlays.serverOverlay.style.overflow = 'visible';
   userInterface.overlays.serverOverlay.className = 'nsi';
 
-  userInterface.overlays.statsOverlay.style.top = '390px';
+  userInterface.overlays.statsOverlay.style.top = '400px';
 
   // Load preferences
   ss.loadOption ('logDebugging', false);
   ss.loadOption ('visualDebugging', false);
   ss.loadOption ('autoRespawn', true);
   ss.loadOption ('mobileRender', false);
-  ss.options.useZoom = ss.loadOption ('useZoom', false);
+  ss.options.useZoom = ss.loadOption ('useZoom', true);
   ss.options.rotateSkins = ss.loadOption ('rotateSkins', false);
 
   window.nick.value = ss.loadOption ('savedNick', 'Robot');
