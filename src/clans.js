@@ -23,6 +23,7 @@
   SOFTWARE.
 */
 
+// This needs to be in the global scope
 function asciize (b, typing) {
   var h, c, f;
   c = b.length;
@@ -34,36 +35,51 @@ function asciize (b, typing) {
     }
   if (w) {
     w = "";
-    for (h = 0; h < c; h++) f = b.charCodeAt(h), w = 32 > f || 127 < f ? w + " " : w + String.fromCharCode(f);
+    for (h = 0; h < c; h++) {
+      f = b.charCodeAt(h), w = 32 > f || 127 < f ? w + " " : w + String.fromCharCode(f);
+    }
     return w
   }
 
   var s = (c < 20) ? ' ' : '';
   var clanPrefix = ($('#tag').val().length > 0) ? $("#tag").val() + s : '' ;
-  return ss.clanTags.length > 0 && !typing ? clanPrefix + b : b;
+  return !typing ? clanPrefix + b : b;
 }
 
-function ssAddClanTags() {
-  window.nick.oninput = function() {
-    var b = this.value;
-    var h = asciize (b, true);
-    24 < h.length && (h = h.substr (0, 24));
-    b != h && (this.value = h);
+ss.register ((function () {
+  var ssClanTags = [ 'SS', 'JG', 'YT' ];
+
+  function ssAddClanTags() {
+    window.nick.oninput = function() {
+      self = window.nick;
+      var b = self.value;
+      var h = asciize (b, true);
+      24 < h.length && (h = h.substr (0, 24));
+      b != h && (self.value = h);
+    };
+
+    $('.taho').before (
+      '<div id="ss-tag-holder" class="taho"><select class="sumsginp" id="tag"></select></div>'
+    );
+
+    $('#tag').change(function () {
+      ss.saveOption ('savedClan', $(this).val());
+    });
+
+    $('#tag').append("<option value=''>---</option>");
+    for (var i = 0; i < ssClanTags.length; ++i) {
+      var tag = ssClanTags [i];
+      $("#tag").append("<option value='[" + tag + "]'>[" + tag + "]</option>");
+    }
+  }
+
+  var clans = {
+    slug: 'clans',
+    tags: ssClanTags,
+    init: function() {
+      ssAddClanTags();
+    }
   };
 
-  $('.taho').before (
-    '<div id="ss-tag-holder" class="taho"><select class="sumsginp" id="tag"></select></div>'
-  );
-
-  $('#tag').change(function () {
-      ss.saveOption ('savedClan', $(this).val());
-  });
-
-  $('#tag').append("<option value=''>---</option>");
-  for (var i = 0; i < ss.clanTags.length; ++i) {
-    var tag = ss.clanTags [i];
-    $("#tag").append("<option value='[" + tag + "]'>[" + tag + "]</option>");
-  }
-}
-
-ssAddClanTags();
+  return clans;
+})());

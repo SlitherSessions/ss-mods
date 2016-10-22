@@ -2,18 +2,11 @@
   "manifest_version": 2,
   "name": "Slither Sessions",
   "description": "Slither.io Mods: ZOOM, play with friends, skins and more.",
-  "version": "2.2.5",
+  "version": "2.2.6",
   "icons": {
     "16": "images/icon.png",
     "48": "images/icon.png",
     "128": "images/icon.png"
-  },
-
-  "background": {
-    "scripts": [
-      "js/background.js"
-    ],
-    "persistent": true
   },
 
   "content_scripts": [
@@ -27,10 +20,8 @@
   ],
 
   "web_accessible_resources": [
-    "css/style.css",
     "css/style.min.css",
     "js/ss.min.js",
-    "js/ss.js",
     "js/jquery.js"
   ]
 }

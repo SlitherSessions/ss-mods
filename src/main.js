@@ -24,6 +24,20 @@
 */
 
 // bot ui extensions and overrides
+canvas.setZoom = function (e) {
+  if (window.gsc && window.ss && window.ss.options.useZoom) {
+    window.gsc *= Math.pow(0.9, e.wheelDelta / -120 || e.detail / 2 || 0);
+    window.desired_gsc = window.gsc;
+  }
+};
+
+// Maintains Zoom
+canvas.maintainZoom = function () {
+  if (window.desired_gsc !== undefined && window.ss && window.ss.options.useZoom) {
+    window.gsc = window.desired_gsc;
+  }
+};
+
 userInterface.onFrameUpdate = function() {
   if (typeof window.ss != 'undefined')
     window.ss.onFrameUpdate();
@@ -83,6 +97,16 @@ userInterface.ssOnKeyDown = function (e) {
     ss.options.useLastHost = !ss.options.useLastHost;
     // ss.saveOption ('useLastHost', ss.options.useLastHost);
   }
+
+  // Letter 'X' toggle zoom
+  if (e.keyCode === 88) {
+    ss.options.useZoom = !ss.options.useZoom;
+    ss.saveOption ('useZoom', ss.options.useZoom);
+    if (! ss.options.useZoom) {
+      canvas.resetZoom();
+    }
+  }
+
   // Key ']' toggle IP visibility
   if (e.keyCode === 221) {
     var serverOverlay = document.getElementById('ss-server-overlay');
@@ -111,6 +135,7 @@ userInterface.onPrefChange = function () {
   oContent.push('[H] overlays');
   oContent.push('[B] change background');
   oContent.push('[Mouse Wheel] zoom');
+  oContent.push('[X] zoom enabled: ' + ht(ss.options.useZoom));
   oContent.push('[Z] reset zoom');
   oContent.push('[L] rotate skins: ' + ht(ss.options.rotateSkins));
   oContent.push('[K] next skin');
@@ -179,14 +204,16 @@ userInterface.playButtonClickListener = function () {
   userInterface.overlays.serverOverlay.style.overflow = 'visible';
   userInterface.overlays.serverOverlay.className = 'nsi';
 
-  userInterface.overlays.statsOverlay.style.top = '390px';
+  userInterface.overlays.statsOverlay.style.top = '400px';
 
   // Load preferences
   ss.loadOption ('logDebugging', false);
   ss.loadOption ('visualDebugging', false);
   ss.loadOption ('autoRespawn', true);
   ss.loadOption ('mobileRender', false);
+  ss.options.useZoom = ss.loadOption ('useZoom', true);
   ss.options.rotateSkins = ss.loadOption ('rotateSkins', false);
+
   window.nick.value = ss.loadOption ('savedNick', 'Robot');
   if (e = document.getElementById ('tag'))
     e.value = ss.loadOption ('savedClan', '[SS]');

@@ -20,30 +20,46 @@
   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 */
+
+/** This is an example of how to notify a remote server with IP information using
+    jQuery. This requires server side scripting to fully implement.
+  */
+
 // ==UserScript==
-// @name         Slither Sessions
+// @name         SS Host Updater
 // @namespace    mods.slithersessions.com
-// @version      2.2.6
+// @version      1.0.0
 // @description  Slither Sessions Mod Pack
 // @author       Slither Sessions
+// @updateURL    http://mods.slithersessions.com/js/ss-host-updater.user.js
+// @downloadURL  http://mods.slithersessions.com/js/ss-host-updater.user.js
 // @require      http://code.jquery.com/jquery-latest.js
-// @updateURL    http://mods.slithersessions.com/js/slithersessions.user.js
-// @downloadURL  http://mods.slithersessions.com/js/slithersessions.user.js
-// @match        http://slither.io/
-// @run-at       document-start
-// @grant        GM_xmlhttpRequest
+// @match        http://slither.io
+// @grant        none
+// @run-at       document-end
 // ==/UserScript==
 
-var loader = document.createElement ('script');
-loader.src = 'https://code.jquery.com/jquery-1.12.3.min.js';
-loader.onload = function() {
-  document.head.innerHTML += '<link rel="stylesheet" href="http://mods.slithersessions.com/css/style.min.css">';
-  var main = document.createElement ('script');
-  main.src = 'http://mods.slithersessions.com/js/ss.min.js';
-  // main.src = 'http://mods.slithersessions.com/js/ss.js'; /* uncomment for debugging */
-  main.onload = function() {
-    this.parentNode.removeChild (this);
-  };
-  (document.head || document.documentElement).appendChild (main);
-};
-(document.head || document.documentElement).appendChild (loader);
+var ssHostUpdateUrl = "http://example.com/update_slither_host.php";
+
+function ssHostUpdaterInit () {
+  if (typeof window.ss != 'undefined')
+  {
+    var ss = window.ss;
+    ss.onHostChanged = function() {
+      $.get (ssHostUpdateUrl, { host: ss.currentIp() },
+        function (data) {
+         ss.log ("[SS] remote host updated: " + data);
+        })
+      ;
+    };
+
+    return;
+  }
+
+  setTimeout (ssHostUpdaterInit, 300);
+}
+
+(function () {
+  'use strict';
+  ssHostUpdaterInit();
+})();

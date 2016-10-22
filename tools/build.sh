@@ -58,6 +58,11 @@ cat mods/css/style.min.css > chrome/css/style.min.css
 
 # Make the chrome/opera extension upload package
 rm -f build/*.zip
-zip -rvT build/slither-sessions-chrome.zip chrome
+rsync -var --delete \
+  --exclude "js/ss.js" \
+  --exclude "css/style.css" \
+  ./chrome/ ./build/ss-mods-chrome
+find build -name ".DS_Store" -delete
+cd build && zip -rvT ss-mods-chrome.zip ss-mods-chrome
 
 exit 0

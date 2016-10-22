@@ -25,7 +25,6 @@
 
 var ss = window.ss = (function() {
   return {
-    clanTags: [ 'SS', 'JG', 'YT' ],
     mods: [],
     options: {
       leaderBoardTitle: 'Slither Sessions',
@@ -33,7 +32,7 @@ var ss = window.ss = (function() {
       useLastHost: false
     },
 
-    version: function() { return '2.2.5'; },
+    version: function() { return '2.2.6'; },
 
     isInt: function (n) {
       return !isNaN(n) && Number(n) === n && n % 1 === 0;
@@ -67,8 +66,9 @@ var ss = window.ss = (function() {
       }
     },
 
+    /** Returns the current IP as provided by Slither */
     currentIp: function() {
-      return (typeof bso != 'undefined') ? bso.ip : false;
+      return (typeof bso != 'undefined') ? bso.ip + ":" + bso.po : false;
     },
 
     forceLastHost: function() {
@@ -103,6 +103,11 @@ var ss = window.ss = (function() {
 
     loadOption: function (key, d) {
       return window.userInterface.loadPreference (key, d);
+    },
+
+    log: function() {
+      if (window.logDebugging)
+          console.log.apply (console, arguments);
     },
 
     onFrameUpdate: function() {
@@ -170,10 +175,17 @@ var ss = window.ss = (function() {
       if (window.bso !== undefined && userInterface.overlays.serverOverlay.innerHTML !==
           window.bso.ip + ':' + window.bso.po) {
           userInterface.overlays.serverOverlay.innerHTML = window.bso.ip + ':' + window.bso.po;
-          ss.saveOption('lastHost', window.bso.ip + ':' + window.bso.po);
+          ss.saveOption ('lastHost', window.bso.ip + ':' + window.bso.po);
+
+          if (typeof ss.onHostChanged != 'undefined')
+            ss.onHostChanged();
       }
     },
 
+    /** Override this to react when the server address changes */
+    onHostChanged: function() { },
+
+    /** Wait for the player's snake to become available */
     waitForSnake: function (callback, retries) {
       if (! ss.isInt (retries))
         retries = 4;
@@ -185,7 +197,7 @@ var ss = window.ss = (function() {
           return;
 
         if (! window.snake) {
-          window.log('[SS] waiting for snake r=' + r + '...');
+          ss.log('[SS] waiting for snake r=' + r + '...');
           ++r;
           setTimeout (_waitForSnake, 300);
           return;
