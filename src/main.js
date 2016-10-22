@@ -101,7 +101,7 @@ userInterface.ssOnKeyDown = function (e) {
   // Letter 'X' toggle zoom
   if (e.keyCode === 88) {
     ss.options.useZoom = !ss.options.useZoom;
-    ss.saveOption ('useZoom', ss.options.useLastHost);
+    ss.saveOption ('useZoom', ss.options.useZoom);
     if (! ss.options.useZoom) {
       canvas.resetZoom();
     }
