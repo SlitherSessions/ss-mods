@@ -166,7 +166,20 @@ ss.register ((function() {
                 y: -146
               }
             })
-            .add ({rbcs: [11,26,26,26], stockSkinId: 27 });                     // Wired Gaming
+            .add ({rbcs: [11,26,26,26], stockSkinId: 27,                        // Wired Gaming
+              antenna: {
+                alpha: 0.5,
+                color1: "#252525",
+                color2: "#646464"
+              },
+              bulb: {
+                image: ss.resources.images.jokerHead,
+                scale: 0.12,
+                alpha: 1.0,
+                x: -18,
+                y: -320
+              }
+            });
 
 
       window.setSkin = function (snk, skinId) {
