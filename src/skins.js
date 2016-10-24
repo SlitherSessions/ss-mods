@@ -138,20 +138,34 @@ ss.register ((function() {
                y: -50
              }
            })
-           .add ({rbcs: [9,9,9,9,9,9,9,12,12,12,12,12,12,12], stockSkinId: 5}) //white/golden orange
-           .add ({rbcs: [3,3,3,3,3,3,3,9,9,9,9,9,9,9], stockSkinId: 3}) //green/white
-           .add ({rbcs: [9,9,9,9,9,9,9,3,3,3,3,3,3,3], stockSkinId: 3}) //white/green
-           .add ({rbcs: [17,17,17,17,17,17,17,9,9,9,9,9,9,9], stockSkinId: 0}) //purple/white
-           .add ({rbcs: [9,9,9,9,9,9,9,17,17,17,17,17,17,17], stockSkinId: 0}) //white/purple
-           .add ({rbcs: [23,23,23,23,23,23,23,9,9,9,9,9,9,9], stockSkinId: 2}) //light blue/white
-           .add ({rbcs: [9,9,9,9,9,9,9,23,23,23,23,23,23,23], stockSkinId: 2}) //white/light blue
-           .add ({rbcs: [18,18,18,18,18,18,18,9,9,9,9,9,9,9], stockSkinId: 4}) //golden/white
-           .add ({rbcs: [22,22,22,22,22,22,22,9,9,9,9,9,9,9], stockSkinId: 5}) //orange/white
-           .add ({rbcs: [7,7,7,7,18,18,18,18], stockSkinId: 18}) //red/gold
+           .add ({rbcs: [9,9,9,9,9,9,9,12,12,12,12,12,12,12], stockSkinId: 5})  //white/golden orange
+           .add ({rbcs: [3,3,3,3,3,3,3,9,9,9,9,9,9,9], stockSkinId: 3})         //green/white
+           .add ({rbcs: [9,9,9,9,9,9,9,3,3,3,3,3,3,3], stockSkinId: 3})         //white/green
+           .add ({rbcs: [17,17,17,17,17,17,17,9,9,9,9,9,9,9], stockSkinId: 0})  //purple/white
+           .add ({rbcs: [9,9,9,9,9,9,9,17,17,17,17,17,17,17], stockSkinId: 0})  //white/purple
+           .add ({rbcs: [23,23,23,23,23,23,23,9,9,9,9,9,9,9], stockSkinId: 2})  //light blue/white
+           .add ({rbcs: [9,9,9,9,9,9,9,23,23,23,23,23,23,23], stockSkinId: 2})  //white/light blue
+           .add ({rbcs: [18,18,18,18,18,18,18,9,9,9,9,9,9,9], stockSkinId: 4})  //golden/white
+           .add ({rbcs: [22,22,22,22,22,22,22,9,9,9,9,9,9,9], stockSkinId: 5})  //orange/white
+           .add ({rbcs: [7,7,7,7,18,18,18,18], stockSkinId: 18})                //red/gold
            .add ({rbcs: [26,26,26,26,26,26,26,27,27,27,27,27,27,27], stockSkinId: 12}) //jelly green/red
            .add ({rbcs: [27,27,27,27,27,27,27,26,26,26,26,26,26,26], stockSkinId: 12}) //jelly red/green
            //.add ({rbcs: [18,18,12,5,22,5,12,18,18], stockSkinId: 4}) //golden striped
-           .add ({rbcs: [0,17], stockSkinId: 0}); //purple striped
+           .add ({rbcs: [0,17], stockSkinId: 0})                                //purple striped
+           .add ({rbcs: [11,11,13,13], stockSkinId: 0,                          // SlitherClips
+              antenna: {
+                alpha: 0.5,
+                color1: "#252525",
+                color2: "#646464"
+              },
+              bulb: {
+                image: ss.resources.images.slitherClipsLogo,
+                scale: 0.16,
+                alpha: 1.0,
+                x: -15,
+                y: -146
+              }
+            });
 
       window.setSkin = function (snk, skinId) {
         skinId = parseInt (skinId);
