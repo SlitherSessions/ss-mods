@@ -174,13 +174,12 @@ ss.register ((function() {
               },
               bulb: {
                 image: ss.resources.images.jokerHead,
-                scale: 0.12,
+                scale: 0.10,
                 alpha: 1.0,
                 x: -18,
                 y: -320
               }
             });
-
 
       window.setSkin = function (snk, skinId) {
         skinId = parseInt (skinId);
