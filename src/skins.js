@@ -152,7 +152,7 @@ ss.register ((function() {
            .add ({rbcs: [27,27,27,27,27,27,27,26,26,26,26,26,26,26], stockSkinId: 12}) //jelly red/green
            //.add ({rbcs: [18,18,12,5,22,5,12,18,18], stockSkinId: 4}) //golden striped
            .add ({rbcs: [0,17], stockSkinId: 0})                                //purple striped
-           .add ({rbcs: [11,11,13,13], stockSkinId: 0,                          // SlitherClips
+           .add ({rbcs: [11,11,13,13], stockSkinId: 27,                         // SlitherClips
               antenna: {
                 alpha: 0.5,
                 color1: "#252525",
@@ -165,16 +165,19 @@ ss.register ((function() {
                 x: -15,
                 y: -146
               }
-            });
+            })
+            .add ({rbcs: [11,26,26,26], stockSkinId: 27 });                     // Wired Gaming
+
 
       window.setSkin = function (snk, skinId) {
         skinId = parseInt (skinId);
         var isOnSkinChooser = $('#psk').is(':visible');
 
-        if (isOnSkinChooser && typeof snk.rcv == 'undefined'){ //Should be entering the skin chooser for the first time.
-          //console.log('setSkin: In skin chooser, snake rcv is '+snk.rcv+', SS saved skinId is '+skins.savedSkin);
+        if (isOnSkinChooser && typeof snk.rcv == 'undefined') {
+          // Should be entering the skin chooser for the first time.
           skinId = skins.savedSkin;
-        } else if (isOnSkinChooser){ //Probably scrolling though the skin chooser.
+        } else if (isOnSkinChooser) {
+          // Probably scrolling though the skin chooser.
           skins.skin = skinId;
         }
 
