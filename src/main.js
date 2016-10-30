@@ -165,15 +165,16 @@ userInterface.playButtonClickListener = function () {
 
 // Main
 (function (window, document) {
+  // This must happen before any options are loaded
+  userInterface.initOverlays();
 
   // Load preferences
-  // ss.loadOption ('logDebugging', false);
-  // ss.loadOption ('visualDebugging', false);
-  // ss.loadOption ('autoRespawn', true);
-  // ss.loadOption ('mobileRender', false);
-  // ss.options.useZoom = ss.loadOption ('useZoom', true);
-  // ss.options.rotateSkins = ss.loadOption ('rotateSkins', false);
-
+  ss.loadOption ('logDebugging', false);
+  ss.loadOption ('visualDebugging', false);
+  ss.loadOption ('autoRespawn', true);
+  ss.loadOption ('mobileRender', false);
+  ss.options.useZoom = ss.loadOption ('useZoom', true);
+  ss.options.rotateSkins = ss.loadOption ('rotateSkins', false);
 
   document.onkeydown = userInterface.ssOnKeyDown;
   window.onmousedown = userInterface.onmousedown;
@@ -201,7 +202,6 @@ userInterface.playButtonClickListener = function () {
   userInterface.connect = connectButton;
 
   // Overlays
-  userInterface.initOverlays();
   userInterface.overlays.serverOverlay.id = "ss-server-overlay";
   userInterface.overlays.serverOverlay.style.position = 'fixed';
   userInterface.overlays.serverOverlay.style.left = '140px';
