@@ -23,6 +23,8 @@
   SOFTWARE.
 */
 
+
+
 // bot ui extensions and overrides
 canvas.setZoom = function (e) {
   if (window.gsc && window.ss && window.ss.options.useZoom) {
@@ -163,7 +165,16 @@ userInterface.playButtonClickListener = function () {
 
 // Main
 (function (window, document) {
-  window.play_btn.btnf.addEventListener ('click', userInterface.playButtonClickListener);
+
+  // Load preferences
+  // ss.loadOption ('logDebugging', false);
+  // ss.loadOption ('visualDebugging', false);
+  // ss.loadOption ('autoRespawn', true);
+  // ss.loadOption ('mobileRender', false);
+  // ss.options.useZoom = ss.loadOption ('useZoom', true);
+  // ss.options.rotateSkins = ss.loadOption ('rotateSkins', false);
+
+
   document.onkeydown = userInterface.ssOnKeyDown;
   window.onmousedown = userInterface.onmousedown;
   window.addEventListener ('mouseup', userInterface.onmouseup);
@@ -206,18 +217,6 @@ userInterface.playButtonClickListener = function () {
 
   userInterface.overlays.statsOverlay.style.top = '400px';
 
-  // Load preferences
-  ss.loadOption ('logDebugging', false);
-  ss.loadOption ('visualDebugging', false);
-  ss.loadOption ('autoRespawn', true);
-  ss.loadOption ('mobileRender', false);
-  ss.options.useZoom = ss.loadOption ('useZoom', true);
-  ss.options.rotateSkins = ss.loadOption ('rotateSkins', false);
-
-  window.nick.value = ss.loadOption ('savedNick', 'Robot');
-  if (e = document.getElementById ('tag'))
-    e.value = ss.loadOption ('savedClan', '[SS]');
-
   // Listener for mouse wheel scroll - used for setZoom function
   document.body.addEventListener ('mousewheel', canvas.setZoom);
   document.body.addEventListener ('DOMMouseScroll', canvas.setZoom);
@@ -236,11 +235,18 @@ userInterface.playButtonClickListener = function () {
   // Maintain fps
   setInterval (userInterface.framesPerSecond.fpsTimer, 80);
 
+  window.onload = function() {
+    window.nick.value = ss.loadOption ('savedNick', 'Robot');
+    if (e = document.getElementById ('tag'))
+      e.value = ss.loadOption ('savedClan', '[SS]');
+    window.play_btn.btnf.addEventListener ('click', userInterface.playButtonClickListener);
+  }
+
+  ss.mods.forEach (function (mod, i, a) {
+    if (typeof mod.init != 'undefined')
+      mod.init();
+  });
+
   // Start!
   userInterface.oefTimer();
 })(window, document);
-
-ss.mods.forEach (function (mod, i, a) {
-  if (typeof mod.init != 'undefined')
-    mod.init();
-});
