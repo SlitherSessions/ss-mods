@@ -321,7 +321,8 @@ ss.register ((function() {
         return skinId;
       }
       var stockSkinId = 0;
-      if (!(stockSkinId = window.ss.skins.get(skinId).stockSkinId)) {
+      var skin = skins.get(skinId)
+      if (!skin || !(stockSkinId = skin.stockSkinId)) {
         ss.log ('setStockSkin: Failed to get skin\'s stockSkinId, or none has been \
                  defined. Stock skin remains ' + skinId + '.');
         return skinId;
