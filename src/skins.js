@@ -179,7 +179,14 @@ ss.register ((function() {
                 x: -18,
                 y: -320
               }
-            });
+            })
+            .add ({ rbcs: [29,29,11,34,11], stockSkinId: 57 })                  // Cyristal Playz
+            .add ({ rbcs: [29,29,11,31,11], stockSkinId: 54 })                  // Glowey Red Stripe
+            .add ({ rbcs: [33,33,33,29,29,29], stockSkinId: 56 })               // Glowey Orange/Black
+            .add ({ rbcs: [33,33,33,32,32,32 ], stockSkinId: 55 })              // Glowey Orange/Yellow
+            .add ({ rbcs: [35,35,35,35,35,35,35, 33,33,33,33,33,33,33], stockSkinId: 56}) // Glowey Orange/Green
+            .add ({ rbcs: [33,33,33,33,33,33,33, 35,35,35,35,35,35,35], stockSkinId: 58}) // Glowey Green/Orange
+            .add ({ rbcs: [29, 29, 11, 29, 11], stockSkinId: 44});               // Terminator Skin
 
       window.setSkin = function (snk, skinId) {
         skinId = parseInt (skinId);
