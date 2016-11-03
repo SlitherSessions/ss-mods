@@ -268,9 +268,8 @@ ss.register ((function() {
       skins.setStockSkin(skins.savedSkin);
 
       // Add event listener to Save button in the skin chooser.
-      var b = document.getElementsByClassName('sadg1')[1];
-      if(typeof b !== undefined){
-        b.addEventListener('click', function(){
+      if (b = document.getElementsByClassName('sadg1')[1]) {
+        b.addEventListener ('click', function() {
           ss.skins.savedSkin = ss.skins.skin;
           ss.saveOption ('skinId', ss.skins.savedSkin);
           window.snake.rcv = ss.skins.setStockSkin(ss.skins.savedSkin);

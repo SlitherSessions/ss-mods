@@ -240,13 +240,14 @@ userInterface.playButtonClickListener = function () {
     if (e = document.getElementById ('tag'))
       e.value = ss.loadOption ('savedClan', '[SS]');
     window.play_btn.btnf.addEventListener ('click', userInterface.playButtonClickListener);
+
+    ss.mods.forEach (function (mod, i, a) {
+      if (typeof mod.init != 'undefined')
+        mod.init();
+    });
+
+    // Start!
+    userInterface.oefTimer();
   }
 
-  ss.mods.forEach (function (mod, i, a) {
-    if (typeof mod.init != 'undefined')
-      mod.init();
-  });
-
-  // Start!
-  userInterface.oefTimer();
 })(window, document);
