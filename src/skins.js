@@ -151,7 +151,7 @@ ss.register ((function() {
            .add ({rbcs: [26,26,26,26,26,26,26,27,27,27,27,27,27,27], stockSkinId: 12}) //jelly green/red
            .add ({rbcs: [27,27,27,27,27,27,27,26,26,26,26,26,26,26], stockSkinId: 12}) //jelly red/green
            //.add ({rbcs: [18,18,12,5,22,5,12,18,18], stockSkinId: 4}) //golden striped
-           .add ({rbcs: [0,17], stockSkinId: 0})                                //purple striped
+           .add ({rbcs: [0,17], stockSkinId: 0})                                // purple striped
            .add ({rbcs: [11,11,13,13], stockSkinId: 27,                         // SlitherClips
               antenna: {
                 alpha: 0.5,
@@ -180,13 +180,28 @@ ss.register ((function() {
                 y: -320
               }
             })
-            .add ({ rbcs: [29,29,11,34,11], stockSkinId: 57 })                  // Cyristal Playz
-            .add ({ rbcs: [29,29,11,31,11], stockSkinId: 54 })                  // Glowey Red Stripe
+            .add ({ rbcs: [29,29,11,31,11], stockSkinId: 54 })                  // Red TT Sleek
+            .add ({ rbcs: [29,29,11,34,11], stockSkinId: 8 })                   // Pink TT Sleek
+            .add ({ rbcs: [29,29,11,34,11], stockSkinId: 8,                     // Cyristal Playz (kawaii)
+              antenna: {
+                alpha: 0.5,
+                color1: "#252525",
+                color2: "#646464"
+              },
+              bulb: {
+                image: ss.resources.images.kawaii,
+                scale: 0.20,
+                alpha: 1.0,
+                x: -80,
+                y: -108
+              }
+            })
             .add ({ rbcs: [33,33,33,29,29,29], stockSkinId: 56 })               // Glowey Orange/Black
             .add ({ rbcs: [33,33,33,32,32,32 ], stockSkinId: 55 })              // Glowey Orange/Yellow
+
             .add ({ rbcs: [35,35,35,35,35,35,35, 33,33,33,33,33,33,33], stockSkinId: 56}) // Glowey Orange/Green
             .add ({ rbcs: [33,33,33,33,33,33,33, 35,35,35,35,35,35,35], stockSkinId: 58}) // Glowey Green/Orange
-            .add ({ rbcs: [29, 29, 11, 29, 11], stockSkinId: 44});               // Terminator Skin
+            .add ({ rbcs: [29, 29, 11, 29, 11], stockSkinId: 44});              // The Worminator
 
       window.setSkin = function (snk, skinId) {
         skinId = parseInt (skinId);
