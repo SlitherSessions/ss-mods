@@ -201,7 +201,8 @@ ss.register ((function() {
 
             .add ({ rbcs: [35,35,35,35,35,35,35, 33,33,33,33,33,33,33], stockSkinId: 56}) // Glowey Orange/Green
             .add ({ rbcs: [33,33,33,33,33,33,33, 35,35,35,35,35,35,35], stockSkinId: 58}) // Glowey Green/Orange
-            .add ({ rbcs: [29, 29, 11, 29, 11], stockSkinId: 44});              // The Worminator
+            .add ({ rbcs: [29, 29, 11, 29, 11], stockSkinId: 44})               // The Worminator
+            .add ({ rbcs: [ 29,29,29,29,29, 31,31,31,31,31, 32,32,32,32,32 ]})  // Glowey Black/Red/Yellow Stripe
 
       window.setSkin = function (snk, skinId) {
         skinId = parseInt (skinId);
