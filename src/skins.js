@@ -91,11 +91,11 @@ ss.register ((function() {
       if (skins.extras.length > 0)
         return;
 
-      skins.add ({ rbcs: [ 9, 9, 9, 13, 13, 13 ], stockSkinId: 3})     // green/white
-           .add ({ rbcs: [ 9, 9, 9, 11, 11, 11 ], stockSkinId: 33})     // black/white
-           .add ({ rbcs: [ 0, 0, 0, 8, 8, 8 ], stockSkinId: 8})        // striped purple
-           .add ({ rbcs: [ 11 ], stockSkinId: 25})                      // black
-           .add ({ rbcs: [ 11, 9, 11, 7, 7, 7 ], stockSkinId: 7,        // spyke gaming
+      skins.add ({ rbcs: [ 9, 9, 9, 13, 13, 13 ], stockSkinId: 3})              // green/white
+           .add ({ rbcs: [ 9, 9, 9, 11, 11, 11 ], stockSkinId: 33})             // black/white
+           .add ({ rbcs: [ 0, 0, 0, 8, 8, 8 ], stockSkinId: 8})                 // striped purple
+           .add ({ rbcs: [ 11 ], stockSkinId: 25})                              // black
+           .add ({ rbcs: [ 11, 9, 11, 7, 7, 7 ], stockSkinId: 7,                // spyke gaming
                    antenna: {
                      alpha: 1.0,
                      color1: "#800",
@@ -150,7 +150,7 @@ ss.register ((function() {
            .add ({rbcs: [7,7,7,7,18,18,18,18], stockSkinId: 18})                //red/gold
            .add ({rbcs: [26,26,26,26,26,26,26,27,27,27,27,27,27,27], stockSkinId: 12}) //jelly green/red
            .add ({rbcs: [27,27,27,27,27,27,27,26,26,26,26,26,26,26], stockSkinId: 12}) //jelly red/green
-           //.add ({rbcs: [18,18,12,5,22,5,12,18,18], stockSkinId: 4}) //golden striped
+           //.add ({rbcs: [18,18,12,5,22,5,12,18,18], stockSkinId: 4 }) //golden striped
            .add ({rbcs: [0,17], stockSkinId: 0})                                // purple striped
            .add ({rbcs: [11,11,13,13], stockSkinId: 27,                         // SlitherClips
               antenna: {
@@ -196,13 +196,17 @@ ss.register ((function() {
                 y: -108
               }
             })
-            .add ({ rbcs: [33,33,33,29,29,29], stockSkinId: 56 })               // Glowey Orange/Black
+            .add ({ rbcs: [33,33,33,29,29,29 ], stockSkinId: 56 })              // Glowey Orange/Black
             .add ({ rbcs: [33,33,33,32,32,32 ], stockSkinId: 55 })              // Glowey Orange/Yellow
-
-            .add ({ rbcs: [35,35,35,35,35,35,35, 33,33,33,33,33,33,33], stockSkinId: 56}) // Glowey Orange/Green
-            .add ({ rbcs: [33,33,33,33,33,33,33, 35,35,35,35,35,35,35], stockSkinId: 58}) // Glowey Green/Orange
-            .add ({ rbcs: [29, 29, 11, 29, 11], stockSkinId: 44})               // The Worminator
-            .add ({ rbcs: [ 29,29,29,29,29, 31,31,31,31,31, 32,32,32,32,32 ]})  // Glowey Black/Red/Yellow Stripe
+            .add ({ rbcs: [35,35,35,35,35,35,35, 33,33,33,33,33,33,33],         // Glowey Orange/Green
+                    stockSkinId: 56 })
+            .add ({ rbcs: [33,33,33,33,33,33,33, 35,35,35,35,35,35,35],         // Glowey Green/Orange
+                    stockSkinId: 58 })
+            .add ({ rbcs: [ 29, 29, 11, 29, 11], stockSkinId: 44})              // The Worminator
+            .add ({ rbcs: [ 29,29,29,29,29, 31,31,31,31,31, 32,32,32,32,32 ],   // Glowey Black/Red/Yellow Stripe
+                    stockSkinId: 11 })
+            .add ({ rbcs: [ 11,11,11,11,11, 9,9,9,9,9,  18,18,18,18,18],
+                    stockSkinId: 18 })                                          // YonduBR
 
       window.setSkin = function (snk, skinId) {
         skinId = parseInt (skinId);
