@@ -236,15 +236,16 @@ userInterface.playButtonClickListener = function () {
   setInterval (userInterface.framesPerSecond.fpsTimer, 80);
 
   window.onload = function() {
-    window.nick.value = ss.loadOption ('savedNick', 'Robot');
-    if (e = document.getElementById ('tag'))
-      e.value = ss.loadOption ('savedClan', '[SS]');
-    window.play_btn.btnf.addEventListener ('click', userInterface.playButtonClickListener);
-
     ss.mods.forEach (function (mod, i, a) {
       if (typeof mod.init != 'undefined')
         mod.init();
     });
+
+    window.nick.value = ss.loadOption ('savedNick', 'Robot');
+    if (e = document.getElementById ('tag'))
+      e.value = ss.loadOption ('savedClan', '[SS]');
+
+    window.play_btn.btnf.addEventListener ('click', userInterface.playButtonClickListener);
 
     // Start!
     userInterface.oefTimer();

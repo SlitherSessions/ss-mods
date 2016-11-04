@@ -62,11 +62,11 @@ ss.register ((function () {
       '<div id="ss-tag-holder" class="taho"><select class="sumsginp" id="tag"></select></div>'
     );
 
-    $('#tag').change(function () {
+    $('#tag').change (function () {
       ss.saveOption ('savedClan', $(this).val());
     });
 
-    $('#tag').append("<option value=''>---</option>");
+    $('#tag').append ("<option value=''>---</option>");
     for (var i = 0; i < ssClanTags.length; ++i) {
       var tag = ssClanTags [i];
       $("#tag").append("<option value='[" + tag + "]'>[" + tag + "]</option>");
