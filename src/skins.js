@@ -208,7 +208,8 @@ ss.register ((function() {
             .add ({ rbcs: [ 11,11,11,11,11, 9,9,9,9,9,  18,18,18,18,18],
                     stockSkinId: 18 })                                          // YonduBR
             .add ({ rbcs: [ 7,7, 9,9, 6,6, 9,9 ] })                             // Arianna
-            .add ({ rbcs: [ 0 ]})                                               // Kermit the Frog
+            .add ({ rbcs: [ 0 ]});                                              // Kermit the Frog
+
       window.setSkin = function (snk, skinId) {
         skinId = parseInt (skinId);
         var isOnSkinChooser = $('#psk').is(':visible');
