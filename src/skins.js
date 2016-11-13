@@ -205,12 +205,26 @@ ss.register ((function() {
             .add ({ rbcs: [ 29, 29, 11, 29, 11], stockSkinId: 44})              // The Worminator
             .add ({ rbcs: [ 29,29,29,29,29, 31,31,31,31,31, 32,32,32,32,32 ],   // Glowey Black/Red/Yellow Stripe
                     stockSkinId: 11 })
-            .add ({ rbcs: [ 11,11,11,11,11, 9,9,9,9,9,  18,18,18,18,18],
-                    stockSkinId: 18 })                                          // YonduBR
+            .add ({ rbcs: [ 11,11,11,11,11, 9,9,9,9,9,  18,18,18,18,18],        // YonduBR
+                    stockSkinId: 18,
+                    antenna: {
+                      alpha: 0.5,
+                      color1: "#252525",
+                      color2: "#646464"
+                    },
+                    bulb: {
+                      image: ss.resources.images.yondubr,
+                      scale: 0.13,
+                      alpha: 1.0,
+                      x: -90,
+                      y: -140
+                    }
+                  })
             .add ({ rbcs: [31, 31, 31, 7, 29, 7] })                             // Arianna
             .add ({ rbcs: [ 35 ]})                                              // Kermit the Frog
             .add ({ rbcs: [ 29,29,29,29, 32,32,32,32,32,32 ],                   // Killer Bee
-                    stockSkinId: 55 });
+                    stockSkinId: 55,
+                   });
 
       window.setSkin = function (snk, skinId) {
         skinId = parseInt (skinId);
