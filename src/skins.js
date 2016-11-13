@@ -207,8 +207,10 @@ ss.register ((function() {
                     stockSkinId: 11 })
             .add ({ rbcs: [ 11,11,11,11,11, 9,9,9,9,9,  18,18,18,18,18],
                     stockSkinId: 18 })                                          // YonduBR
-            .add ({ rbcs: [ 7,7, 9,9, 6,6, 9,9 ] })                             // Arianna
-            .add ({ rbcs: [ 0 ]});                                              // Kermit the Frog
+            .add ({ rbcs: [31, 31, 31, 7, 29, 7] })                             // Arianna
+            .add ({ rbcs: [ 35 ]})                                              // Kermit the Frog
+            .add ({ rbcs: [ 29,29,29, 32,32,32,32,32,32,32 ],                   // Killer Bee
+                    stockSkinId: 55 });
 
       window.setSkin = function (snk, skinId) {
         skinId = parseInt (skinId);
