@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Slither Sessions",
   "description": "Slither.io Mods: ZOOM, play with friends, skins and more.",
-  "version": "2.2.10",
+  "version": "2.2.11",
   "icons": {
     "16": "images/icon.png",
     "48": "images/icon.png",

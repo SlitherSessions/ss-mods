@@ -206,7 +206,7 @@ ss.register ((function() {
             .add ({ rbcs: [ 29,29,29,29,29, 31,31,31,31,31, 32,32,32,32,32 ],   // Glowey Black/Red/Yellow Stripe
                     stockSkinId: 11 })
             .add ({ rbcs: [ 11,11,11,11,11, 9,9,9,9,9,  18,18,18,18,18],        // YonduBR
-                    stockSkinId: 18,
+                    stockSkinId: 4,
                     antenna: {
                       alpha: 0.5,
                       color1: "#252525",
