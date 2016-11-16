@@ -220,8 +220,8 @@ ss.register ((function() {
                       y: -140
                     }
                   })
-            .add ({ rbcs: [31, 31, 31, 7, 29, 7] })                             // Arianna
-            .add ({ rbcs: [ 35 ]})                                              // Kermit the Frog
+            //.add ({ rbcs: [31, 31, 31, 7, 29, 7] })                             // FNAF Foxy, Arianna
+            //.add ({ rbcs: [ 35 ]})                                              // Kermit the Frog
             .add ({ rbcs: [ 29,29,29,29, 32,32,32,32,32,32 ],                   // Killer Bee
                     stockSkinId: 55,
                    });
