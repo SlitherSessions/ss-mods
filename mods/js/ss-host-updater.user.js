@@ -28,7 +28,7 @@
 // ==UserScript==
 // @name         SS Host Updater
 // @namespace    mods.slithersessions.com
-// @version      1.0.0
+// @version      1.0.1
 // @description  Slither Sessions Mod Pack
 // @author       Slither Sessions
 // @updateURL    http://mods.slithersessions.com/js/ss-host-updater.user.js
@@ -39,20 +39,30 @@
 // @run-at       document-end
 // ==/UserScript==
 
-var ssHostUpdateUrl = "http://example.com/update_slither_host.php";
+// Access Key and URL can be found here:
+// https://slithersessions.com/dashboard/nightbot
 
-function ssHostUpdaterInit () {
+var ssAccessKey = 'your_ss_access_key';
+var ssHostUpdateUrl = "https://slithersessions.com/v1/nightbot.json";
+
+function ssHostUpdaterInit() {
   if (typeof window.ss != 'undefined')
   {
     var ss = window.ss;
     ss.onHostChanged = function() {
-      $.get (ssHostUpdateUrl, { host: ss.currentIp() },
-        function (data) {
-         ss.log ("[SS] remote host updated: " + data);
-        })
-      ;
+      $.ajax ({
+        method: 'PATCH',
+        url: ssHostUpdateUrl,
+        data: {
+          nightbot: {
+            slither_host: ss.currentIp()
+          }
+        },
+        headers: {
+          'Authorization': 'Token token=' + ssAccessKey
+        }
+      });
     };
-
     return;
   }
 
