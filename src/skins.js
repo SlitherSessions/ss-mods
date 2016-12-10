@@ -235,7 +235,10 @@ ss.register ((function() {
                       y: -160
                     }
                   })
-            .add ({ rbcs: [ 35 ]} );                                            // Kermit the Frog
+            .add ({ rbcs: [ 7,7,7,7,7, 14,14,14, 7,7, 9, 7, 9, 7,7,7,7,7,7,7,         // King of Agario
+                            14,14,14,14,14, 7,7,7, 14,14, 9, 14, 9,
+                            14,14,14,14,14,14,14], stockSkinId: 55 })
+            //.add ({ rbcs: [ 35 ]} );                                          // Kermit the Frog
       window.setSkin = function (snk, skinId) {
         skinId = parseInt (skinId);
         var isOnSkinChooser = $('#psk').is(':visible');
