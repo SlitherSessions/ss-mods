@@ -220,12 +220,22 @@ ss.register ((function() {
                       y: -140
                     }
                   })
-            //.add ({ rbcs: [31, 31, 31, 7, 29, 7] })                             // FNAF Foxy, Arianna
-            //.add ({ rbcs: [ 35 ]})                                              // Kermit the Frog
-            .add ({ rbcs: [ 29,29,29,29, 32,32,32,32,32,32 ],                   // Killer Bee
-                    stockSkinId: 55,
-                   });
-
+            .add ({ rbcs: [ 29,29,29,29, 32,32,32,32,32,32 ], stockSkinId: 55 })// Killer Bee
+            .add ({ rbcs: [ 31, 31, 31, 7, 29, 7 ], stockSkinId: 54,            // FNAF Foxy, Arianna
+                    antenna: {
+                      alpha: 0.5,
+                      color1: "#e52525",
+                      color2: "#c46464"
+                    },
+                    bulb: {
+                      image: ss.resources.images.foxyHead,
+                      scale: 0.135,
+                      alpha: 1.0,
+                      x: -90,
+                      y: -160
+                    }
+                  })
+            .add ({ rbcs: [ 35 ]} );                                            // Kermit the Frog
       window.setSkin = function (snk, skinId) {
         skinId = parseInt (skinId);
         var isOnSkinChooser = $('#psk').is(':visible');
