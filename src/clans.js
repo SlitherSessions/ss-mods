@@ -47,7 +47,7 @@ function asciize (b, typing) {
 }
 
 ss.register ((function () {
-  var ssClanTags = [ 'SS', 'BIG', 'JG', 'YBR', 'YT' ];
+  var ssClanTags = [ 'SS', 'AYE', 'BIG', 'JG', 'YBR', 'YT' ];
 
   function ssAddClanTags() {
     window.nick.oninput = function() {
