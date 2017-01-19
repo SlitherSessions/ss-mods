@@ -23,7 +23,7 @@
 // ==UserScript==
 // @name         Slither Sessions
 // @namespace    mods.slithersessions.com
-// @version      2.2.13
+// @version      2.2.14
 // @description  Slither Sessions Mod Pack
 // @author       Slither Sessions
 // @require      http://code.jquery.com/jquery-latest.js
