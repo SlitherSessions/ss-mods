@@ -235,10 +235,27 @@ ss.register ((function() {
                       y: -160
                     }
                   })
-            .add ({ rbcs: [ 7,7,7,7,7, 14,14,14, 7,7, 9, 7, 9, 7,7,7,7,7,7,7,         // King of Agario
+            .add ({ rbcs: [ 7,7,7,7,7, 14,14,14, 7,7, 9, 7, 9, 7,7,7,7,7,7,7,   // King of Agario
                             14,14,14,14,14, 7,7,7, 14,14, 9, 14, 9,
                             14,14,14,14,14,14,14], stockSkinId: 55 })
-            //.add ({ rbcs: [ 35 ]} );                                          // Kermit the Frog
+            .add ({ rbcs: [4, 4, 4, 4, 4, 13, 13, 13, 13, 13, 9, 9, 9, 9, 9],
+                    stockSkinId: 54,                              // MopeX
+                    antenna: {
+                      alpha: 0.5,
+                      color1: "#252525",
+                      color2: "#646464"
+                    },
+                    bulb: {
+                      image: ss.resources.images.mopeXLogo,
+                      scale: 0.72,
+                      alpha: 1.0,
+                      x: -25,
+                      y: -20
+                    }
+                  });
+// [ 9, 9, 9, 13, 4 ]
+// [ 4, 4, 4, 4, 13, 9, 13 ]
+// [4, 4, 4, 4, 4, 13, 13, 13, 13, 13, 9, 9, 9, 9, 9]
       window.setSkin = function (snk, skinId) {
         skinId = parseInt (skinId);
         var isOnSkinChooser = $('#psk').is(':visible');
