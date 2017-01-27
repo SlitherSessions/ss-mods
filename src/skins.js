@@ -253,7 +253,7 @@ ss.register ((function() {
                       y: -20
                     }
                   })
-            .add ({ rbcs: [ 33, 33, 33, 11 ],
+            .add ({ rbcs: [ 33, 33, 33, 12 ],
                     stockSkinId: 4,                              // Teddy Bear
                     antenna: {
                       alpha: 0.5,
