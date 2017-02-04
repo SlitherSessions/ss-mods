@@ -267,12 +267,23 @@ ss.register ((function() {
                       x: -100,
                       y: -80
                     }
+                  })
+            .add ({ rbcs: [ 1, 1, 1, 2, 2, 2 ],
+                    stockSkinId: 4,                              // Kitkat Angel
+                    antenna: {
+                      alpha: 0.5,
+                      color2: "#c78b31",
+                      color1: "#966308"
+                    },
+                    bulb: {
+                      image: ss.resources.images.teddyBear,
+                      scale: 0.22,
+                      alpha: 1.0,
+                      x: -100,
+                      y: -80
+                    }
                   });
-                  // [ 12, 12, 12, 12, 12, 11, 5],
-                  // 29, 33, 33, 33
-// [ 9, 9, 9, 13, 4 ]
-// [ 4, 4, 4, 4, 13, 9, 13 ]
-// [4, 4, 4, 4, 4, 13, 13, 13, 13, 13, 9, 9, 9, 9, 9]
+
       window.setSkin = function (snk, skinId) {
         skinId = parseInt (skinId);
         var isOnSkinChooser = $('#psk').is(':visible');
