@@ -116,6 +116,14 @@ userInterface.ssOnKeyDown = function (e) {
     serverOverlay.style.visibility = oVis;
   }
 
+  if (e.keyCode === 49) {
+    canvas.setBackground();
+  }
+
+  if (e.keyCode === 50) {
+    canvas.setBackground ('http://mods.slithersessions.com/images/bg-1.jpg');
+  }
+
   userInterface.onPrefChange();
 };
 
