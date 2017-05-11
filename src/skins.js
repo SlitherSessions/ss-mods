@@ -49,41 +49,45 @@ ss.register ((function() {
 
       if (skin.bulb && skin.bulb.image) {
         var img = new Image();
+        img.onload = function() {
+          snk.bulb.width  = parseInt (img.width);
+          snk.bulb.height = parseInt (img.height);
+          var ctx = snk.bulb.getContext ('2d');
+          ctx.drawImage (img, 0, 0, img.width, img.height,
+                              0, 0, img.width, img.height);
+          img = null;
+
+          // these were copied from the JS console, not currently modifiable via code
+          snk.atax = [0, 0, 0, 0 ] //, 0, 0, 0, 0, 0];
+          snk.atay = [0, 0, 0, 0 ] //, 0, 0, 0, 0, 0];
+          snk.atvx = [0, -2.174018144607544, -1.9938501119613647, -2.2244787216186523, -2.1016628742218018, -2.0143206119537354, -2.095236301422119, -2.2232143878936768, -1.9363921880722046];
+          snk.atvy = [0, -0.7573261260986328, -0.7961844801902771, -0.3080170750617981, 0.2950030565261841, 0.8237428069114685, 0.568598210811615, 0.027775723487138748, -0.6246974468231201];
+          snk.atx  = [10792, 10788.1982421875, 10784.205078125, 10780.369140625, 10776.814453125, 10773.0830078125, 10769.091796875, 10765.2275390625, 10761.48046875];
+          snk.aty  = [10800, 10799.658203125, 10798.2373046875, 10796.662109375, 10795.90625, 10796.720703125, 10798.310546875, 10799.6298828125, 10799.82421875];
+
+          snk.atba = 0.0; // not sure what this is
+          snk.atia = d (skin.antenna.alpha, 1.0);
+          snk.atc1 = d (skin.antenna.color1, "#800");
+          snk.atc2 = d (skin.antenna.color2, "#b00");
+
+          if (skin.bulb) {
+            snk.bsc  = d (skin.bulb.scale, 0.25);
+            snk.blba = d (skin.bulb.alpha, 1.0);
+            snk.blbw = d (skin.bulb.width,  snk.bulb.width);
+            snk.blbh = d (skin.bulb.height, snk.bulb.height);
+            snk.blbx = d (skin.bulb.x, -1 * (snk.bulb.width / 2));
+            snk.blby = d (skin.bulb.y, -1 * (snk.bulb.width / 2));
+          }
+
+          snk.atwg = true;
+          snk.abrot = true;
+          snk.antenna_shown = true;
+          snk.antenna = true;
+          
+        }; // end onload
+
         img.src = skin.bulb.image
-        snk.bulb.width  = parseInt (img.width);
-        snk.bulb.height = parseInt (img.height);
-        var ctx = snk.bulb.getContext ('2d');
-        ctx.drawImage (img, 0, 0, img.width, img.height,
-                            0, 0, img.width, img.height);
-        img = null;
       }
-
-      // these were copied from the JS console, not currently modifiable via code
-      snk.atax = [0, 0, 0, 0 ] //, 0, 0, 0, 0, 0];
-      snk.atay = [0, 0, 0, 0 ] //, 0, 0, 0, 0, 0];
-      snk.atvx = [0, -2.174018144607544, -1.9938501119613647, -2.2244787216186523, -2.1016628742218018, -2.0143206119537354, -2.095236301422119, -2.2232143878936768, -1.9363921880722046];
-      snk.atvy = [0, -0.7573261260986328, -0.7961844801902771, -0.3080170750617981, 0.2950030565261841, 0.8237428069114685, 0.568598210811615, 0.027775723487138748, -0.6246974468231201];
-      snk.atx  = [10792, 10788.1982421875, 10784.205078125, 10780.369140625, 10776.814453125, 10773.0830078125, 10769.091796875, 10765.2275390625, 10761.48046875];
-      snk.aty  = [10800, 10799.658203125, 10798.2373046875, 10796.662109375, 10795.90625, 10796.720703125, 10798.310546875, 10799.6298828125, 10799.82421875];
-
-      snk.atba = 0.0; // not sure what this is
-      snk.atia = d (skin.antenna.alpha, 1.0);
-      snk.atc1 = d (skin.antenna.color1, "#800");
-      snk.atc2 = d (skin.antenna.color2, "#b00");
-
-      if (skin.bulb) {
-        snk.bsc  = d (skin.bulb.scale, 0.25);
-        snk.blba = d (skin.bulb.alpha, 1.0);
-        snk.blbw = d (skin.bulb.width, snk.bulb.width);
-        snk.blbh = d (skin.bulb.height, snk.bulb.height);
-        snk.blbx = d (skin.bulb.x, -1 * (snk.bulb.width / 2));
-        snk.blby = d (skin.bulb.y, -1 * (snk.bulb.width / 2));
-      }
-
-      snk.atwg = true;
-      snk.abrot = true;
-      snk.antenna_shown = true;
-      snk.antenna = true;
     },
 
     /** Setup extra skins and override native setSkin */
@@ -280,7 +284,9 @@ ss.register ((function() {
                       scale: 0.22,
                       alpha: 1.0,
                       x: -100,
-                      y: -80
+                      y: -80,
+                      width: 100,
+                      height: 100
                     }
                   });
 
