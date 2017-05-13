@@ -1734,7 +1734,6 @@ var userInterface = window.userInterface = (function (window, document) {
             });
         },
 
-
         toggleGfx: function () {
             if (userInterface.gfxEnabled) {
                 var c = window.mc.getContext('2d');
@@ -1926,7 +1925,7 @@ var userInterface = window.userInterface = (function (window, document) {
                         break;
                     // "Right click" to toggle bot in addition to the letter "T"
                     case 3:
-                        bot.isBotEnabled = !bot.isBotEnabled;
+                        // bot.isBotEnabled = !bot.isBotEnabled;
                         break;
                 }
             } else {
@@ -2112,3 +2111,4 @@ var userInterface = window.userInterface = (function (window, document) {
     };
 })(window, document);
 
+// Main
