@@ -9,6 +9,11 @@
     "128": "images/icon.png"
   },
 
+  "permissions": [
+    "http://mods.slithersessions.com/images/*.jpg",
+    "http://mods.slithersessions.com/images/*.png"
+  ],
+
   "content_scripts": [
     {
       "matches": [
