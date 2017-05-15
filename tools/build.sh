@@ -36,7 +36,7 @@ function minify_source() {
 mkdir -p build
 
 # Splice out the bot code we care about
-awk 'NR >= 0 && NR < 2115' vendor/bot-ce/bot.user.js > src/gozer.js
+# awk 'NR >= 0 && NR < 2115' vendor/bot-ce/bot.user.js > src/gozer.js
 
 cat src/config.js \
   src/gozer.js \
