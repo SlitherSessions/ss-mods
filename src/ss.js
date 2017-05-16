@@ -32,7 +32,7 @@ var ss = window.ss = (function() {
       useLastHost: false
     },
 
-    version: function() { return '2.2.18'; },
+    version: function() { return '2.2.19'; },
 
     isInt: function (n) {
       return !isNaN(n) && Number(n) === n && n % 1 === 0;
