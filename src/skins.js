@@ -272,7 +272,7 @@ ss.register ((function() {
                       y: -80
                     }
                   })
-            .add ({ rbcs: [ 34,34,34,34, 11,11,11,11 ],
+            .add ({ rbcs: [ 34,34,34,34, 29,11,11,11,11,29 ],
                     stockSkinId: 8,                              // Kitkat Angel
                     antenna: {
                       alpha: 0.5,
