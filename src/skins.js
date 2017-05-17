@@ -305,7 +305,7 @@ ss.register ((function() {
                     }
                   })
             .add ({ rbcs: [31,31,31,31,31, 9,11,11,11,11,11,11,9 ],
-                    stockSkinId: 11,                               // TDK cassette
+                    stockSkinId: 7,                               // TDK cassette
                     antenna: {
                       alpha: 0.5,
                       color2: "#222",
