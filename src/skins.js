@@ -288,6 +288,21 @@ ss.register ((function() {
                       width: 100,
                       height: 100
                     }
+                  })
+            .add ({ rbcs: [5, 5, 5, 5, 5, 5, 5, 11, 9, 11],
+                    stockSkinId: 5,                               // TDK cassette
+                    antenna: {
+                      alpha: 0.5,
+                      color2: "#333333",
+                      color1: "#222222"
+                    },
+                    bulb: {
+                      image: ss.resources.images.tdkCassette,
+                      scale: 0.205,
+                      alpha: 1.0,
+                      x: -22,
+                      y: -94
+                    }
                   });
 
       window.setSkin = function (snk, skinId) {
