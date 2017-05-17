@@ -303,6 +303,23 @@ ss.register ((function() {
                       x: -22,
                       y: -94
                     }
+                  })
+            .add ({ rbcs: [31,31,31,31,31, 9,11,11,11,11,11,11,9 ],
+                    stockSkinId: 11,                               // TDK cassette
+                    antenna: {
+                      alpha: 0.5,
+                      color2: "#222",
+                      color1: "#333"
+                    },
+                    bulb: {
+                      image: ss.resources.images.psychoSmith,
+                      scale: .52,
+                      alpha: 1.0,
+                      width:  100,
+                      height: 100,
+                      x: -18,
+                      y: -50
+                    }
                   });
 
       window.setSkin = function (snk, skinId) {
