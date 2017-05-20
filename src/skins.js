@@ -305,7 +305,7 @@ ss.register ((function() {
                     }
                   })
             .add ({ rbcs: [31,31,31,31,31, 9,11,11,11,11,11,11,9 ],
-                    stockSkinId: 7,                               // TDK cassette
+                    stockSkinId: 7,                               // PsychoSmith
                     antenna: {
                       alpha: 0.5,
                       color2: "#222",
@@ -320,7 +320,8 @@ ss.register ((function() {
                       x: -18,
                       y: -50
                     }
-                  });
+                  })
+            .add ({ rbcs: [7,7,7,7,7, 11, 6,6,6,6,6, 11], stockSkinId: 7 }); // RED/SALMON stripes
 
       window.setSkin = function (snk, skinId) {
         skinId = parseInt (skinId);
