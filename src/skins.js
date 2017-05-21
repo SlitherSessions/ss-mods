@@ -96,7 +96,7 @@ ss.register ((function() {
         return;
 
       skins.add ({ rbcs: [ 9, 9, 9, 13, 13, 13 ], stockSkinId: 3})              // green/white
-           .add ({ rbcs: [ 9, 9, 9, 11, 11, 11 ], stockSkinId: 33})             // black/white
+           .add ({ rbcs: [ 9, 9, 9, 11, 11, 11 ], stockSkinId: 19})             // black/white
            .add ({ rbcs: [ 0, 0, 0, 8, 8, 8 ], stockSkinId: 8})                 // striped purple
            .add ({ rbcs: [ 11 ], stockSkinId: 25})                              // black
            .add ({ rbcs: [ 11, 9, 11, 7, 7, 7 ], stockSkinId: 7,                // spyke gaming
@@ -321,7 +321,8 @@ ss.register ((function() {
                       y: -50
                     }
                   })
-            .add ({ rbcs: [7,7,7,7,7, 11, 6,6,6,6,6, 11], stockSkinId: 7 }); // RED/SALMON stripes
+            .add ({ rbcs: [7,7,7,7,7, 11, 6,6,6,6,6, 11], stockSkinId: 7 }) // RED/SALMON stripes
+            .add ({ rbcs: [ 9, 9, 9, 9, 9, 11,11, 11,4,11,11,11 ], stockSkinId: 19})        // black/white
 
       window.setSkin = function (snk, skinId) {
         skinId = parseInt (skinId);
