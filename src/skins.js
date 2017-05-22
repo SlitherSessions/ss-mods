@@ -321,9 +321,25 @@ ss.register ((function() {
                       y: -50
                     }
                   })
-            .add ({ rbcs: [7,7,7,7,7, 11, 6,6,6,6,6, 11], stockSkinId: 7 }) // RED/SALMON stripes
-            .add ({ rbcs: [ 9, 9, 9, 9, 9, 11,11, 11,4,11,11,11 ], stockSkinId: 19})        // black/white
-
+            .add ({ rbcs: [7,7,7,7,7, 11, 6,6,6,6,6, 11], stockSkinId: 7 })           // RED/SALMON stripes
+            .add ({ rbcs: [ 9, 9, 9, 9, 9, 11,11, 11,4,11,11,11 ], stockSkinId: 19})  // black/white
+            .add ({ rbcs: [ 9,9,9,9,9, 11,31,11 ],                          // Atrium    1 - light blue  7 - red  9 - white  14 - dark blue
+                    stockSkinId: 19,
+                    antenna: {
+                      alpha: 0.5,
+                      color2: "#ccc",
+                      color1: "#aaa"
+                    },
+                    bulb: {
+                      image: ss.resources.images.atrium,
+                      scale: 0.64,
+                      alpha: 1.0,
+                      width:  80,
+                      height: 80,
+                      x: -24,
+                      y: -40
+                    }
+                  });
       window.setSkin = function (snk, skinId) {
         skinId = parseInt (skinId);
         var isOnSkinChooser = $('#psk').is(':visible');
