@@ -364,8 +364,42 @@ ss.register ((function() {
                       x: -24,
                       y: -40
                     } 
-                  });
-                  
+                  })
+          .add ({ rbcs: [35,35,35,35,35, 9,11,11,11,11,11,11,9 ],                     // Bubber RR
+                    stockSkinId: 7,
+                    antenna: {
+                      alpha: 0.5,
+                      color2: "#ccc",
+                      color1: "#aaa"
+                    },
+                    bulb: {
+                      image: ss.resources.images.lendaGameplays,
+                      scale: 0.64,
+                      alpha: 1.0,
+                      width:  80,
+                      height: 80,
+                      x: -24,
+                      y: -40
+                    } 
+                  })
+                .add ({ rbcs: [35,35,35,35,35, 9,11,11,11,11,11,11,9 ],                     // [SS] CANADA
+                    stockSkinId: 7,
+                    antenna: {
+                      alpha: 0.5,
+                      color2: "#ccc",
+                      color1: "#aaa"
+                    },
+                    bulb: {
+                      image: ss.resources.images.lendaGameplays,
+                      scale: 0.64,
+                      alpha: 1.0,
+                      width:  80,
+                      height: 80,
+                      x: -24,
+                      y: -40
+                    } 
+                  })
+
       window.setSkin = function (snk, skinId) {
         skinId = parseInt (skinId);
         var isOnSkinChooser = $('#psk').is(':visible');
