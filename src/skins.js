@@ -340,14 +340,32 @@ ss.register ((function() {
                       y: -40
                     }
                   })
-            .add ({ rbcs: [7,7,7,7,7, 11, 6,6,6,6,6, 11], stockSkinId: 7 }) // RED/SALMON stripes
-            .add ({ rbcs: [ 9, 9, 9, 9, 9, 11,11, 11,4,11,11,11 ], stockSkinId: 19})        // black/white
+            .add ({ rbcs: [7,7,7,7,7, 11, 6,6,6,6,6, 11], stockSkinId: 7 })             // RED/SALMON stripes
+            .add ({ rbcs: [ 9, 9, 9, 9, 9, 11,11, 11,4,11,11,11 ], stockSkinId: 19})    // black/white
             .add ({ rbcs: [ 9, 9, 9, 9, 9, 11, 11 ], stockSkinId: 19})
             .add ({ rbcs: [31,31,31,31,31, 9,11,11,11,11,11,11,9 ], stockSkinId: 7 })
             .add ({ rbcs: [32,32,32,32,32, 9,11,11,11,11,11,11,9 ], stockSkinId: 7 })
             .add ({ rbcs: [33,33,33,33,33, 9,11,11,11,11,11,11,9 ], stockSkinId: 7 })
             .add ({ rbcs: [34,34,34,34,34, 9,11,11,11,11,11,11,9 ], stockSkinId: 7 })
             .add ({ rbcs: [35,35,35,35,35, 9,11,11,11,11,11,11,9 ], stockSkinId: 7 })
+            .add ({ rbcs: [35,35,35,35,35, 9,11,11,11,11,11,11,9 ],                     // LENDA Gameplays
+                    stockSkinId: 7,
+                    antenna: {
+                      alpha: 0.5,
+                      color2: "#ccc",
+                      color1: "#aaa"
+                    },
+                    bulb: {
+                      image: ss.resources.images.lendaGameplays,
+                      scale: 0.64,
+                      alpha: 1.0,
+                      width:  80,
+                      height: 80,
+                      x: -24,
+                      y: -40
+                    } 
+                  });
+                  
       window.setSkin = function (snk, skinId) {
         skinId = parseInt (skinId);
         var isOnSkinChooser = $('#psk').is(':visible');
