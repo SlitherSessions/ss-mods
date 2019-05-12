@@ -81,6 +81,12 @@ userInterface.ssOnKeyDown = function (e) {
     if (url !== null)
       ss.setBackground (url);
   }
+
+  // Letter 'C' connect to host
+  if (e.keyCode == 67) {
+    ss.connectToHost();
+  }
+
   // Letter 'L' to rotate skins
   if (e.keyCode === 76) {
     ss.options.rotateSkins = !ss.options.rotateSkins;
@@ -111,7 +117,7 @@ userInterface.ssOnKeyDown = function (e) {
 
   // Key ']' toggle IP visibility
   if (e.keyCode === 221) {
-    var serverOverlay = document.getElementById('ss-server-overlay');
+    var serverOverlay = document.getElementById ('ss-server-overlay');
     var oVis = serverOverlay.style.visibility !== 'hidden' ? 'hidden' : 'visible';
     serverOverlay.style.visibility = oVis;
   }
@@ -132,27 +138,29 @@ userInterface.onPrefChange = function () {
   var oContent = [];
   var ht = userInterface.handleTextColor;
 
-  oContent.push('version: ' + window.ss.version());
-  oContent.push('[T / Right click] bot: ' + ht(bot.isBotEnabled));
-  oContent.push('[O] mobile rendering: ' + ht(window.mobileRender));
-  oContent.push('[A/S] radius multiplier: ' + bot.opt.radiusMult);
+  oContent.push ('version: ' + window.ss.version());
+  
+  oContent.push ('[T] bot: ' + ht (bot.isBotEnabled));
+  oContent.push ('[O] mobile rendering: ' + ht(window.mobileRender));
+  oContent.push ('[A/S] radius multiplier: ' + bot.opt.radiusMult);
   // oContent.push('[D] quick radius change ' +
   //     bot.opt.radiusApproachSize + '/' + bot.opt.radiusAvoidSize);
-  oContent.push('[I] auto respawn: ' + ht(window.autoRespawn));
-  oContent.push('[G] leaderboard overlay: ' + ht(window.leaderboard));
-  oContent.push('[Y] visual debugging: ' + ht(window.visualDebugging));
-  oContent.push('[U] log debugging: ' + ht(window.logDebugging));
-  oContent.push('[H] overlays');
-  oContent.push('[B] change background');
-  oContent.push('[Mouse Wheel] zoom');
-  oContent.push('[X] zoom enabled: ' + ht(ss.options.useZoom));
-  oContent.push('[Z] reset zoom');
-  oContent.push('[L] rotate skins: ' + ht(ss.options.rotateSkins));
-  oContent.push('[K] next skin');
-  oContent.push('[J] previous skin');
-  oContent.push('[P] use static host: ' + ht(ss.options.useLastHost));
-  oContent.push('[ESC] quick respawn');
-  oContent.push('[Q] quit to menu');
+  oContent.push ('[I] auto respawn: ' + ht (window.autoRespawn));
+  oContent.push ('[G] leaderboard overlay: ' + ht (window.leaderboard));
+  oContent.push ('[Y] visual debugging: ' + ht (window.visualDebugging));
+  oContent.push ('[U] log debugging: ' + ht(window.logDebugging));
+  oContent.push ('[H] overlays');
+  // oContent.push('[B] change background');
+  oContent.push ('[Mouse Wheel] zoom');
+  oContent.push ('[X] zoom enabled: ' + ht (ss.options.useZoom));
+  oContent.push ('[Z] reset zoom');
+  // oContent.push ('[L] rotate skins: ' + ht(ss.options.rotateSkins));
+  // oContent.push ('[K] next skin');
+  // oContent.push ('[J] previous skin');
+  oContent.push ('[C] connect to host/IP');
+  oContent.push ('[P] use static host: ' + ht(ss.options.useLastHost));
+  oContent.push ('[ESC] quick respawn');
+  oContent.push ('[Q] quit to menu');
 
   userInterface.overlays.prefOverlay.innerHTML = oContent.join('<br/>');
 };

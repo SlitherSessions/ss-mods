@@ -1,4 +1,3 @@
-/* Slither Sessions Mods */
 /*
   config.js - This file is part of Slither Sessions Mods
 
