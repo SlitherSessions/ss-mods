@@ -39,7 +39,7 @@ gulp.task('clean', function() {
 });
 
 gulp.task ('copy-chrome', function () {
-  gulp.src('chrome/**/*.*')
+  return gulp.src('chrome/**/*.*')
       .pipe(gulp.dest('gulp/ss-mods-chrome'));
 });
 
@@ -71,9 +71,9 @@ gulp.task ('sass', function() {
 
 // Rerun the task when a file changes
 gulp.task ('watch', function() {
-  gulp.watch (source.scripts, ['scripts']);
+  return gulp.watch (source.scripts, ['scripts']);
   // gulp.watch(source.images, ['images']);
 });
 
 // The default task (called when you run `gulp` from cli)
-gulp.task ('default', ['watch', 'scripts' ]);
+// gulp.task ('default', [ 'watch', 'scripts' ]);
